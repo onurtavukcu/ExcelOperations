@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj": {}
+    "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj": {
+    "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
+        "projectUniqueName": "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
         "projectName": "ExcelOperations",
-        "projectPath": "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
+        "projectPath": "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
         "packagesPath": "C:\\Users\\adm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\obj\\",
+        "outputPath": "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

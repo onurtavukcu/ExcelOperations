@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jr7kH7rJEWNLBMMbgr4ORNa9dyy1fZiUwzXe+2HWu3pO+uBuuHqZyvx0+XjTVqXjPGAkQiiTqb//qnXEzg0p1w==",
+  "dgSpecHash": "Ntvo/GVXOjJFguH5teldfUdWVI81r8/BIyagQaEZgBF7NOxZZ28lnuJOfK+QvFAM2nR1CY932HclyO+Y0CQGSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\adm\\source\\repos\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
+  "projectFilePath": "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adm\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512",

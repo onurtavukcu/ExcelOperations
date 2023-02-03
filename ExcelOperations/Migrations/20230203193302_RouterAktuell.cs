@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class MigRouterAktuell : Migration
+    public partial class RouterAktuell : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,11 @@ namespace ExcelOperations.Migrations
                     ZustandigeRegion = table.Column<string>(type: "text", nullable: true),
                     SONumber = table.Column<string>(type: "text", nullable: true),
                     SONrEPlus = table.Column<string>(name: "SO_Nr_EPlus", type: "text", nullable: true),
+                    PLZ = table.Column<string>(type: "text", nullable: true),
+                    Ort = table.Column<string>(type: "text", nullable: true),
+                    Strasse = table.Column<string>(type: "text", nullable: true),
+                    Gebaudeart = table.Column<string>(type: "text", nullable: true),
+                    Eigentumer = table.Column<string>(type: "text", nullable: true),
                     CtKStatus = table.Column<string>(name: "CtK_Status", type: "text", nullable: true),
                     NENr = table.Column<string>(name: "NE_Nr", type: "text", nullable: true),
                     Alt = table.Column<string>(type: "text", nullable: true),

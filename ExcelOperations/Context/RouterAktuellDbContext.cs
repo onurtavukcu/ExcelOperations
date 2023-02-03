@@ -18,8 +18,7 @@ namespace ExcelOperations.Context
             modelBuilder.Entity<RouterAktuell>(i =>
             {
                 i.Property<int>("id");
-                i.Property<int>("id").ValueGeneratedOnAdd();
-               
+                i.Property<int>("id").ValueGeneratedOnAdd();               
             }
             );
 

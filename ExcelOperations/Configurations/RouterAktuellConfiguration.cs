@@ -8,8 +8,6 @@ namespace ExcelOperations.Configurations
     {
         public void Configure(EntityTypeBuilder<RouterAktuell> builder)
         {
-            //builder.Property(
-            //    b => b.Projekt_ID).
         }
     }
 }
