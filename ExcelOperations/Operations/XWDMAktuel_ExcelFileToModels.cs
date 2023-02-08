@@ -1,30 +1,29 @@
-﻿using ExcelDataReader;
-using ExcelOperations.DocEntity;
+﻿using ExcelOperations.DocEntity;
 using ExcelOperations.Operations.MinorOperations;
 using System.Data;
 using System.Reflection;
 
 namespace ExcelOperations.Operations
 {
-    public class RouterAktuell_ExcelFileToModels
+    public class XWDMAktuel_ExcelFileToModels
     {
-        public List<RouterAktuell> ExcelTables()
+        public List<XWDMAktuell> ExcelTables()
         {
-            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Router_aktuell.xlsx";
+            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\xWDM_aktuell.xlsx";
 
             var datasetOperations = new ExcelToDataSet();
 
-            var datasets = datasetOperations.TakeExcelToDataset(fileLocation,5);
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 5);
 
-            var dataList = new List<RouterAktuell>();
+            var dataList = new List<XWDMAktuell>();
 
-            var dataTypes = typeof(RouterAktuell);
+            var dataTypes = typeof(XWDMAktuell);
 
             var properties = dataTypes.GetProperties();
 
             foreach (DataRow row in datasets.Tables[0].Rows)
             {
-                var modelInstance = new RouterAktuell();
+                var modelInstance = new XWDMAktuell();
 
                 foreach (var property in properties)
                 {
@@ -48,6 +47,6 @@ namespace ExcelOperations.Operations
                 dataList.Add(modelInstance);
             }
             return dataList;
-        }       
+        }
     }
 }

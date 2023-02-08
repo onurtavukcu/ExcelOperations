@@ -17,13 +17,13 @@ namespace ExcelOperations.Operations
 
             var dataList = new List<RouterSwapAktuell>();
 
-            var routerAktuellType = typeof(RouterSwapAktuell);
+            var dataTypes = typeof(RouterSwapAktuell);
 
-            var properties = routerAktuellType.GetProperties();
+            var properties = dataTypes.GetProperties();
 
             foreach (DataRow row in datasets.Tables[0].Rows)
             {
-                var routerAktuellInstance = new RouterSwapAktuell();
+                var modelInstance = new RouterSwapAktuell();
 
                 foreach (var property in properties)
                 {
@@ -40,11 +40,11 @@ namespace ExcelOperations.Operations
 
                     if (property.CanWrite)
                     {
-                        property.SetValue(routerAktuellInstance, data.ToString());
+                        property.SetValue(modelInstance, data.ToString());
                     }
                 }
 
-                dataList.Add(routerAktuellInstance);
+                dataList.Add(modelInstance);
             }
             return dataList;
         }

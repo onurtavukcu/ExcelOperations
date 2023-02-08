@@ -2,6 +2,7 @@
 using ExcelOperations.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    partial class EntityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230208105637_migv2")]
+    partial class migv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1504,100 +1507,6 @@ namespace ExcelOperations.Migrations
                     b.HasKey("id");
 
                     b.ToTable("XWDMAktuells");
-                });
-
-            modelBuilder.Entity("ExcelOperations.DocEntity.ZugangsdatenAktuell", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Besonderheiten")
-                        .HasColumnType("text");
-
-                    b.Property<string>("COOPContract")
-                        .HasColumnType("text");
-
-                    b.Property<string>("COOPStatus")
-                        .HasColumnType("text");
-
-                    b.Property<string>("COOPTausch")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DatumderSchliebung")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Eigentümer")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Equipment_SO")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Gebäudeart")
-                        .HasColumnType("text");
-
-                    b.Property<string>("HochwertGK3")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Infrastruktur_Soll_Baseframe_Radio_MW")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Netzelement")
-                        .HasColumnType("text");
-
-                    b.Property<string>("NordlBreiteWGS84")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Ort")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OstlLangeWGS84")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PLZ")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Parkplätze")
-                        .HasColumnType("text");
-
-                    b.Property<string>("RechtswertGK3")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SO_Nr")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SO_Nr_EPlus")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Schliebung")
-                        .HasColumnType("text");
-
-                    b.Property<string>("StandortdesTresors")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Strabe")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Umgebungspflege")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Zufahrtsbeschreibung")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Zugangsmöglichkeit")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Zugangsregelung")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ZustandigeRegion")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ZugangsdatenAktuell");
                 });
 #pragma warning restore 612, 618
         }

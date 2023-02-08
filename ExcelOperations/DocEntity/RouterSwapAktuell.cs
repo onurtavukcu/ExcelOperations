@@ -24,7 +24,7 @@
         [ColumnName("Standort-Klasse")]
         public string? StandortKlasse { get; set; }
 
-        [ColumnName("POC B - Ende")]
+        [ColumnName("POC B-Ende")]
         public string? POCBEnde { get; set; }
         public string? NE_Nr { get; set; }
         public string? Alt { get; set; }

@@ -13,12 +13,12 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<EntityDbContext>  //her tablo icin ayri ayri baglanti mi ????
+builder.Services.AddDbContext<EntityDbContext>
     (options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
         b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 
-builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());  //dbcontext -> RouterAktuellDbContext
+builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());
 
 var app = builder.Build();
 

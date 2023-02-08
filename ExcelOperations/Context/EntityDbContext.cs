@@ -13,6 +13,7 @@ namespace ExcelOperations.Context
 
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
+        public virtual DbSet<XWDMAktuell>? XWDMAktuells { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
         {
@@ -20,14 +21,24 @@ namespace ExcelOperations.Context
 
             modelBuilder.Entity<RouterAktuell>(i =>
             {
-                i.Property<int>("id");
-                i.Property<int>("id").ValueGeneratedOnAdd();               
+                i.Property<int>("id").ValueGeneratedOnAdd();
             }
             );
 
             modelBuilder.Entity<RouterSwapAktuell>(i =>
             {
-                i.Property<int>("id");
+                i.Property<int>("id").ValueGeneratedOnAdd();
+            }
+            );
+
+            modelBuilder.Entity<XWDMAktuell>(i =>
+            {
+                i.Property<int>("id").ValueGeneratedOnAdd();
+            }
+            );
+
+            modelBuilder.Entity<ZugangsdatenAktuell>(i =>
+            {
                 i.Property<int>("id").ValueGeneratedOnAdd();
             }
             );
