@@ -3,11 +3,11 @@
     public class RouterSwapAktuell
     {
         [ColumnName("Zuständige Region")]
-        public string? ZuständigeRegion { get; set; }
+        public string? Zustandige_Region { get; set; }
         public string? SO_Nr { get; set; }
 
         [ColumnName("Dim_Squads MAC")]
-        public string? Dim_SquadsMAC { get; set; }
+        public string? Dim_Squads_MAC { get; set; }
         public string? SO_Nr_EPlus { get; set; }
         public string? PLZ { get; set; }
         public string? Ort { get; set; }
@@ -22,47 +22,47 @@
         public string? Eigentumer { get; set; }
 
         [ColumnName("Standort-Klasse")]
-        public string? StandortKlasse { get; set; }
+        public string? Standort_Klasse { get; set; }
 
         [ColumnName("POC B-Ende")]
-        public string? POCBEnde { get; set; }
+        public string? POC_B_Ende { get; set; }
         public string? NE_Nr { get; set; }
         public string? Alt { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? ProjektID { get; set; }
+        public string? Projekt_ID { get; set; }
 
         [ColumnName("Router alt")]
-        public string? Routeralt { get; set; }
+        public string? Router_alt { get; set; }
 
         [ColumnName("Router neu")]
-        public string? Routerneu { get; set; }
-        public string? aktuell { get; set; }
+        public string? Router_neu { get; set; }
+        public string? Aktuell { get; set; }
 
         [ColumnName("Verbindlicher JSL Router")]
-        public string? VerbindlicherJSLRouter { get; set; }
+        public string? Verbindlicher_JSL_Router { get; set; }
 
         [ColumnName("Linda_Grundgerät")]
         public string? Linda_Grundgerat { get; set; }
 
         [ColumnName("Linda_Status Leitung")]
-        public string? Linda_StatusLeitung { get; set; }
+        public string? Linda_Status_Leitung { get; set; }
         public string? NE_Name { get; set; }
         public string? NE_Bemerkung { get; set; }
 
         [ColumnName("dim_OSPF-Rule xakta")]
-        public string? dim_OSPFRulexakta { get; set; }
+        public string? dim_OSPF_Rule_xakta { get; set; }
         public string? Projektstand { get; set; }
 
         [ColumnName("geplantes Ende")]
-        public string? geplantesEnde { get; set; }
+        public string? geplantes_Ende { get; set; }
         public string? Projektbemerkung { get; set; }
         public string? Demand { get; set; }
         public string? Dim_Beauftragungsform { get; set; }
         public string? Projektart { get; set; }
 
         [ColumnName("Template-Bezeichnung")]
-        public string? TemplateBezeichnung { get; set; }
+        public string? Template_Bezeichnung { get; set; }
         public string? MP_POC { get; set; }
         public string? UGG { get; set; }
         public string? Bezeichnung { get; set; }
@@ -71,7 +71,7 @@
         public string? VerantwOrgeinheit { get; set; }
 
         [ColumnName("POC-Projekt")]
-        public string? POCProjekt { get; set; }
+        public string? POC_Projekt { get; set; }
         public string? Anz_NE20 { get; set; }
         public string? Anz_NE21 { get; set; }
         public string? Anz_NE30 { get; set; }
@@ -89,8 +89,7 @@
         public string? GU_Projekt { get; set; }
 
         [ColumnName("Auftragnehmer Systemtechnik")]
-        public string? AuftragnehmerSystemtechnik
-        { get; set; }
+        public string? Auftragnehmer_Systemtechnik { get; set; }
         public string? Ist_Stx11 { get; set; }
         public string? Stx11_Bemerkung { get; set; }
         public string? Plan_Stx29z { get; set; }
@@ -175,22 +174,22 @@
         public string? FNE_Alt { get; set; }
 
         [ColumnName("FNE_Projekt-ID")]
-        public string? FNE_ProjektID { get; set; }
+        public string? FNE_Projekt_ID { get; set; }
         public string? FNE_Projektstand { get; set; }
         public string? FNE_Projektbemerkung { get; set; }
         public string? FNE_GU_Projekt { get; set; }
         public string? FNE_Demand { get; set; }
 
         [ColumnName("FNE_Template-Bezeichnung")]
-        public string? FNE_TemplateBezeichnung { get; set; }
+        public string? FNE_Template_Bezeichnung { get; set; }
         public string? FNE_MP_POC { get; set; }
         public string? FNE_Projektbezeichnung { get; set; }
 
         [ColumnName("FNE_Verantw Org")]
-        public string? FNE_VerantwOrg { get; set; }
+        public string? FNE_Verantw_Org { get; set; }
 
         [ColumnName("FNE_POC-Projekt")]
-        public string? FNE_POCProjekt { get; set; }
+        public string? FNE_POC_Projekt { get; set; }
         public string? FNE_Ist_Stx30 { get; set; }
         public string? FNE_Stx30_Bemerkung { get; set; }
         public string? FNE_Plan_Stx40Stern { get; set; }

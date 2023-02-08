@@ -3,7 +3,7 @@
     public class XWDMAktuell
     {
         [ColumnName("Zuständige Region")]
-        public string? ZustandigeRegion { get; set; }
+        public string? Zustandige_Region { get; set; }
         public string? SO_Nr { get; set; }
         public string? SO_Nr_EPlus { get; set; }
 
@@ -14,52 +14,53 @@
         public string? NE_Name { get; set; }
 
         [ColumnName("Dim_Squads MAC")]
-
-        public string? Dim_Squads { get; set; }
+        public string? Dim_Squads_MAC { get; set; }
         public string? NE_Bemerkung { get; set; }
         public string? NE_Nr_EPlus { get; set; }
         public string? Projektstand { get; set; }
         public string? Projektart { get; set; }
 
         [ColumnName("Template-Bezeichnung")]
-        public string? TemplateBezeichnung { get; set; }
+        public string? Template_Bezeichnung { get; set; }
         public string? Projektbemerkung { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? ProjektID { get; set; }
+        public string? Projekt_ID { get; set; }
         public string? Bezeichnung { get; set; }
 
         [ColumnName("Verantw Organisationseinheit")]
-        public string? VerantwOrganisationseinheit { get; set; }
+        public string? Verantw_Organisationseinheit { get; set; }
         public string? Infrastruktur_Soll_Baseframe_Radio_MW { get; set; }
 
         [ColumnName("Ziel des Projekts")]
-        public string? ZieldesProjekts { get; set; }
+        public string? Ziel_des_Projekts { get; set; }
         public string? MP_POC { get; set; }
         public string? POC_Projekt { get; set; }
 
         [ColumnName("Dim_POC-Projekt")]
-        public string? Dim_POCProjekt { get; set; }
+        public string? Dim_POC_Projekt { get; set; }
         public string? Demand { get; set; }
 
         [ColumnName("Budget Datum")]
-        public string? BudgetDatum { get; set; }
+        public string? Budget_Datum { get; set; }
         public string? Dim_Beauftragungsform { get; set; }
 
         [ColumnName("NRG-Transition")]
-        public string? NRGTransition { get; set; }
+        public string? NRG_Transition { get; set; }
 
         [ColumnName("Dim_OSPF Rule")]
-        public string? Dim_OSPFRule { get; set; }
+        public string? Dim_OSPF_Rule { get; set; }
 
         [ColumnName("Kapazität WDM")]
-        public string? KapazitatWDM { get; set; }
+        public string? Kapazitat_WDM { get; set; }
         public string? TOM_PLANNING_PREPARATION { get; set; }
         public string? TOM_EXECUTION { get; set; }
         public string? PLZ { get; set; }
         public string? Ort { get; set; }
         public string? Straße { get; set; }
-        public string? Gebäudeart { get; set; }
+
+        [ColumnName("Gebäudeart")]
+        public string? Gebaudeart { get; set; }
         public string? Eigentümer { get; set; }
         public string? Projekt_Equipment { get; set; }
         public string? NE_Equipment_Bestand { get; set; }

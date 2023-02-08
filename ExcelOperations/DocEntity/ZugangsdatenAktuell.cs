@@ -3,23 +3,25 @@
     public class ZugangsdatenAktuell
     {
         [ColumnName("Zuständige Region")]
-        public string? ZustandigeRegion { get; set; }
+        public string? Zustandige_Region { get; set; }
         public string? SO_Nr { get; set; }
         public string? SO_Nr_EPlus { get; set; }
 
         [ColumnName("COOP-Contract")]
-        public string? COOPContract { get; set; }
+        public string? COOP_Contract { get; set; }
 
         [ColumnName("COOP-Status")]
-        public string? COOPStatus { get; set; }
+        public string? COOP_Status { get; set; }
 
         [ColumnName("COOP-Tausch")]
-        public string? COOPTausch { get; set; }
+        public string? COOP_Tausch { get; set; }
         public string? Infrastruktur_Soll_Baseframe_Radio_MW { get; set; }
         public string? Netzelement { get; set; }
         public string? Equipment_SO { get; set; }
         public string? Eigentümer { get; set; }
-        public string? Gebäudeart { get; set; }
+
+        [ColumnName("Gebäudeart")]
+        public string? Gebaudeart { get; set; }
         public string? PLZ { get; set; }
         public string? Ort { get; set; }
 
@@ -27,16 +29,16 @@
         public string? Strabe { get; set; }
 
         [ColumnName("Rechtswert GK3")]
-        public string? RechtswertGK3 { get; set; }
+        public string? Rechtswert_GK3 { get; set; }
 
         [ColumnName("Hochwert GK3")]
-        public string? HochwertGK3 { get; set; }
+        public string? Hochwert_GK3 { get; set; }
 
         [ColumnName("Östl Länge WGS84")]
-        public string? OstlLangeWGS84 { get; set; }
+        public string? Ostl_Lange_WGS84 { get; set; }
         
         [ColumnName("Nördl Breite WGS84")]
-        public string? NordlBreiteWGS84 { get; set; }
+        public string? Nordl_Breite_WGS84 { get; set; }
         public string? Zugangsmöglichkeit { get; set; }
         public string? Zugangsregelung { get; set; }
         public string? Zufahrtsbeschreibung { get; set; }
@@ -45,10 +47,10 @@
         public string? Umgebungspflege { get; set; }
 
         [ColumnName("Datum der Schließung")]
-        public string? DatumderSchliebung { get; set; }
+        public string? Datum_der_Schliebung { get; set; }
         public string? Schliebung { get; set; }
 
         [ColumnName("Standort des Tresors")]
-        public string? StandortdesTresors { get; set; }
+        public string? Standort_des_Tresors { get; set; }
     }
 }

@@ -1,11 +1,10 @@
 ﻿namespace ExcelOperations.DocEntity
 {
-    public class RouterAktuell ///////Warning !! config migration to update table not have to delete existing table 
+    public class RouterAktuell
     {   
-        [ColumnName("Zuständige Region")] // ä -> a
-        public string? ZustandigeRegion { get; set; }
-        [ColumnName("SO_Nr")]
-        public string? SONumber { get; set; }
+        [ColumnName("Zuständige Region")]
+        public string? Zustandige_Region { get; set; }
+        public string? SO_Nr { get; set; }
         public string? SO_Nr_EPlus { get; set; }
         public string? PLZ { get; set; }
         public string? Ort { get; set; }
@@ -23,7 +22,7 @@
         public string? Alt { get; set; }
 
         [ColumnName("Dim_OSPF Rule")]
-        public string? Dim_OSPF { get; set; }
+        public string? Dim_OSPF_Rule { get; set; }
         public string? NE_Name { get; set; }
         public string? NE_Bemerkung { get; set; }
         public string? NE_Nr_EPlus { get; set; }
@@ -31,7 +30,7 @@
         public string? Projektart { get; set; }
 
         [ColumnName("Dim_Squads MAC")]
-        public string? Dim_Squads { get; set; }
+        public string? Dim_Squads_MAC { get; set; }
         public string? SWD_POC_Sourcing { get; set; }
 
         [ColumnName("NRG-Transition")]
@@ -177,6 +176,5 @@
         public string? WL_1st_Stx90 { get; set; }
         public string? SAT_1st_Stx90 { get; set; }
     }
-
 }
 
