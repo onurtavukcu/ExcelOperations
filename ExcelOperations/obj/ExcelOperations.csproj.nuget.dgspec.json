@@ -45,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "ExcelDataReader": {
               "target": "Package",
               "version": "[3.6.0, )"
@@ -69,13 +73,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.13, )"
+              "version": "[7.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.13, )"
+              "version": "[7.0.2, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -87,7 +91,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.3.0, )"
+              "version": "[6.5.0, )"
             },
             "System.Text.Encoding.CodePages": {
               "target": "Package",

@@ -1,5 +1,6 @@
 ﻿using ExcelDataReader;
 using ExcelOperations.DocEntity;
+using ExcelOperations.Operations.MinorOperations;
 using System.Data;
 using System.Reflection;
 
@@ -9,7 +10,11 @@ namespace ExcelOperations.Operations
     {
         public List<RouterAktuell> ExcelTables()
         {
-            var datasets = TakeExcelToDataset();
+            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Router_aktuell.xlsx";
+
+            var datasetOperations = new ExcelToDataSet();
+
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation,5);
 
             var dataList = new List<RouterAktuell>();
 
@@ -43,44 +48,6 @@ namespace ExcelOperations.Operations
                 dataList.Add(routerAktuellInstance);
             }
             return dataList;
-        }
-
-        public DataSet TakeExcelToDataset()
-        {
-            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Router_aktuell.xlsx";
-            
-            DataSet ds = new DataSet();
-
-            FileStream fileStream = File.Open(fileLocation, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-            IExcelDataReader reader = ExcelReaderFactory.CreateReader(fileStream);
-
-            ds = reader.AsDataSet();
-
-            return FirstRowToColumnName(ds,5);
-        }
-
-        public DataSet FirstRowToColumnName(DataSet dataSet, int rowCount)
-        {
-            DataRow row = dataSet.Tables[0].Rows[rowCount-1];  //4 for routerAktuell
-
-            var columnCount = dataSet.Tables[0].Columns.Count;
-
-            for (int i = 0; i < columnCount; i++)
-            {
-                dataSet.Tables[0].Columns[i].ColumnName = row[i].ToString();  //same Column Name give exception
-            }
-
-            dataSet.AcceptChanges();
-
-            for (int i = 0; i < rowCount; i++)
-            {
-                dataSet.Tables[0].Rows[i].Delete();
-            }
-
-            dataSet.AcceptChanges();
-
-            return dataSet;
-        }
+        }       
     }
 }

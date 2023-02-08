@@ -1,6 +1,7 @@
 using ExcelOperations.Context;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +13,12 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<RouterAktuellDbContext>
+builder.Services.AddDbContext<EntityDbContext>  //her tablo icin ayri ayri baglanti mi ????
     (options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
-        b => b.MigrationsAssembly("ExcelOperations")));
+        b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 
-builder.Services.AddScoped<DbContext>(provider => provider.GetService<RouterAktuellDbContext>());
+builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());  //dbcontext -> RouterAktuellDbContext
 
 var app = builder.Build();
 

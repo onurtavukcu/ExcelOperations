@@ -14,17 +14,33 @@ namespace ExcelOperations.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly RouterAktuellDbContext _routerAktuellDbContext;
+        private readonly EntityDbContext _routerAktuellDbContext;
 
-        public WeatherForecastController(RouterAktuellDbContext routerAktuellDbContext)
+        public WeatherForecastController(EntityDbContext routerAktuellDbContext)
         {
             _routerAktuellDbContext = routerAktuellDbContext;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IActionResult Get()
+        [HttpGet(Name = "RouterAktuell")]
+        public IActionResult GetRouterAktuell()
         {
             var excelReader = new RouterAktuell_ExcelFileToModels();
+
+            var result = excelReader.ExcelTables();
+
+            foreach (var item in result)
+            {
+                _routerAktuellDbContext.Add(item);
+                _routerAktuellDbContext.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        [HttpGet(Name = "RouterSwapAktuel")]
+        public IActionResult GetRouterSwapAktuel()
+        {
+            var excelReader = new RouterSwapAktuell_ExcelFileToModels();
 
             var result = excelReader.ExcelTables();
 
