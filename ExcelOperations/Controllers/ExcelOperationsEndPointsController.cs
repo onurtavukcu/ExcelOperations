@@ -2,6 +2,7 @@ using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace ExcelOperations.Controllers
 {
@@ -51,19 +52,40 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
+        [Route("XWDMAktuellAsync")]
+        public async Task<IActionResult> XWDMAktuellAsync(CancellationToken cancellationToken)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var excelReader = new XWDMAktuel_ExcelFileToModels();
+
+            var result = await excelReader.ExcelTablesAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            stopwatch.Stop();
+
+            Console.WriteLine("ElapsedTime ASYNC" + stopwatch.Elapsed);
+            return Ok();
+        }
+
+        [HttpGet]
         [Route("XWDMAktuell")]
         public IActionResult XWDMAktuell()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             var excelReader = new XWDMAktuel_ExcelFileToModels();
 
             var result = excelReader.ExcelTables();
 
-            foreach (var item in result)
-            {
-                _EntityDbContext.Add(item);
-                _EntityDbContext.SaveChanges();
-            }
+            _EntityDbContext.BulkInsert(result);
 
+            stopwatch.Stop();
+
+            Console.WriteLine("ElapsedTime" + stopwatch.Elapsed);
             return Ok();
         }
 

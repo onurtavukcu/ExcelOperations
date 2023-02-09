@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230208114403_migv3")]
-    partial class migv3
+    [Migration("20230209120148_migration1")]
+    partial class migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,13 +68,13 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Dim_Beauftragungsform")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_OSPF")
+                    b.Property<string>("Dim_OSPF_Rule")
                         .HasColumnType("text");
 
                     b.Property<string>("Dim_POC_Projekt")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_Squads")
+                    b.Property<string>("Dim_Squads_MAC")
                         .HasColumnType("text");
 
                     b.Property<string>("Eigentumer")
@@ -338,7 +338,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("SAT_Ist")
                         .HasColumnType("text");
 
-                    b.Property<string>("SONumber")
+                    b.Property<string>("SO_Nr")
                         .HasColumnType("text");
 
                     b.Property<string>("SO_Nr_EPlus")
@@ -479,7 +479,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Ziel_des_Projekts")
                         .HasColumnType("text");
 
-                    b.Property<string>("ZustandigeRegion")
+                    b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -494,6 +494,9 @@ namespace ExcelOperations.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Aktuell")
+                        .HasColumnType("text");
 
                     b.Property<string>("Alt")
                         .HasColumnType("text");
@@ -516,7 +519,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Anz_NE33")
                         .HasColumnType("text");
 
-                    b.Property<string>("AuftragnehmerSystemtechnik")
+                    b.Property<string>("Auftragnehmer_Systemtechnik")
                         .HasColumnType("text");
 
                     b.Property<string>("Bezeichnung")
@@ -543,7 +546,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Dim_Beauftragungsform")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_SquadsMAC")
+                    b.Property<string>("Dim_Squads_MAC")
                         .HasColumnType("text");
 
                     b.Property<string>("Eigentumer")
@@ -615,7 +618,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("FNE_NE_Nr")
                         .HasColumnType("text");
 
-                    b.Property<string>("FNE_POCProjekt")
+                    b.Property<string>("FNE_POC_Projekt")
                         .HasColumnType("text");
 
                     b.Property<string>("FNE_Plan_Stx40Stern")
@@ -639,7 +642,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("FNE_Plan_Stx90")
                         .HasColumnType("text");
 
-                    b.Property<string>("FNE_ProjektID")
+                    b.Property<string>("FNE_Projekt_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("FNE_Projektart")
@@ -711,10 +714,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("FNE_Stx91_Bemerkung")
                         .HasColumnType("text");
 
-                    b.Property<string>("FNE_TemplateBezeichnung")
+                    b.Property<string>("FNE_Template_Bezeichnung")
                         .HasColumnType("text");
 
-                    b.Property<string>("FNE_VerantwOrg")
+                    b.Property<string>("FNE_Verantw_Org")
                         .HasColumnType("text");
 
                     b.Property<string>("Festnetzplaner")
@@ -837,7 +840,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Linda_Grundgerat")
                         .HasColumnType("text");
 
-                    b.Property<string>("Linda_StatusLeitung")
+                    b.Property<string>("Linda_Status_Leitung")
                         .HasColumnType("text");
 
                     b.Property<string>("MP_POC")
@@ -933,10 +936,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("PLZ")
                         .HasColumnType("text");
 
-                    b.Property<string>("POCBEnde")
+                    b.Property<string>("POC_B_Ende")
                         .HasColumnType("text");
 
-                    b.Property<string>("POCProjekt")
+                    b.Property<string>("POC_Projekt")
                         .HasColumnType("text");
 
                     b.Property<string>("Plan_Stx29z")
@@ -975,7 +978,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Plan_Stx91a")
                         .HasColumnType("text");
 
-                    b.Property<string>("ProjektID")
+                    b.Property<string>("Projekt_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("Projektart")
@@ -993,10 +996,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("RSTP_Ist")
                         .HasColumnType("text");
 
-                    b.Property<string>("Routeralt")
+                    b.Property<string>("Router_alt")
                         .HasColumnType("text");
 
-                    b.Property<string>("Routerneu")
+                    b.Property<string>("Router_neu")
                         .HasColumnType("text");
 
                     b.Property<string>("SO_Nr")
@@ -1017,7 +1020,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Soll_WL")
                         .HasColumnType("text");
 
-                    b.Property<string>("StandortKlasse")
+                    b.Property<string>("Standort_Klasse")
                         .HasColumnType("text");
 
                     b.Property<string>("Strabe")
@@ -1101,7 +1104,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("TOM_PLANNING_PREPARATION")
                         .HasColumnType("text");
 
-                    b.Property<string>("TemplateBezeichnung")
+                    b.Property<string>("Template_Bezeichnung")
                         .HasColumnType("text");
 
                     b.Property<string>("UGG")
@@ -1110,19 +1113,16 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("VerantwOrgeinheit")
                         .HasColumnType("text");
 
-                    b.Property<string>("VerbindlicherJSLRouter")
+                    b.Property<string>("Verbindlicher_JSL_Router")
                         .HasColumnType("text");
 
-                    b.Property<string>("ZuständigeRegion")
+                    b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
-                    b.Property<string>("aktuell")
+                    b.Property<string>("dim_OSPF_Rule_xakta")
                         .HasColumnType("text");
 
-                    b.Property<string>("dim_OSPFRulexakta")
-                        .HasColumnType("text");
-
-                    b.Property<string>("geplantesEnde")
+                    b.Property<string>("geplantes_Ende")
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -1144,7 +1144,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Bezeichnung")
                         .HasColumnType("text");
 
-                    b.Property<string>("BudgetDatum")
+                    b.Property<string>("Budget_Datum")
                         .HasColumnType("text");
 
                     b.Property<string>("CtK_Status")
@@ -1156,13 +1156,13 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Dim_Beauftragungsform")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_OSPFRule")
+                    b.Property<string>("Dim_OSPF_Rule")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_POCProjekt")
+                    b.Property<string>("Dim_POC_Projekt")
                         .HasColumnType("text");
 
-                    b.Property<string>("Dim_Squads")
+                    b.Property<string>("Dim_Squads_MAC")
                         .HasColumnType("text");
 
                     b.Property<string>("Eigentümer")
@@ -1177,7 +1177,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("GU_Projekt")
                         .HasColumnType("text");
 
-                    b.Property<string>("Gebäudeart")
+                    b.Property<string>("Gebaudeart")
                         .HasColumnType("text");
 
                     b.Property<string>("Infrastruktur_Soll_Baseframe_Radio_MW")
@@ -1315,7 +1315,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Ist_Stx91r")
                         .HasColumnType("text");
 
-                    b.Property<string>("KapazitatWDM")
+                    b.Property<string>("Kapazitat_WDM")
                         .HasColumnType("text");
 
                     b.Property<string>("MP_POC")
@@ -1339,7 +1339,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("NE_Nr_EPlus")
                         .HasColumnType("text");
 
-                    b.Property<string>("NRGTransition")
+                    b.Property<string>("NRG_Transition")
                         .HasColumnType("text");
 
                     b.Property<string>("Ort")
@@ -1384,10 +1384,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Plan_Stx91a")
                         .HasColumnType("text");
 
-                    b.Property<string>("ProjektID")
+                    b.Property<string>("Projekt_Equipment")
                         .HasColumnType("text");
 
-                    b.Property<string>("Projekt_Equipment")
+                    b.Property<string>("Projekt_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("Projektart")
@@ -1489,19 +1489,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("TOM_PLANNING_PREPARATION")
                         .HasColumnType("text");
 
-                    b.Property<string>("TemplateBezeichnung")
+                    b.Property<string>("Template_Bezeichnung")
                         .HasColumnType("text");
 
                     b.Property<string>("UTS_Ticket_am_Projekt")
                         .HasColumnType("text");
 
-                    b.Property<string>("VerantwOrganisationseinheit")
+                    b.Property<string>("Verantw_Organisationseinheit")
                         .HasColumnType("text");
 
-                    b.Property<string>("ZieldesProjekts")
+                    b.Property<string>("Ziel_des_Projekts")
                         .HasColumnType("text");
 
-                    b.Property<string>("ZustandigeRegion")
+                    b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -1520,16 +1520,16 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Besonderheiten")
                         .HasColumnType("text");
 
-                    b.Property<string>("COOPContract")
+                    b.Property<string>("COOP_Contract")
                         .HasColumnType("text");
 
-                    b.Property<string>("COOPStatus")
+                    b.Property<string>("COOP_Status")
                         .HasColumnType("text");
 
-                    b.Property<string>("COOPTausch")
+                    b.Property<string>("COOP_Tausch")
                         .HasColumnType("text");
 
-                    b.Property<string>("DatumderSchliebung")
+                    b.Property<string>("Datum_der_Schliebung")
                         .HasColumnType("text");
 
                     b.Property<string>("Eigentümer")
@@ -1538,10 +1538,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Equipment_SO")
                         .HasColumnType("text");
 
-                    b.Property<string>("Gebäudeart")
+                    b.Property<string>("Gebaudeart")
                         .HasColumnType("text");
 
-                    b.Property<string>("HochwertGK3")
+                    b.Property<string>("Hochwert_GK3")
                         .HasColumnType("text");
 
                     b.Property<string>("Infrastruktur_Soll_Baseframe_Radio_MW")
@@ -1550,13 +1550,13 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Netzelement")
                         .HasColumnType("text");
 
-                    b.Property<string>("NordlBreiteWGS84")
+                    b.Property<string>("Nordl_Breite_WGS84")
                         .HasColumnType("text");
 
                     b.Property<string>("Ort")
                         .HasColumnType("text");
 
-                    b.Property<string>("OstlLangeWGS84")
+                    b.Property<string>("Ostl_Lange_WGS84")
                         .HasColumnType("text");
 
                     b.Property<string>("PLZ")
@@ -1565,7 +1565,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Parkplätze")
                         .HasColumnType("text");
 
-                    b.Property<string>("RechtswertGK3")
+                    b.Property<string>("Rechtswert_GK3")
                         .HasColumnType("text");
 
                     b.Property<string>("SO_Nr")
@@ -1577,7 +1577,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Schliebung")
                         .HasColumnType("text");
 
-                    b.Property<string>("StandortdesTresors")
+                    b.Property<string>("Standort_des_Tresors")
                         .HasColumnType("text");
 
                     b.Property<string>("Strabe")
@@ -1595,7 +1595,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zugangsregelung")
                         .HasColumnType("text");
 
-                    b.Property<string>("ZustandigeRegion")
+                    b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
                     b.HasKey("id");

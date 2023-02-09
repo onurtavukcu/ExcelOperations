@@ -96,6 +96,14 @@
             "System.Text.Encoding.CodePages": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "System.Threading.Tasks": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Z.EntityFramework.Extensions.EFCore": {
+              "target": "Package",
+              "version": "[7.18.4, )"
             }
           },
           "imports": [
