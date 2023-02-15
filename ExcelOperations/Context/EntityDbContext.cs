@@ -16,7 +16,7 @@ namespace ExcelOperations.Context
 
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
-        public virtual DbSet<MultiProject>? XWDMAktuells { get; set; }
+        public virtual DbSet<MultiProject>? MultiProjects { get; set; }
         public virtual DbSet<JSLMultiProject>? JSLMultiProjects { get; set; }
         public virtual DbSet<ZTE_PO>? ZTE_POs{ get; set; }
         public virtual DbSet<Deltatel_PO>? Deltatel_POs{ get; set; }
