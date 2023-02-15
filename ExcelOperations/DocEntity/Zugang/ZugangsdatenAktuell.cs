@@ -4,7 +4,7 @@
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }
-        public string? SO_Nr { get; set; }
+        public string? SO_Nr { get; set; }  //bağlant 700  den gelem tablo birleştirme
         public string? SO_Nr_EPlus { get; set; }
 
         [ColumnName("COOP-Contract")]
@@ -48,6 +48,8 @@
 
         [ColumnName("Datum der Schließung")]
         public string? Datum_der_Schliebung { get; set; }
+
+        [ColumnName("Schließung")]
         public string? Schliebung { get; set; }
 
         [ColumnName("Standort des Tresors")]

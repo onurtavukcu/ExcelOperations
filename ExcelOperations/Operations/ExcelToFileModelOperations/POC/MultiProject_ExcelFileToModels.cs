@@ -1,30 +1,31 @@
-﻿using ExcelDataReader;
+﻿
+using ExcelOperations.Doc.Entity.POC;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations.MinorOperations;
 using System.Data;
 using System.Reflection;
 
-namespace ExcelOperations.Operations
+namespace ExcelOperations.Operations.ExcelToFileModelOperations.POC
 {
-    public class RouterAktuell_ExcelFileToModels
+    public class MultiProject_ExcelFileToModels
     {
-        public List<RouterAktuell> ExcelTables()
+        public async Task<List<MultiProject>> MultiProjectAsync(CancellationToken cancellationToken)
         {
-            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Router_aktuell.xlsx";
+            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\POC\POC_Multiprojekt_2.0_aktuell.xlsx";
 
             var datasetOperations = new ExcelToDataSet();
 
-            var datasets = datasetOperations.TakeExcelToDataset(fileLocation,5);
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 4, cancellationToken);
 
-            var dataList = new List<RouterAktuell>();
+            var dataList = new List<MultiProject>();
 
-            var dataTypes = typeof(RouterAktuell);
+            var dataTypes = typeof(MultiProject);
 
             var properties = dataTypes.GetProperties();
 
-            foreach (DataRow row in datasets.Tables[0].Rows)
+            foreach (DataRow row in datasets.Result.Tables[0].Rows)
             {
-                var modelInstance = new RouterAktuell();
+                var modelInstance = new MultiProject();
 
                 foreach (var property in properties)
                 {
@@ -47,7 +48,7 @@ namespace ExcelOperations.Operations
 
                 dataList.Add(modelInstance);
             }
-            return dataList;
-        }       
+            return await Task.FromResult(dataList);
+        }
     }
 }

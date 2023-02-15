@@ -5,7 +5,7 @@ namespace ExcelOperations.Operations.MinorOperations
 {
     public class ExcelToDataSet
     {
-        public DataSet TakeExcelToDataset(string fileLocation, int rowCount)
+        public async Task<DataSet> TakeExcelToDataset(string fileLocation, int rowCount, CancellationToken cancellationToken)
         {
             DataSet ds = new DataSet();
 
@@ -15,15 +15,17 @@ namespace ExcelOperations.Operations.MinorOperations
 
             ds = reader.AsDataSet();
 
-            return FirstRowToColumnName(ds, rowCount);
+            var result = await FirstRowToColumnName(ds, rowCount, cancellationToken);
+
+            return await Task.FromResult(result);
         }
 
-        public DataSet FirstRowToColumnName(DataSet dataSet, int rowCount)
+        public async Task<DataSet> FirstRowToColumnName(DataSet dataSet, int rowCount, CancellationToken CancellationToken)
         {
-            DataRow row = dataSet.Tables[0].Rows[rowCount - 1];  //4 for routerAktuell
+            DataRow row = dataSet.Tables[0].Rows[rowCount - 1];
 
             var columnCount = dataSet.Tables[0].Columns.Count;
-
+            
             for (int i = 0; i < columnCount; i++)
             {
                 dataSet.Tables[0].Columns[i].ColumnName = row[i].ToString();  //same Column Name give exception
@@ -38,7 +40,7 @@ namespace ExcelOperations.Operations.MinorOperations
 
             dataSet.AcceptChanges();
 
-            return dataSet;
+            return await Task.FromResult(dataSet);
         }
     }
 }

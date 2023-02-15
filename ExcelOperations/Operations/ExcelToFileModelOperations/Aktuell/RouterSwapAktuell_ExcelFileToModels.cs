@@ -5,25 +5,25 @@ using System.Reflection;
 
 namespace ExcelOperations.Operations
 {
-    public class ZugangsdatenAktuell_ExcelFileToModel
+    public class RouterSwapAktuell_ExcelFileToModels
     {
-        public List<ZugangsdatenAktuell> ExcelTables()
+        public async Task<List<RouterSwapAktuell>> RouterSwapAktuellAsync(CancellationToken cancellationToken)
         {
-            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Zugangsdaten_aktuell.xlsx";
+            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Aktuell\ROUTER_Swap_aktuell.xlsm";
 
             var datasetOperations = new ExcelToDataSet();
 
-            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 5);
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 5,cancellationToken);
 
-            var dataList = new List<ZugangsdatenAktuell>();
+            var dataList = new List<RouterSwapAktuell>();
 
-            var dataTypes = typeof(ZugangsdatenAktuell);
+            var dataTypes = typeof(RouterSwapAktuell);
 
             var properties = dataTypes.GetProperties();
 
-            foreach (DataRow row in datasets.Tables[0].Rows)
+            foreach (DataRow row in datasets.Result.Tables[0].Rows)
             {
-                var modelInstance = new ZugangsdatenAktuell();
+                var modelInstance = new RouterSwapAktuell();
 
                 foreach (var property in properties)
                 {
@@ -46,7 +46,7 @@ namespace ExcelOperations.Operations
 
                 dataList.Add(modelInstance);
             }
-            return dataList;
+            return await Task.FromResult(dataList);
         }
     }
 }

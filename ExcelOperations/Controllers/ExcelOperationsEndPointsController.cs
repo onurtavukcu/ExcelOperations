@@ -1,6 +1,9 @@
 using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations;
+using ExcelOperations.Operations.ExcelToFileModelOperations.Lager;
+using ExcelOperations.Operations.ExcelToFileModelOperations.PO;
+using ExcelOperations.Operations.ExcelToFileModelOperations.POC;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -18,74 +21,210 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
-        [Route("RouterAktuel")]
-        public IActionResult RouterAktuell()
+        [Route("RouterAktuelAsync")]
+        public async Task<IActionResult> RouterAktuellInsertAsync(CancellationToken cancellationToken)
         {
+            var timer = new Stopwatch();
+            timer.Start();
+
             var excelReader = new RouterAktuell_ExcelFileToModels();
 
-            var result = excelReader.ExcelTables();
+            var result = await excelReader.RouterAktuellAsync(cancellationToken);
 
-            foreach (var item in result)
-            {
-                _EntityDbContext.Add(item);
-                _EntityDbContext.SaveChanges();
-            }
+            await _EntityDbContext.BulkInsertAsync(result,cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Router Aktuell Elapsed Time : " + timer.ElapsedMilliseconds);
 
             return Ok();
         }
 
         [HttpGet]
-        [Route("RouterSwapAktuel")]
-        public IActionResult RouterSwapAktuel()
+        [Route("RouterSwapAktuelAsync")]
+        public async Task<IActionResult> RouterSwapAktuelInsertAsync(CancellationToken cancellationToken)
         {
+            var timer = new Stopwatch();
+            timer.Start();
+
             var excelReader = new RouterSwapAktuell_ExcelFileToModels();
 
-            var result = excelReader.ExcelTables();
+            var result = await excelReader.RouterSwapAktuellAsync(cancellationToken);
 
-            foreach (var item in result)
-            {
-                _EntityDbContext.Add(item);
-                _EntityDbContext.SaveChanges();
-            }
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Router Swap Aktuell Elapsed Time : " + timer.ElapsedMilliseconds);
 
             return Ok();
         }
 
         [HttpGet]
         [Route("XWDMAktuellAsync")]
-        public async Task<IActionResult> XWDMAktuellAsync(CancellationToken cancellationToken)
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
 
+        public async Task<IActionResult> XWDMAktuellInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
+            
             var excelReader = new XWDMAktuel_ExcelFileToModels();
 
-            var result = await excelReader.ExcelTablesAsync(cancellationToken);
+            var result = await excelReader.XWDMAktuellAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
-            stopwatch.Stop();
+            timer.Stop();
 
-            Console.WriteLine("ElapsedTime ASYNC" + stopwatch.Elapsed);
+            Console.Write("Router XWDM Aktuell Elapsed Time : " + timer.ElapsedMilliseconds);
+
             return Ok();
         }
 
         [HttpGet]
-        [Route("XWDMAktuell")]
-        public IActionResult XWDMAktuell()
+        [Route("ZugangsdatenAktuellAsync")]
+
+        public async Task<IActionResult> ZugangsdatenAktuellInsertAsync(CancellationToken cancellationToken)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            var timer = new Stopwatch();
+            timer.Start();
 
-            var excelReader = new XWDMAktuel_ExcelFileToModels();
+            var excelReader = new ZugangsdatenAktuell_ExcelFileToModel();
 
-            var result = excelReader.ExcelTables();
+            var result = await excelReader.ZugangsdatenAktuellAsync(cancellationToken);
 
-            _EntityDbContext.BulkInsert(result);
+            await _EntityDbContext.BulkInsertAsync(result,cancellationToken);
 
-            stopwatch.Stop();
+            timer.Stop();
 
-            Console.WriteLine("ElapsedTime" + stopwatch.Elapsed);
+            Console.Write("Zugangsdaten_aktuell Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("DeltatelPOAsync")]
+
+        public async Task<IActionResult> DeltatelPOInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            var excelReader = new Deltatel_ExcelFileToModels();
+
+            var result = await excelReader.DeltatelPOAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("DeltatelPO Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+
+        [HttpGet]
+        [Route("ZTEPO_Async")]
+
+        public async Task<IActionResult> ZTEPOInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            var excelReader = new ZTE_ExcelFileToModels();
+
+            var result = await excelReader.ZTEPOAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("ZTEPO Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("CiscoPO_Async")]
+
+        public async Task<IActionResult> CiscoPOInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
+
+            var excelReader = new Cisco_ExcelFileToModels();
+
+            var result = await excelReader.CiscoPOAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Zugangsdaten_aktuell Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("Depo_Async")]
+        public async Task<IActionResult> DepoInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
+
+            var excelReader = new Lagers_ExcelFileToModels();
+
+            var result = await excelReader.LagerAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Lager Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("MultiProjectAsync")]
+        public async Task<IActionResult> MultiProjectInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
+
+            var excelReader = new MultiProject_ExcelFileToModels();
+
+            var result = await excelReader.MultiProjectAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Lager Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("JSLMultiProjectAsync")]
+        public async Task<IActionResult> JSLMultiProjectInsertAsync(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
+
+            var excelReader = new JSLMultiProject_ExcelFileToModels();
+
+            var result = await excelReader.JSLMultiProjectAsync(cancellationToken);
+
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+            timer.Stop();
+
+            Console.Write("Lager Elapsed Time : " + timer.ElapsedMilliseconds);
+
             return Ok();
         }
 
