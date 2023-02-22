@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230215193540_m1")]
-    partial class m1
+    [Migration("20230221075220_m2")]
+    partial class m2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -610,7 +610,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("MultiProject");
+                    b.ToTable("MultiProjects");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.JSLMultiProject", b =>
@@ -1865,7 +1865,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("JSLMultiProject");
+                    b.ToTable("JSLMultiProjects");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Lager.Depo", b =>
@@ -1941,7 +1941,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Depo");
+                    b.ToTable("Depos");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.PO.Cisco_PO", b =>
@@ -2020,7 +2020,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Cisco_PO");
+                    b.ToTable("Cisco_POs");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.PO.Deltatel_PO", b =>
@@ -3372,6 +3372,31 @@ namespace ExcelOperations.Migrations
                     b.HasKey("id");
 
                     b.ToTable("RouterSwapAktuells");
+                });
+
+            modelBuilder.Entity("ExcelOperations.DocEntity.UserInfo.UserInput", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("emailAddres")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("UserInput");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.XWDMAktuell", b =>

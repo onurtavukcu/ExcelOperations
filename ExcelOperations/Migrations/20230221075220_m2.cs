@@ -6,13 +6,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class m1 : Migration
+    public partial class m2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Cisco_PO",
+                name: "Cisco_POs",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -42,7 +42,7 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cisco_PO", x => x.id);
+                    table.PrimaryKey("PK_Cisco_POs", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +86,7 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Depo",
+                name: "Depos",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -115,11 +115,11 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Depo", x => x.id);
+                    table.PrimaryKey("PK_Depos", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "JSLMultiProject",
+                name: "JSLMultiProjects",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -541,11 +541,11 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JSLMultiProject", x => x.id);
+                    table.PrimaryKey("PK_JSLMultiProjects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MultiProject",
+                name: "MultiProjects",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -745,7 +745,7 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MultiProject", x => x.id);
+                    table.PrimaryKey("PK_MultiProjects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1133,6 +1133,21 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserInput",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false),
+                    emailAddres = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserInput", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "XWDMAktuells",
                 columns: table => new
                 {
@@ -1367,25 +1382,28 @@ namespace ExcelOperations.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cisco_PO");
+                name: "Cisco_POs");
 
             migrationBuilder.DropTable(
                 name: "Deltatel_POs");
 
             migrationBuilder.DropTable(
-                name: "Depo");
+                name: "Depos");
 
             migrationBuilder.DropTable(
-                name: "JSLMultiProject");
+                name: "JSLMultiProjects");
 
             migrationBuilder.DropTable(
-                name: "MultiProject");
+                name: "MultiProjects");
 
             migrationBuilder.DropTable(
                 name: "RouterAktuell");
 
             migrationBuilder.DropTable(
                 name: "RouterSwapAktuells");
+
+            migrationBuilder.DropTable(
+                name: "UserInput");
 
             migrationBuilder.DropTable(
                 name: "XWDMAktuells");

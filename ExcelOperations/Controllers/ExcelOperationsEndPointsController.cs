@@ -1,3 +1,4 @@
+//using ExcelOperations.Commands;
 using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations;
@@ -224,8 +225,20 @@ namespace ExcelOperations.Controllers
             timer.Stop();
 
             Console.Write("Lager Elapsed Time : " + timer.ElapsedMilliseconds);
-
             return Ok();
+        }
+
+
+        [HttpGet]
+        [Route("GetSomeData")]
+        public IActionResult GetSomeDataFromDB()
+        {
+        //    var compareInstance = new GetSomeMotherFuckerEntity();
+
+        //    var result = await compareInstance.RouterAktuellGetDataAsync();
+            //var result2 = _EntityDbContext.RouterAktuell.where
+
+            return Ok(_EntityDbContext.RouterAktuell);
         }
 
         [HttpPost(Name = "SetTest")]
