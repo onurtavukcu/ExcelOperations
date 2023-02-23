@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ExcelOperations.Configurations.Lagers
 {
-    public class LagersConfigurations : IEntityTypeConfiguration<Depo>
+    public class LagersConfigurations : IEntityTypeConfiguration<LagerCentral>
     {
-        public void Configure(EntityTypeBuilder<Depo> builder)
+        public void Configure(EntityTypeBuilder<LagerCentral> builder)
         {
         }
     }

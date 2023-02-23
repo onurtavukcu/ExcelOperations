@@ -1,6 +1,6 @@
 ﻿namespace ExcelOperations.DocEntity.Lager
 {
-    public class Depo
+    public class LagerCentral
     {
         public string? DepoID { get; set; }
         public string? Sender { get; set; }

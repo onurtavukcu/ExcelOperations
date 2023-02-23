@@ -1,4 +1,3 @@
-//using ExcelOperations.Commands;
 using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations;
@@ -6,7 +5,9 @@ using ExcelOperations.Operations.ExcelToFileModelOperations.Lager;
 using ExcelOperations.Operations.ExcelToFileModelOperations.PO;
 using ExcelOperations.Operations.ExcelToFileModelOperations.POC;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ExcelOperations.Controllers
 {
@@ -15,6 +16,8 @@ namespace ExcelOperations.Controllers
     public class ExcelOperationsEndPointsController : ControllerBase
     {
         private readonly EntityDbContext _EntityDbContext;
+
+        //private readonly DbContextOptions<EntityDbContext> _DbContextOptions;
 
         public ExcelOperationsEndPointsController(EntityDbContext DbContext)
         {
@@ -32,7 +35,7 @@ namespace ExcelOperations.Controllers
 
             var result = await excelReader.RouterAktuellAsync(cancellationToken);
 
-            await _EntityDbContext.BulkInsertAsync(result,cancellationToken);
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
             timer.Stop();
 
@@ -68,7 +71,7 @@ namespace ExcelOperations.Controllers
         {
             var timer = new Stopwatch();
             timer.Start();
-            
+
             var excelReader = new XWDMAktuel_ExcelFileToModels();
 
             var result = await excelReader.XWDMAktuellAsync(cancellationToken);
@@ -94,7 +97,7 @@ namespace ExcelOperations.Controllers
 
             var result = await excelReader.ZugangsdatenAktuellAsync(cancellationToken);
 
-            await _EntityDbContext.BulkInsertAsync(result,cancellationToken);
+            await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
             timer.Stop();
 
@@ -231,14 +234,9 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("GetSomeData")]
-        public IActionResult GetSomeDataFromDB()
+        public async Task<IActionResult> GetSomeDataFromDB()
         {
-        //    var compareInstance = new GetSomeMotherFuckerEntity();
-
-        //    var result = await compareInstance.RouterAktuellGetDataAsync();
-            //var result2 = _EntityDbContext.RouterAktuell.where
-
-            return Ok(_EntityDbContext.RouterAktuell);
+           return Ok(_EntityDbContext.RouterAktuell.Where(i => i.Gebaudeart == "Dach (E+)"));
         }
 
         [HttpPost(Name = "SetTest")]

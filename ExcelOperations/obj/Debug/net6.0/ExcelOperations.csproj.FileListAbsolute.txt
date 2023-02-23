@@ -580,3 +580,4 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\System.Memory.Data.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Z.EntityFramework.Extensions.EFCore.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\System.Linq.Async.dll

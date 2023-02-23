@@ -12,7 +12,8 @@ namespace ExcelOperations.Context
     {
         public EntityDbContext(DbContextOptions<EntityDbContext> options)
             : base(options)
-        {
+        {            
+            //ChangeTracker.LazyLoadingEnabled = true;            
         }
 
         public virtual DbSet<RouterAktuell> RouterAktuell { get; set; }
@@ -22,9 +23,10 @@ namespace ExcelOperations.Context
         public virtual DbSet<ZTE_PO>? ZTE_POs { get; set; }
         public virtual DbSet<Deltatel_PO>? Deltatel_POs { get; set; }
         public virtual DbSet<Cisco_PO>? Cisco_POs { get; set; }
-        public virtual DbSet<Depo>? Depos { get; set; }
+        public virtual DbSet<LagerCentral>? Depos { get; set; }
         public virtual DbSet<ZugangsdatenAktuell>? ZugangsdatenAktuells { get; set; }
         public virtual DbSet<XWDMAktuell>? XWDMAktuells { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
         {
@@ -54,7 +56,7 @@ namespace ExcelOperations.Context
             }
             );
 
-            modelBuilder.Entity<Depo>(i =>
+            modelBuilder.Entity<LagerCentral>(i =>
             {
                 i.Property<int>("id").ValueGeneratedOnAdd();
             }
@@ -89,7 +91,7 @@ namespace ExcelOperations.Context
                 i.Property<int>("id").ValueGeneratedOnAdd();
             }
             );
-            
+
             modelBuilder.Entity<UserInput>(i =>
             {
                 i.Property<int>("id").ValueGeneratedOnAdd();

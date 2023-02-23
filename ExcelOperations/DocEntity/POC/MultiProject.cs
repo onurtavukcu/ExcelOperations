@@ -24,7 +24,7 @@ namespace ExcelOperations.Doc.Entity.POC
         public string? Eigentümer { get; set; }
         public string? NE_Nr { get; set; }
         [ColumnName("Objekt-ID")]
-        public string? Objekt_ID { get; set; }
+        public string? Objekt_ID { get; set; } //project
         public string? Alt { get; set; }
         [ColumnName("NE-Typ")]
         public string? NE_Typ { get; set; }

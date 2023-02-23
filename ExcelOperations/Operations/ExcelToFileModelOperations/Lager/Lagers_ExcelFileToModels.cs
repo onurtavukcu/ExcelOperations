@@ -8,7 +8,7 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations.Lager
 {
     public class Lagers_ExcelFileToModels
     {
-        public async Task<List<Depo>> LagerAsync(CancellationToken cancellationToken)
+        public async Task<List<DocEntity.Lager.LagerCentral>> LagerAsync(CancellationToken cancellationToken)
         {
             string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\Lagers\Lager Central 2023-02-13.xlsm";
 
@@ -16,15 +16,15 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations.Lager
 
             var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 1, cancellationToken);
 
-            var dataList = new List<Depo>();
+            var dataList = new List<DocEntity.Lager.LagerCentral>();
 
-            var dataTypes = typeof(Depo);
+            var dataTypes = typeof(DocEntity.Lager.LagerCentral);
 
             var properties = dataTypes.GetProperties();
 
             foreach (DataRow row in datasets.Result.Tables[0].Rows)
             {
-                var modelInstance = new Depo();
+                var modelInstance = new DocEntity.Lager.LagerCentral();
 
                 foreach (var property in properties)
                 {

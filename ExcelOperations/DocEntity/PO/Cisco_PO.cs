@@ -31,7 +31,7 @@
         public string? NE_Nr { get; set; }
 
         [ColumnName("Objekt-ID")]
-        public string? Objekt_ID { get; set; }
+        public string? Objekt_ID { get; set; }  //project Id
         public string? NE { get; set; }
         public string? Projekt { get; set; }
         public string? Address { get; set; }

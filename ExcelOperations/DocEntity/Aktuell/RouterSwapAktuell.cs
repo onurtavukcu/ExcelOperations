@@ -30,7 +30,7 @@
         public string? Alt { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? Projekt_ID { get; set; }
+        public string? Projekt_ID { get; set; } //
 
         [ColumnName("Router alt")]
         public string? Router_alt { get; set; }
