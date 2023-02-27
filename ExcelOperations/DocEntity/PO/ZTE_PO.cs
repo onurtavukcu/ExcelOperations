@@ -2,7 +2,7 @@
 {
     public class ZTE_PO
     {
-        public string? aa { get; set; }
+        public string? ZTE_ID { get; set; }
         public string? PO { get; set; }
 
         [ColumnName("Order Position")]

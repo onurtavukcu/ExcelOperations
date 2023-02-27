@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230221075220_m2")]
-    partial class m2
+    [Migration("20230227104415_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,6 +68,9 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Eigentümer")
                         .HasColumnType("text");
 
+                    b.Property<string>("Equipment")
+                        .HasColumnType("text");
+
                     b.Property<string>("Festnetzplaner")
                         .HasColumnType("text");
 
@@ -98,6 +101,147 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Ist_Stx11")
                         .HasColumnType("text");
 
+                    b.Property<string>("Ist_Stx30")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx30n")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx30o")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx30p")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx40")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx40Stern")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx43a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx44")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx45")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx48")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx50")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx51a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx51b")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx51l")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx51r")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx52")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx52b")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx52r")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx53")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx56")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx56a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx59")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx59k")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx60")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx62a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx62g")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx62j")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx62r")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx62w")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx63")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx66")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx67")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx68n")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx68o")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx68p")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx71")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx71a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx71b")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx71c")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx73a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx80")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx88i")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx90")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx91")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx91a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx91c")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ist_Stx91r")
+                        .HasColumnType("text");
+
                     b.Property<string>("Ist_WL")
                         .HasColumnType("text");
 
@@ -108,6 +252,168 @@ namespace ExcelOperations.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Link_APT_10_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_15_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_16_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_16_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_16_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_18_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_18_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_19_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_19_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_30_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_34_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_35_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_50_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_51_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_51_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_51_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_52_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_52_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_52_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_53_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_53_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_53_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_54_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_54_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_54_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_60a_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_60a_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_61a_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_61a_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_77_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_77_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_77_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_790_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_790_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_82_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_82_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_82_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_82_Soll")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_85_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_85_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_85_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_86_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_86_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_86_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_87_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_87_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_87_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_88_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_88_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_88_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_90_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_90_Ist")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_APT_90_Plan")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_Bestellitems")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link_PO_Nummer")
                         .HasColumnType("text");
 
                     b.Property<string>("MP_Angelegt_am")
@@ -261,6 +567,75 @@ namespace ExcelOperations.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("POC_Projekt")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx40")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx48")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx50")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx51a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx52b")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx56")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx56a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx59")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx59k")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx62g")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx62j")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx63")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx66")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx67")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx68n")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx68o")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx68p")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx71")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx73a")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx88i")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx90")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx91")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plan_Stx91a")
                         .HasColumnType("text");
 
                     b.Property<string>("RW_WGS84_dez")
@@ -578,6 +953,21 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Soll_MW")
                         .HasColumnType("text");
 
+                    b.Property<string>("Soll_Stx62j")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Soll_Stx71")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Soll_Stx80")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Soll_Stx88i")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Soll_Stx90")
+                        .HasColumnType("text");
+
                     b.Property<string>("Soll_WL")
                         .HasColumnType("text");
 
@@ -590,6 +980,117 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Straße")
                         .HasColumnType("text");
 
+                    b.Property<string>("Stx11_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx30_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx40_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx43a_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx44_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx45_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx48_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx50_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx51b_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx51l_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx51r_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx52_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx52b_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx52r_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx53_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx56a_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx59_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx59k_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx60_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx62a_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx62j_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx62r_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx62w_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx63_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx66_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx67_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx71_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx71b_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx71c_Bem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx73a_Bemerkung")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx80_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx88i_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx90_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx91_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx91a_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx91c_Bem_")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Stx91r_Bem_")
+                        .HasColumnType("text");
+
                     b.Property<string>("Subunternehmer")
                         .HasColumnType("text");
 
@@ -597,6 +1098,9 @@ namespace ExcelOperations.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TOM_PLANNING_PREPARATION")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UTS_Ticket_am_Projekt")
                         .HasColumnType("text");
 
                     b.Property<string>("WL_1st_Stx90")
@@ -1868,7 +2372,7 @@ namespace ExcelOperations.Migrations
                     b.ToTable("JSLMultiProjects");
                 });
 
-            modelBuilder.Entity("ExcelOperations.DocEntity.Lager.Depo", b =>
+            modelBuilder.Entity("ExcelOperations.DocEntity.Lager.LagerCentral", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -1891,10 +2395,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("IM_NO")
                         .HasColumnType("text");
 
-                    b.Property<string>("Lager")
+                    b.Property<string>("Lager1")
                         .HasColumnType("text");
 
-                    b.Property<string>("LagerPO")
+                    b.Property<string>("Lager2")
                         .HasColumnType("text");
 
                     b.Property<string>("NE")
@@ -1973,6 +2477,15 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("BZR")
                         .HasColumnType("text");
 
+                    b.Property<string>("CISCO_ID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Column1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Column2")
+                        .HasColumnType("text");
+
                     b.Property<string>("Gebäudeart")
                         .HasColumnType("text");
 
@@ -1995,9 +2508,6 @@ namespace ExcelOperations.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PO_Elemnt")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PO_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("PO_No")
@@ -2031,7 +2541,10 @@ namespace ExcelOperations.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("Acc_to_DTL")
+                    b.Property<string>("Acc_to_DTL1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Acc_to_DTL2")
                         .HasColumnType("text");
 
                     b.Property<string>("Acceptance_Date")
@@ -2046,7 +2559,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Due_Qty")
                         .HasColumnType("text");
 
-                    b.Property<string>("File_Number")
+                    b.Property<string>("File_Number1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("File_Number2")
                         .HasColumnType("text");
 
                     b.Property<string>("Fob_Lookup_Code")
@@ -2079,7 +2595,10 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("PR_NO")
                         .HasColumnType("text");
 
-                    b.Property<string>("Payment_Rate")
+                    b.Property<string>("Payment_Rate1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Payment_Rate2")
                         .HasColumnType("text");
 
                     b.Property<string>("Project_Code")
@@ -2109,10 +2628,16 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Sub_Contract_NO")
                         .HasColumnType("text");
 
-                    b.Property<string>("invoice")
+                    b.Property<string>("faturadaki_sira1")
                         .HasColumnType("text");
 
-                    b.Property<string>("sira")
+                    b.Property<string>("faturadaki_sira2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("invoice1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("invoice2")
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -2254,7 +2779,7 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Team_RAW")
                         .HasColumnType("text");
 
-                    b.Property<string>("aa")
+                    b.Property<string>("ZTE_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("inst")

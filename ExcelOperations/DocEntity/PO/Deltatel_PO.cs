@@ -69,16 +69,31 @@
 
         [ColumnName("PO NWT")]
         public string? PO_NWT { get; set; }
+
+        [ColumnName("Acc to DTL1")]
+        public string? Acc_to_DTL1 { get; set; }
+
+        [ColumnName("File Number1")]
+        public string? File_Number1 { get; set; }
+        public string? invoice1 { get; set; }
+
+        [ColumnName("faturadaki sira1")]
+        public string? faturadaki_sira1 { get; set; }
+
+        [ColumnName("Payment Rate1")]
+        public string? Payment_Rate1 { get; set; }
         
-        [ColumnName("Acc to DTL")]
-        public string? Acc_to_DTL { get; set; }
+        [ColumnName("Acc to DTL2")]
+        public string? Acc_to_DTL2 { get; set; }
 
-        [ColumnName("File Number")]
-        public string? File_Number { get; set; }
-        public string? invoice { get; set; }        
-        public string? sira { get; set; }
+        [ColumnName("File Number2")]
+        public string? File_Number2 { get; set; }
+        public string? invoice2 { get; set; }     
+        
+        [ColumnName("faturadaki sira2")]
+        public string? faturadaki_sira2 { get; set; }
 
-        [ColumnName("Payment Rate %")]
-        public string? Payment_Rate { get; set; }
+        [ColumnName("Payment Rate2")]
+        public string? Payment_Rate2 { get; set; }
     }
 }

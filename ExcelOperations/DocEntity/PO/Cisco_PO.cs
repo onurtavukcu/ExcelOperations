@@ -2,8 +2,7 @@
 {
     public class Cisco_PO
     {
-        [ColumnName("ID")]
-        public string? PO_ID { get; set; }
+        public string? CISCO_ID { get; set; }
 
         [ColumnName("PO No")]
         public string? PO_No { get; set; }
@@ -43,5 +42,8 @@
 
         [ColumnName("Action Detail")]
         public string? Action_Detail { get; set; }
+        public string? Column1 { get; set; }
+        public string? Column2 { get; set; }
+
     }
 }

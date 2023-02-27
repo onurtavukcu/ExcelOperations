@@ -4,7 +4,7 @@
     {
         public string? DepoID { get; set; }
         public string? Sender { get; set; }
-        public string? Lager { get; set; }
+        public string? Lager1 { get; set; }
         public string? Date { get; set; }
 
         [ColumnName("IM NO")]
@@ -18,7 +18,7 @@
         public string? NE { get; set; }
         public string? Qnt { get; set; }
         public string? Project { get; set; }
-        public string? LagerPO { get; set; }
+        public string? Lager2 { get; set; }
 
         [ColumnName("Rec. Date")]
         public string? Rec_Date { get; set; }
