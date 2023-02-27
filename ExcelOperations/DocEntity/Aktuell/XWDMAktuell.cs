@@ -25,7 +25,7 @@
         public string? Projektbemerkung { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? Projekt_ID { get; set; } //
+        public string? Projekt_ID { get; set; } // project
         public string? Bezeichnung { get; set; }
 
         [ColumnName("Verantw Organisationseinheit")]

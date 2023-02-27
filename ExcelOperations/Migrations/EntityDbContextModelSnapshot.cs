@@ -2442,7 +2442,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Depos");
+                    b.ToTable("LagerCentrals");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.PO.Cisco_PO", b =>

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230227104415_m1")]
+    [Migration("20230227123401_m1")]
     partial class m1
     {
         /// <inheritdoc />
@@ -2445,7 +2445,7 @@ namespace ExcelOperations.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Depos");
+                    b.ToTable("LagerCentrals");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.PO.Cisco_PO", b =>

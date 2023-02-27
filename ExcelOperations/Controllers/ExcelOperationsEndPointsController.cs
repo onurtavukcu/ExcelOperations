@@ -234,10 +234,41 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("GetSomeData")]
-        public async Task<IActionResult> GetSomeDataFromDB()
+        public IActionResult GetSomeDataFromDB()
         {
-           return Ok(_EntityDbContext.RouterAktuell.Where(i => i.Gebaudeart == "Dach (E+)"));
+            var lager = _EntityDbContext.LagerCentrals;
+
+            var pos = _EntityDbContext.ZTE_POs;
+
+            var result = lager.SelectMany(lagerQ =>
+                                                    pos.Where(
+                                                        posq => posq.Projekt_ID == lagerQ.PID
+                                                        && lagerQ.PID == "701137334"));
+
+
+            //var result2 = _EntityDbContext.LagerCentrals.Where(i => i.PID == "701134684");
+
+            return Ok(result);
         }
+
+
+        [HttpGet]
+        [Route("GetSomeDataV2")]
+        public IActionResult GetSomeDataFromDBV2()
+        {
+            var lager = _EntityDbContext.LagerCentrals;
+
+            var pos = _EntityDbContext.ZTE_POs;
+
+            var result = pos.SelectMany(posq =>
+                                              lager.Where(
+                                                  lagerq => lagerq.PID == posq.Projekt_ID
+                                                  && posq.Projekt_ID == "701137334"));
+
+
+            return Ok(result);
+        }
+
 
         [HttpPost(Name = "SetTest")]
         public IActionResult Set([FromBody] RouterAktuell routerAktuell)

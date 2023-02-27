@@ -23,7 +23,7 @@ namespace ExcelOperations.Context
         public virtual DbSet<ZTE_PO>? ZTE_POs { get; set; }
         public virtual DbSet<Deltatel_PO>? Deltatel_POs { get; set; }
         public virtual DbSet<Cisco_PO>? Cisco_POs { get; set; }
-        public virtual DbSet<LagerCentral>? Depos { get; set; }
+        public virtual DbSet<LagerCentral> LagerCentrals { get; set; }
         public virtual DbSet<ZugangsdatenAktuell>? ZugangsdatenAktuells { get; set; }
         public virtual DbSet<XWDMAktuell>? XWDMAktuells { get; set; }
         

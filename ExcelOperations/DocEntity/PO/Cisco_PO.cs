@@ -1,6 +1,6 @@
 ﻿namespace ExcelOperations.DocEntity.PO
 {
-    public class Cisco_PO
+    public class Cisco_PO //DWM
     {
         public string? CISCO_ID { get; set; }
 

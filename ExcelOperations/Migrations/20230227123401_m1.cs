@@ -93,39 +93,6 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Depos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DepoID = table.Column<string>(type: "text", nullable: true),
-                    Sender = table.Column<string>(type: "text", nullable: true),
-                    Lager1 = table.Column<string>(type: "text", nullable: true),
-                    Date = table.Column<string>(type: "text", nullable: true),
-                    IMNO = table.Column<string>(name: "IM_NO", type: "text", nullable: true),
-                    NENr = table.Column<string>(name: "NE_Nr", type: "text", nullable: true),
-                    SONr = table.Column<string>(name: "SO_Nr", type: "text", nullable: true),
-                    ServicePO = table.Column<string>(name: "Service_PO", type: "text", nullable: true),
-                    PID = table.Column<string>(type: "text", nullable: true),
-                    NE = table.Column<string>(type: "text", nullable: true),
-                    Qnt = table.Column<string>(type: "text", nullable: true),
-                    Project = table.Column<string>(type: "text", nullable: true),
-                    Lager2 = table.Column<string>(type: "text", nullable: true),
-                    RecDate = table.Column<string>(name: "Rec_Date", type: "text", nullable: true),
-                    Where = table.Column<string>(type: "text", nullable: true),
-                    when = table.Column<string>(type: "text", nullable: true),
-                    Comment1 = table.Column<string>(type: "text", nullable: true),
-                    check = table.Column<string>(type: "text", nullable: true),
-                    Team = table.Column<string>(type: "text", nullable: true),
-                    Action = table.Column<string>(type: "text", nullable: true),
-                    Status = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Depos", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "JSLMultiProjects",
                 columns: table => new
                 {
@@ -549,6 +516,39 @@ namespace ExcelOperations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JSLMultiProjects", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LagerCentrals",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    DepoID = table.Column<string>(type: "text", nullable: true),
+                    Sender = table.Column<string>(type: "text", nullable: true),
+                    Lager1 = table.Column<string>(type: "text", nullable: true),
+                    Date = table.Column<string>(type: "text", nullable: true),
+                    IMNO = table.Column<string>(name: "IM_NO", type: "text", nullable: true),
+                    NENr = table.Column<string>(name: "NE_Nr", type: "text", nullable: true),
+                    SONr = table.Column<string>(name: "SO_Nr", type: "text", nullable: true),
+                    ServicePO = table.Column<string>(name: "Service_PO", type: "text", nullable: true),
+                    PID = table.Column<string>(type: "text", nullable: true),
+                    NE = table.Column<string>(type: "text", nullable: true),
+                    Qnt = table.Column<string>(type: "text", nullable: true),
+                    Project = table.Column<string>(type: "text", nullable: true),
+                    Lager2 = table.Column<string>(type: "text", nullable: true),
+                    RecDate = table.Column<string>(name: "Rec_Date", type: "text", nullable: true),
+                    Where = table.Column<string>(type: "text", nullable: true),
+                    when = table.Column<string>(type: "text", nullable: true),
+                    Comment1 = table.Column<string>(type: "text", nullable: true),
+                    check = table.Column<string>(type: "text", nullable: true),
+                    Team = table.Column<string>(type: "text", nullable: true),
+                    Action = table.Column<string>(type: "text", nullable: true),
+                    Status = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LagerCentrals", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1563,10 +1563,10 @@ namespace ExcelOperations.Migrations
                 name: "Deltatel_POs");
 
             migrationBuilder.DropTable(
-                name: "Depos");
+                name: "JSLMultiProjects");
 
             migrationBuilder.DropTable(
-                name: "JSLMultiProjects");
+                name: "LagerCentrals");
 
             migrationBuilder.DropTable(
                 name: "MultiProjects");

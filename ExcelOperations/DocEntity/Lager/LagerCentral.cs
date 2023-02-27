@@ -14,7 +14,7 @@
 
         [ColumnName("Service PO")]        
         public string? Service_PO { get; set; }
-        public string? PID { get; set; }
+        public string? PID { get; set; }  // Project ID
         public string? NE { get; set; }
         public string? Qnt { get; set; }
         public string? Project { get; set; }
