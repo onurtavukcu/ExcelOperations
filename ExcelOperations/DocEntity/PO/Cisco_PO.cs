@@ -4,7 +4,7 @@
     {
         public string? CISCO_ID { get; set; }
 
-        [ColumnName("PO No")]
+        [ColumnName("PO")]
         public string? PO_No { get; set; }
 
         [ColumnName("PO Date")]

@@ -111,7 +111,7 @@
             },
             "Z.EntityFramework.Extensions.EFCore": {
               "target": "Package",
-              "version": "[7.18.4, )"
+              "version": "[7.18.5, )"
             }
           },
           "imports": [

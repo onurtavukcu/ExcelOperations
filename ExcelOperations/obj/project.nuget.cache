@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6a0zCfXupmB+cOPxqoebHPzrGyrv7ZbHlHkL5RSRcjhI+H/wNdmfxg6FSY+M7Px44fiuzHoWKU0j4TspNNpe6Q==",
+  "dgSpecHash": "wJW063+ouylckwJrpAt7xGcelrejFP6d7eTbmIjdynfQt/yRPcDnbKKCcyTOsCv68iVM1WHOKZXRvOHs9M4kRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\adm\\Desktop\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
   "expectedPackageFiles": [
@@ -209,7 +209,7 @@
     "C:\\Users\\adm\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\adm\\.nuget\\packages\\z.entityframework.extensions.efcore\\7.18.4\\z.entityframework.extensions.efcore.7.18.4.nupkg.sha512"
+    "C:\\Users\\adm\\.nuget\\packages\\z.entityframework.extensions.efcore\\7.18.5\\z.entityframework.extensions.efcore.7.18.5.nupkg.sha512"
   ],
   "logs": []
 }

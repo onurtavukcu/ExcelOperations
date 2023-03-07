@@ -3520,7 +3520,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Z.EntityFramework.Extensions.EFCore/7.18.4": {
+      "Z.EntityFramework.Extensions.EFCore/7.18.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -11203,16 +11203,16 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Z.EntityFramework.Extensions.EFCore/7.18.4": {
-      "sha512": "MBkz7lPLaLvwXRxrixcdD0L64zELaRmBlTPEpsi8KtZuGibA3Q1vhgBAuLJ8wzEhWC2fwM0QzB+0yRtlxOEfJQ==",
+    "Z.EntityFramework.Extensions.EFCore/7.18.5": {
+      "sha512": "QCzbdM5KtKw8vceGtXS/H814GlnFcnIwaOiBbZl0L0ffIOp/FIQisGxc+KNEP41vupyfUd8dkajjqhesu9xyEg==",
       "type": "package",
-      "path": "z.entityframework.extensions.efcore/7.18.4",
+      "path": "z.entityframework.extensions.efcore/7.18.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0/Z.EntityFramework.Extensions.EFCore.dll",
         "lib/net6.0/Z.EntityFramework.Extensions.EFCore.xml",
-        "z.entityframework.extensions.efcore.7.18.4.nupkg.sha512",
+        "z.entityframework.extensions.efcore.7.18.5.nupkg.sha512",
         "z.entityframework.extensions.efcore.nuspec"
       ]
     }
@@ -11234,7 +11234,7 @@
       "System.Linq.Async >= 6.0.1",
       "System.Text.Encoding.CodePages >= 7.0.0",
       "System.Threading.Tasks >= 4.3.0",
-      "Z.EntityFramework.Extensions.EFCore >= 7.18.4"
+      "Z.EntityFramework.Extensions.EFCore >= 7.18.5"
     ]
   },
   "packageFolders": {
@@ -11348,7 +11348,7 @@
           },
           "Z.EntityFramework.Extensions.EFCore": {
             "target": "Package",
-            "version": "[7.18.4, )"
+            "version": "[7.18.5, )"
           }
         },
         "imports": [

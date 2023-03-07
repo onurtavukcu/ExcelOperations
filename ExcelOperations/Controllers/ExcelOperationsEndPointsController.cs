@@ -1,12 +1,15 @@
+using ExcelOperations.Commands;
 using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.Operations;
 using ExcelOperations.Operations.ExcelToFileModelOperations.Lager;
 using ExcelOperations.Operations.ExcelToFileModelOperations.PO;
 using ExcelOperations.Operations.ExcelToFileModelOperations.POC;
+using ExcelOperations.Operations.MinorOperations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Data.Entity;
 using System.Linq;
 
 namespace ExcelOperations.Controllers
@@ -17,11 +20,16 @@ namespace ExcelOperations.Controllers
     {
         private readonly EntityDbContext _EntityDbContext;
 
-        //private readonly DbContextOptions<EntityDbContext> _DbContextOptions;
+        public CheckDbTableExistance checkDbTableExistance => new CheckDbTableExistance(_EntityDbContext);
 
         public ExcelOperationsEndPointsController(EntityDbContext DbContext)
         {
             _EntityDbContext = DbContext;
+
+            var existanceDb = checkDbTableExistance.CheckTable();
+
+            if (existanceDb.Count() < 1)
+                throw new Exception("Db Loading Failed.Db or Dt table is not loaded!");
         }
 
         [HttpGet]
@@ -36,6 +44,7 @@ namespace ExcelOperations.Controllers
             var result = await excelReader.RouterAktuellAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
 
             timer.Stop();
 
@@ -233,22 +242,21 @@ namespace ExcelOperations.Controllers
 
 
         [HttpGet]
-        [Route("GetSomeData")]
-        public IActionResult GetSomeDataFromDB()
+        [Route("InsertAllDataToDb")]
+        public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
         {
-            var lager = _EntityDbContext.LagerCentrals;
+            var timer = new Stopwatch();
+            timer.Start();
 
-            var pos = _EntityDbContext.ZTE_POs;
+            var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
 
-            var result = lager.SelectMany(lagerQ =>
-                                                    pos.Where(
-                                                        posq => posq.Projekt_ID == lagerQ.PID
-                                                        && lagerQ.PID == "701137334"));
+            await fetchAllData.InsertDataAsync(cancellationToken);
 
+            timer.Stop();
 
-            //var result2 = _EntityDbContext.LagerCentrals.Where(i => i.PID == "701134684");
+            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
 
-            return Ok(result);
+            return Ok();
         }
 
 
