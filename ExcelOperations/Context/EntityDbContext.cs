@@ -5,14 +5,13 @@ using ExcelOperations.DocEntity.PO;
 using ExcelOperations.DocEntity.UserInfo;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExcelOperations.Context
 {
     public class EntityDbContext : DbContext
     {
         public EntityDbContext(DbContextOptions<EntityDbContext> options)
             : base(options)
-        {            
+        {
             //ChangeTracker.LazyLoadingEnabled = true;            
         }
 
@@ -27,9 +26,10 @@ namespace ExcelOperations.Context
         public virtual DbSet<ZugangsdatenAktuell>? ZugangsdatenAktuells { get; set; }
         public virtual DbSet<XWDMAktuell>? XWDMAktuells { get; set; }
         
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityDbContext).Assembly);
 
             modelBuilder.Entity<RouterAktuell>(i =>

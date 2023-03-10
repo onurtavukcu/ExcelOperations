@@ -581,3 +581,8 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\refint\Exc
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.pdb
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.genruntimeconfig.cache
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ref\ExcelOperations.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.ExcelOperations.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.build.ExcelOperations.props
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ExcelOperations.props
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ExcelOperations.props
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.pack.json

@@ -5,8 +5,6 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
-
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -29,8 +27,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider
+//        .GetRequiredService<EntityDbContext>();
 
+//    var result = dbContext.CheckTableInDatabase<EntityDbContext>();
+    
+//    if (!result)
+//    {
+//        return;
+//    }
+
+//    dbContext.Database.EnsureCreated();
+//    dbContext.Database.CreateExecutionStrategy
+//    //dbContext.Database.Migrate();
+//}
+
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+    
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

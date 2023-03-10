@@ -1,16 +1,11 @@
-using ExcelOperations.Commands;
 using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
-using ExcelOperations.Operations;
-using ExcelOperations.Operations.ExcelToFileModelOperations.Lager;
-using ExcelOperations.Operations.ExcelToFileModelOperations.PO;
-using ExcelOperations.Operations.ExcelToFileModelOperations.POC;
-using ExcelOperations.Operations.MinorOperations;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Data.Entity;
-using System.Linq;
+using ExcelOperations.DocEntity.PO;
+using ExcelOperations.DocEntity.Lager;
+using ExcelOperations.Doc.Entity.POC;
+using ExcelOperations.Operations.ExcelToFileModelOperations;
 
 namespace ExcelOperations.Controllers
 {
@@ -28,8 +23,11 @@ namespace ExcelOperations.Controllers
 
             var existanceDb = checkDbTableExistance.CheckTable();
 
-            if (existanceDb.Count() < 1)
-                throw new Exception("Db Loading Failed.Db or Dt table is not loaded!");
+            if (existanceDb < 1)
+            {
+                Console.WriteLine("Missing DB or Table! Please Wait for Creating DB and Inserting All Data");
+                //checkDbTableExistance.CreateDatabaseAndInsertAllData();
+            }
         }
 
         [HttpGet]
@@ -39,12 +37,11 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new RouterAktuell_ExcelFileToModels();
+            var reader = new ExcelFileToModelOps<RouterAktuell>();
 
-            var result = await excelReader.RouterAktuellAsync(cancellationToken);
+            var result = await reader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
-
 
             timer.Stop();
 
@@ -60,9 +57,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new RouterSwapAktuell_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<RouterSwapAktuell>();
 
-            var result = await excelReader.RouterSwapAktuellAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -81,9 +78,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new XWDMAktuel_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<XWDMAktuell>();
 
-            var result = await excelReader.XWDMAktuellAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -102,9 +99,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new ZugangsdatenAktuell_ExcelFileToModel();
+            var excelReader = new ExcelFileToModelOps<ZugangsdatenAktuell>();
 
-            var result = await excelReader.ZugangsdatenAktuellAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -124,9 +121,9 @@ namespace ExcelOperations.Controllers
 
             timer.Start();
 
-            var excelReader = new Deltatel_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<Deltatel_PO>();
 
-            var result = await excelReader.DeltatelPOAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -147,9 +144,9 @@ namespace ExcelOperations.Controllers
 
             timer.Start();
 
-            var excelReader = new ZTE_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<ZTE_PO>();
 
-            var result = await excelReader.ZTEPOAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -168,9 +165,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new Cisco_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<Cisco_PO>();
 
-            var result = await excelReader.CiscoPOAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -188,9 +185,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new Lagers_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<LagerCentral>();
 
-            var result = await excelReader.LagerAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -208,9 +205,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new MultiProject_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<MultiProject>();
 
-            var result = await excelReader.MultiProjectAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -228,9 +225,9 @@ namespace ExcelOperations.Controllers
             var timer = new Stopwatch();
             timer.Start();
 
-            var excelReader = new JSLMultiProject_ExcelFileToModels();
+            var excelReader = new ExcelFileToModelOps<JSLMultiProject>();
 
-            var result = await excelReader.JSLMultiProjectAsync(cancellationToken);
+            var result = await excelReader.GetDataFromExcelAsync(cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
 
@@ -241,52 +238,72 @@ namespace ExcelOperations.Controllers
         }
 
 
-        [HttpGet]
-        [Route("InsertAllDataToDb")]
-        public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
-        {
-            var timer = new Stopwatch();
-            timer.Start();
+        //[HttpGet]
+        //[Route("InsertAllDataToDb")]
+        //public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
+        //{
+        //    var timer = new Stopwatch();
+        //    timer.Start();
 
-            var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
+        //    var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
 
-            await fetchAllData.InsertDataAsync(cancellationToken);
+        //    await fetchAllData.InsertDataAsync(cancellationToken);
 
-            timer.Stop();
+        //    timer.Stop();
 
-            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+        //    Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
 
-            return Ok();
-        }
-
-
-        [HttpGet]
-        [Route("GetSomeDataV2")]
-        public IActionResult GetSomeDataFromDBV2()
-        {
-            var lager = _EntityDbContext.LagerCentrals;
-
-            var pos = _EntityDbContext.ZTE_POs;
-
-            var result = pos.SelectMany(posq =>
-                                              lager.Where(
-                                                  lagerq => lagerq.PID == posq.Projekt_ID
-                                                  && posq.Projekt_ID == "701137334"));
+        //    return Ok();
+        //}
 
 
-            return Ok(result);
-        }
+        //[HttpGet]
+        //[Route("GetSomeDataV2")]
+        //public IActionResult GetSomeDataFromDBV2()
+        //{
+        //    var timer = new Stopwatch();
+        //    timer.Start();
+
+        //    var lager = _EntityDbContext.LagerCentrals;
+
+        //    var pos = _EntityDbContext.ZTE_POs;
+
+        //    var result = pos.SelectMany(posq =>
+        //                                      lager.Where(
+        //                                          lagerq => lagerq.PID == posq.Projekt_ID
+        //                                          && posq.Projekt_ID == "701137334"));
+
+        //    timer.Stop();
+
+        //    Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+
+        //    return Ok(result);
+        //}
+
+        //[HttpGet]
+        //[Route("TestGeneric")]
+        //public async Task<IActionResult> TestGenerication(CancellationToken cancellationToken)
+        //{
+        //    var readers = new ExcelFileToModelOps<RouterAktuell>();
+
+        //    var results = await readers.GetDataFromExcelAsync(cancellationToken);
+
+        //    await _EntityDbContext.BulkInsertAsync(results, cancellationToken);
+
+        //    return Ok(results);
+
+        //}
 
 
-        [HttpPost(Name = "SetTest")]
-        public IActionResult Set([FromBody] RouterAktuell routerAktuell)
-        {
-            _EntityDbContext.Add(routerAktuell);
+        //[HttpPost(Name = "SetTest")]
+        //public IActionResult Set([FromBody] RouterAktuell routerAktuell)
+        //{
+        //    _EntityDbContext.Add(routerAktuell);
 
-            _EntityDbContext.SaveChanges();
+        //    _EntityDbContext.SaveChanges();
 
-            return Ok("gral");
+        //    return Ok("gral");
 
-        }
+        //}
     }
 }

@@ -1,31 +1,35 @@
-﻿
-using ExcelOperations.Doc.Entity.POC;
-using ExcelOperations.DocEntity;
+﻿using ExcelOperations.DocEntity;
 using ExcelOperations.Operations.MinorOperations;
 using System.Data;
 using System.Reflection;
 
-namespace ExcelOperations.Operations.ExcelToFileModelOperations.POC
+namespace ExcelOperations.Operations.ExcelToFileModelOperations
 {
-    public class MultiProject_ExcelFileToModels
+    public class ExcelFileToModelOps<T> : IGetDataFromExcel<T> where T : new()
     {
-        public async Task<List<MultiProject>> MultiProjectAsync(CancellationToken cancellationToken)
+        public async Task<List<T>> GetDataFromExcelAsync(CancellationToken cancellationToken)
         {
-            string fileLocation = @"C:\Users\adm\Desktop\testexcel\Docs\POC\POC_Multiprojekt_2.0_aktuell.xlsx";
+            var thisName = typeof(T).Name;
+
+            var fileLocator = new FileResourcePath();
+
+            var (fileLocation, rowDataCount) = fileLocator.MatchLocation(thisName);
 
             var datasetOperations = new ExcelToDataSet();
 
-            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, 4, cancellationToken);
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, rowDataCount, cancellationToken);
 
-            var dataList = new List<MultiProject>();
+            var dataList = new List<T>();
 
-            var dataTypes = typeof(MultiProject);
+            var dataTypes = typeof(T);
 
             var properties = dataTypes.GetProperties();
 
             foreach (DataRow row in datasets.Result.Tables[0].Rows)
             {
-                var modelInstance = new MultiProject();
+                //var modelInstance = new Cisco_PO();
+
+                T instance = new();
 
                 foreach (var property in properties)
                 {
@@ -42,11 +46,11 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations.POC
 
                     if (property.CanWrite)
                     {
-                        property.SetValue(modelInstance, data.ToString());
+                        property.SetValue(instance, data.ToString());
                     }
                 }
 
-                dataList.Add(modelInstance);
+                dataList.Add(instance);
             }
             return await Task.FromResult(dataList);
         }
