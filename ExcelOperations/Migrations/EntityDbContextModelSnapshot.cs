@@ -1114,6 +1114,146 @@ namespace ExcelOperations.Migrations
                     b.ToTable("MultiProjects");
                 });
 
+            modelBuilder.Entity("ExcelOperations.DocEntity.Aktuell.RouterAktuellOrderList", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("ARTIKELBEZEICHNUNG")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Alt")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CtK_Status")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LIEFERANT")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MENGE")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Bemerkung")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Nr")
+                        .HasColumnType("text");
+
+                    b.Property<string>("POSITION")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PO_DATUM")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PO_NUMMER")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Projekt_ID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Projektart")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SC_Kategorie")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SC_Nummer")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SO_Nr_EPlus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SO_Nr_TEF")
+                        .HasColumnType("text");
+
+                    b.Property<string>("WARENEINGANGSDATUM")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Zustandige_Region")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("RouterAktuellOrderLists");
+                });
+
+            modelBuilder.Entity("ExcelOperations.DocEntity.Aktuell.XWDMAktuellOrderList", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("ARTIKELBEZEICHNUNG")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Alt")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CtK_Status")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LIEFERANT")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MENGE")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Bemerkung")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NE_Nr")
+                        .HasColumnType("text");
+
+                    b.Property<string>("POSITION")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PO_DATUM")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PO_NUMMER")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Projekt_ID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Projektart")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SC_Kategorie")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SC_Nummer")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SO_Nr_EPlus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SO_Nr_TEF")
+                        .HasColumnType("text");
+
+                    b.Property<string>("WARENEINGANGSDATUM")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Zustandige_Region")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("XWDMAktuelOrderLists");
+                });
+
             modelBuilder.Entity("ExcelOperations.DocEntity.JSLMultiProject", b =>
                 {
                     b.Property<int>("id")

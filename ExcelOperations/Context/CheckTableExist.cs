@@ -1,5 +1,11 @@
 ﻿using ExcelOperations.Commands;
+using ExcelOperations.DocEntity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ExcelOperations.Context
 {
@@ -10,53 +16,64 @@ namespace ExcelOperations.Context
         {
             _context = context;
         }
-        
-        public void checkAllTable()
+
+        public bool CheckDbAndTables()
         {
-            _context.Entry(CheckTableInDatabase<EntityDbContext>);
-        }
-        public bool CheckTableInDatabase<T>() where T : class
-        {
-            try
-            {
-                _context.Set<T>().Count();
-                return true;
-            }
-            catch (Exception)
+            var tableExist = CheckTable();
+            if (tableExist == false)
             {
                 return false;
             }
+            return true;
+        }
+
+        public bool CheckTable()
+        {
+            var c4 = _context.Cisco_POs.Where(t => t.Objekt_ID == null).Select(k => k.Objekt_ID);
+            var c1 = _context.RouterAktuell.Where(t => t.Projekt_ID == null).Select(k => k.Projekt_ID);
+            var c2 = _context.RouterSwapAktuells;
+            var c3 = _context.ZugangsdatenAktuells;
+            var c5 = _context.Deltatel_POs;
+            var c6 = _context.ZTE_POs;
+            var c7 = _context.LagerCentrals;
+            var c8 = _context.XWDMAktuells;
+            var c9 = _context.MultiProjects;
+            var c10 = _context.JSLMultiProjects;
+            var c11 = _context.RouterAktuellOrderLists;
+            var c12 = _context.XWDMAktuelOrderLists;
+
+           
+
+            if (
+                c1 == null ||
+                c2 == null ||
+                c3 == null || 
+                c4 == null ||
+                c5 == null ||
+                c6 == null || 
+                c7 == null ||
+                c8 == null ||
+                c9 == null ||
+                c10 == null ||
+                c11 == null ||
+                c12 == null
+                )
+            {
+                return false;
+            }
+            return true;
         }
     }
 
-    public class CheckDbTableExistance
-    {
-        private readonly EntityDbContext _DbContext;
-        public CheckDbTableExistance(EntityDbContext _EntityDbContext)
-        {
-            _DbContext = _EntityDbContext;
-        }
-        public int CheckTable()
-        {
-            try
-            {
-                return _DbContext.Database.ExecuteSql($@"Select cp.id from ""Cisco_POs"" cp where id < 2");
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-        }
+    //public async void CreateDatabaseAndInsertAllData()
+    //{
+    //    CancellationToken cancellationToken = default(CancellationToken);
+    //    _DbContext.Database.EnsureDeleted();
+    //    _DbContext.Database.EnsureCreated();
+    //    var fetchAllData = new InsertAllDataToDb(_DbContext);
+    //    await fetchAllData.InsertDataAsync(cancellationToken);
 
-        public async void CreateDatabaseAndInsertAllData()
-        {
-            CancellationToken cancellationToken = default(CancellationToken);
-            _DbContext.Database.EnsureDeleted();
-            _DbContext.Database.EnsureCreated();
-            var fetchAllData = new InsertAllDataToDb(_DbContext);
-            await fetchAllData.InsertDataAsync(cancellationToken);
+    //    //_DbContext.Database.GenerateCreateScript
+    //}
 
-            //_DbContext.Database.GenerateCreateScript
-        }
-    }
 }

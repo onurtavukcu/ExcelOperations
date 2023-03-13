@@ -1086,6 +1086,37 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RouterAktuellOrderLists",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ZustandigeRegion = table.Column<string>(name: "Zustandige_Region", type: "text", nullable: true),
+                    SONrTEF = table.Column<string>(name: "SO_Nr_TEF", type: "text", nullable: true),
+                    SONrEPlus = table.Column<string>(name: "SO_Nr_EPlus", type: "text", nullable: true),
+                    CtKStatus = table.Column<string>(name: "CtK_Status", type: "text", nullable: true),
+                    NENr = table.Column<string>(name: "NE_Nr", type: "text", nullable: true),
+                    Alt = table.Column<string>(type: "text", nullable: true),
+                    NEName = table.Column<string>(name: "NE_Name", type: "text", nullable: true),
+                    NEBemerkung = table.Column<string>(name: "NE_Bemerkung", type: "text", nullable: true),
+                    Projektart = table.Column<string>(type: "text", nullable: true),
+                    ProjektID = table.Column<string>(name: "Projekt_ID", type: "text", nullable: true),
+                    SCKategorie = table.Column<string>(name: "SC_Kategorie", type: "text", nullable: true),
+                    SCNummer = table.Column<string>(name: "SC_Nummer", type: "text", nullable: true),
+                    PONUMMER = table.Column<string>(name: "PO_NUMMER", type: "text", nullable: true),
+                    PODATUM = table.Column<string>(name: "PO_DATUM", type: "text", nullable: true),
+                    LIEFERANT = table.Column<string>(type: "text", nullable: true),
+                    POSITION = table.Column<string>(type: "text", nullable: true),
+                    ARTIKELBEZEICHNUNG = table.Column<string>(type: "text", nullable: true),
+                    MENGE = table.Column<string>(type: "text", nullable: true),
+                    WARENEINGANGSDATUM = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RouterAktuellOrderLists", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RouterSwapAktuells",
                 columns: table => new
                 {
@@ -1457,6 +1488,37 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "XWDMAktuelOrderLists",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ZustandigeRegion = table.Column<string>(name: "Zustandige_Region", type: "text", nullable: true),
+                    SONrTEF = table.Column<string>(name: "SO_Nr_TEF", type: "text", nullable: true),
+                    SONrEPlus = table.Column<string>(name: "SO_Nr_EPlus", type: "text", nullable: true),
+                    CtKStatus = table.Column<string>(name: "CtK_Status", type: "text", nullable: true),
+                    NENr = table.Column<string>(name: "NE_Nr", type: "text", nullable: true),
+                    Alt = table.Column<string>(type: "text", nullable: true),
+                    NEName = table.Column<string>(name: "NE_Name", type: "text", nullable: true),
+                    NEBemerkung = table.Column<string>(name: "NE_Bemerkung", type: "text", nullable: true),
+                    Projektart = table.Column<string>(type: "text", nullable: true),
+                    ProjektID = table.Column<string>(name: "Projekt_ID", type: "text", nullable: true),
+                    SCKategorie = table.Column<string>(name: "SC_Kategorie", type: "text", nullable: true),
+                    SCNummer = table.Column<string>(name: "SC_Nummer", type: "text", nullable: true),
+                    PONUMMER = table.Column<string>(name: "PO_NUMMER", type: "text", nullable: true),
+                    PODATUM = table.Column<string>(name: "PO_DATUM", type: "text", nullable: true),
+                    LIEFERANT = table.Column<string>(type: "text", nullable: true),
+                    POSITION = table.Column<string>(type: "text", nullable: true),
+                    ARTIKELBEZEICHNUNG = table.Column<string>(type: "text", nullable: true),
+                    MENGE = table.Column<string>(type: "text", nullable: true),
+                    WARENEINGANGSDATUM = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_XWDMAktuelOrderLists", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ZTE_POs",
                 columns: table => new
                 {
@@ -1575,6 +1637,9 @@ namespace ExcelOperations.Migrations
                 name: "RouterAktuell");
 
             migrationBuilder.DropTable(
+                name: "RouterAktuellOrderLists");
+
+            migrationBuilder.DropTable(
                 name: "RouterSwapAktuells");
 
             migrationBuilder.DropTable(
@@ -1582,6 +1647,9 @@ namespace ExcelOperations.Migrations
 
             migrationBuilder.DropTable(
                 name: "XWDMAktuells");
+
+            migrationBuilder.DropTable(
+                name: "XWDMAktuelOrderLists");
 
             migrationBuilder.DropTable(
                 name: "ZTE_POs");

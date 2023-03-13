@@ -7,7 +7,7 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations
 {
     public class ExcelFileToModelOps<T> : IGetDataFromExcel<T> where T : new()
     {
-        public async Task<List<T>> GetDataFromExcelAsync(CancellationToken cancellationToken)
+        public async Task<List<T>> GetDataFromExcelAsync(int tableNumber, CancellationToken cancellationToken)
         {
             var thisName = typeof(T).Name;
 
@@ -17,7 +17,7 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations
 
             var datasetOperations = new ExcelToDataSet();
 
-            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, rowDataCount, cancellationToken);
+            var datasets = datasetOperations.TakeExcelToDataset(fileLocation, rowDataCount, tableNumber, cancellationToken);
 
             var dataList = new List<T>();
 
@@ -25,7 +25,7 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations
 
             var properties = dataTypes.GetProperties();
 
-            foreach (DataRow row in datasets.Result.Tables[0].Rows)
+            foreach (DataRow row in datasets.Result.Tables[tableNumber].Rows)
             {
                 //var modelInstance = new Cisco_PO();
 

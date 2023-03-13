@@ -2,6 +2,6 @@
 {
     public interface IGetDataFromExcel<T>
     {
-        Task<List<T>> GetDataFromExcelAsync(CancellationToken cancellationToken);
+        Task<List<T>> GetDataFromExcelAsync(int tableNumber, CancellationToken cancellationToken);
     }
 }

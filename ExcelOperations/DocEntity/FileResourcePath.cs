@@ -13,10 +13,12 @@
         public const string MultiProject = $@"{RootPath}POC\POC_Multiprojekt_2.0_aktuell.xlsx,MultiProject";
         public const string RouterSwapAktuell = $@"{RootPath}Aktuell\ROUTER_Swap_aktuell.xlsm,RouterSwapAktuell";
         public const string ZugangsdatenAktuell = $@"{RootPath}Zugang\Zugangsdaten_aktuell.xlsx,ZugangsdatenAktuell";
+        public const string RouterAktuelOrderList = $@"{RootPath}Aktuell\Router_aktuell.xlsx,RouterAktuellOrderList";
+        public const string XWDMAktuellOrderList = $@"{RootPath}Aktuell\xWDM_aktuell.xlsx,XWDMAktuellOrderList";
 
         public List<string> locationList = new List<string>
             {
-                "RouterAktuell","XWDMAktuell","LagerCentral","Cisco_PO","Deltatel_PO","ZTE_PO","JSLMultiProject","MultiProject","RouterSwapAktuell","ZugangsdatenAktuell"
+                "RouterAktuell","XWDMAktuell","LagerCentral","Cisco_PO","Deltatel_PO","ZTE_PO","JSLMultiProject","MultiProject","RouterSwapAktuell","ZugangsdatenAktuell","RouterAktuelOrderList", "XWDMAktuellOrderList"
             };
 
         public new List<(string ,int )> locationList1 = new List<(string, int)>
@@ -30,7 +32,9 @@
             ( JSLMultiProject, 5),
             ( MultiProject, 4),
             ( RouterSwapAktuell, 5),
-            ( ZugangsdatenAktuell, 5)
+            ( ZugangsdatenAktuell, 5),
+            ( RouterAktuelOrderList, 5),
+            ( XWDMAktuellOrderList, 5)
         };
 
         public (string,int) MatchLocation(string loc)
