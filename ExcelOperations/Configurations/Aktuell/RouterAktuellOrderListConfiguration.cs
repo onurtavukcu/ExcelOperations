@@ -1,4 +1,5 @@
 ﻿using ExcelOperations.DocEntity.Aktuell;
+using ExcelOperations.DocEntity.Entity.Aktuell;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

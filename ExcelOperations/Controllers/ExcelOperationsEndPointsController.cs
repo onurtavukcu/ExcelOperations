@@ -1,12 +1,22 @@
 using ExcelOperations.Context;
-using ExcelOperations.DocEntity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using ExcelOperations.DocEntity.PO;
-using ExcelOperations.DocEntity.Lager;
-using ExcelOperations.Doc.Entity.POC;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
+using Microsoft.EntityFrameworkCore.Internal;
+using ExcelOperations.Commands;
+using System.Data.Entity;
+using NuGet.Protocol;
+using ExcelOperations.DocEntity.Entity.POC;
+using ExcelOperations.DocEntity.Entity.Aktuell;
+using ExcelOperations.DocEntity.Entity.PO;
+using ExcelOperations.DocEntity.Entity.Zugang;
+using ExcelOperations.DocEntity.Entity.Lager;
 using ExcelOperations.DocEntity.Aktuell;
+using ExcelOperations.DocEntity;
+using ExcelOperations.DocEntity.PO;
+using AutoMapper;
+using ExcelOperations.Entities.DocEntityDTO;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExcelOperations.Controllers
 {
@@ -16,11 +26,15 @@ namespace ExcelOperations.Controllers
     {
         private readonly EntityDbContext _EntityDbContext;
 
+        private readonly IMapper _mapper;
+
         //public CheckDbTableExistance checkDbTableExistance => new CheckDbTableExistance(_EntityDbContext);
 
-        public ExcelOperationsEndPointsController(EntityDbContext DbContext)
+        public ExcelOperationsEndPointsController(EntityDbContext DbContext, IMapper mapper)
         {
             _EntityDbContext = DbContext;
+
+            _mapper = mapper;
 
             //var existanceDb = checkDbTableExistance.CheckTable();
 
@@ -282,73 +296,102 @@ namespace ExcelOperations.Controllers
 
 
 
-        //[HttpGet]
-        //[Route("InsertAllDataToDb")]
-        //public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
-        //{
-        //    var timer = new Stopwatch();
-        //    timer.Start();
+        [HttpGet]
+        [Route("InsertAllDataToDb")]
+        public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+            timer.Start();
 
-        //    var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
+            var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
 
-        //    await fetchAllData.InsertDataAsync(cancellationToken);
+            await fetchAllData.InsertDataAsync(cancellationToken);
 
-        //    timer.Stop();
+            timer.Stop();
 
-        //    Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
 
-        //[HttpGet]
-        //[Route("GetSomeDataV2")]
-        //public IActionResult GetSomeDataFromDBV2()
-        //{
-        //    var timer = new Stopwatch();
-        //    timer.Start();
+        [HttpGet]
+        [Route("GetSomeDataV2")]
+        //[EnableCors("MyPolicy")]
+        public IActionResult GetSomeDataFromDBV2()
+        {
+            var timer = new Stopwatch();    
+            timer.Start();
 
-        //    var lager = _EntityDbContext.LagerCentrals;
+            var result = _EntityDbContext.LagerCentrals;
 
-        //    var pos = _EntityDbContext.ZTE_POs;
+            //var lager = _EntityDbContext.LagerCentrals;
 
-        //    var result = pos.SelectMany(posq =>
-        //                                      lager.Where(
-        //                                          lagerq => lagerq.PID == posq.Projekt_ID
-        //                                          && posq.Projekt_ID == "701137334"));
+            //var pos = _EntityDbContext.ZTE_POs;
 
-        //    timer.Stop();
+            //var result = pos.SelectMany(posq =>
+            //                                  lager.Where(
+            //                                      lagerq => lagerq.PID == posq.Projekt_ID
+            //                                      && posq.Projekt_ID == "701137334"));
 
-        //    Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+            timer.Stop();
 
-        //    return Ok(result);
-        //}
+            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
 
-        //[HttpGet]
-        //[Route("TestGeneric")]
-        //public async Task<IActionResult> TestGenerication(CancellationToken cancellationToken)
-        //{
-        //    var readers = new ExcelFileToModelOps<RouterAktuell>();
+            return Ok(result);
+        }
 
-        //    var results = await readers.GetDataFromExcelAsync(cancellationToken);
+        [HttpGet]
+        [Route("TestDTOs")]
+        //[EnableCors("MyPolicy")]
+        public ActionResult<IEnumerable<MultiProjectDTO>> DTOTestGetMultiProject()
+        {
+            var timer = new Stopwatch();
+            timer.Start();
 
-        //    await _EntityDbContext.BulkInsertAsync(results, cancellationToken);
+            var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
 
-        //    return Ok(results);
+            timer.Stop();
 
-        //}
+            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+        }
+
+
 
 
         [HttpGet]
         [Route("TestCheckTable")]
-        public bool TestGenerication()
+        public IActionResult TestGenerication()
         {
-            var tables = new CheckTableExist(_EntityDbContext);
+            var info = (MultiProjectDTO)_mapper.Map(_EntityDbContext.MultiProjects, typeof(MultiProjectDTO), typeof(MultiProject));
 
-            var result = tables.CheckDbAndTables();
+            return Ok(info);
 
-            return result;
+        }
 
+
+
+        [HttpGet]
+        [Route("JoinTables")]
+        public async Task<IActionResult> JoinTables(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            var result = _EntityDbContext.Deltatel_POs.Where(i => i.PR_NO == "3611248906");
+
+            //var posresult = new EachPosOrder(_EntityDbContext);
+
+            //var result = posresult.DeltatelOrders();
+
+            timer.Stop();
+
+            Console.Write("DeltatelPO Elapsed Time : " + timer.ElapsedMilliseconds);
+
+            return Ok(result);
         }
 
 

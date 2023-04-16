@@ -3,7 +3,7 @@ using System.Data;
 
 namespace ExcelOperations.Operations.MinorOperations
 {
-    public class ExcelToDataSet
+    public class ExcelToDataSet : IExcelToDataSet
     {
         public async Task<DataSet> TakeExcelToDataset(string fileLocation, int rowCount, int tableNumber, CancellationToken cancellationToken)
         {

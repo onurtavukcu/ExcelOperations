@@ -1,8 +1,11 @@
 ﻿using ExcelOperations.Context;
-using ExcelOperations.Doc.Entity.POC;
 using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.Aktuell;
-using ExcelOperations.DocEntity.Lager;
+using ExcelOperations.DocEntity.Entity.Aktuell;
+using ExcelOperations.DocEntity.Entity.Lager;
+using ExcelOperations.DocEntity.Entity.PO;
+using ExcelOperations.DocEntity.Entity.POC;
+using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
 

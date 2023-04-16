@@ -1,7 +1,10 @@
-﻿using ExcelOperations.Doc.Entity.POC;
-using ExcelOperations.DocEntity;
+﻿using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.Aktuell;
-using ExcelOperations.DocEntity.Lager;
+using ExcelOperations.DocEntity.Entity.Aktuell;
+using ExcelOperations.DocEntity.Entity.Lager;
+using ExcelOperations.DocEntity.Entity.PO;
+using ExcelOperations.DocEntity.Entity.POC;
+using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
 using ExcelOperations.DocEntity.UserInfo;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +19,8 @@ namespace ExcelOperations.Context
             //ChangeTracker.LazyLoadingEnabled = true;            
         }
 
-        public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
+
+        public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; } 
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
         public virtual DbSet<JSLMultiProject>? JSLMultiProjects { get; set; }
@@ -43,6 +47,9 @@ namespace ExcelOperations.Context
 
             modelBuilder.Entity<RouterSwapAktuell>(i =>
             {
+                //builder.Property(entity => entity.Id).ValueGeneratedOnAdd();
+                //builder.Property(entity => entity.Address).HasColumnName("Zustandige_Region");
+
                 i.Property<int>("id").ValueGeneratedOnAdd();
             }
             );

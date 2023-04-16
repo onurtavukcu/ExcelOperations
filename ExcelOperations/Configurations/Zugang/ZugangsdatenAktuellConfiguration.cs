@@ -1,4 +1,4 @@
-﻿using ExcelOperations.DocEntity;
+﻿using ExcelOperations.DocEntity.Entity.Zugang;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

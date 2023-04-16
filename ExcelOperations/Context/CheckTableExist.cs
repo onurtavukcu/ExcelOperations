@@ -1,13 +1,4 @@
-﻿using ExcelOperations.Commands;
-using ExcelOperations.DocEntity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Infrastructure;
-using System.Diagnostics.Eventing.Reader;
-
-namespace ExcelOperations.Context
+﻿namespace ExcelOperations.Context
 {
     public class CheckTableExist
     {

@@ -1,4 +1,4 @@
-﻿using ExcelOperations.DocEntity.Lager;
+﻿using ExcelOperations.DocEntity.Entity.Lager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
