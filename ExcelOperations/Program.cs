@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using AutoMapper;
 using ExcelOperations.Configurations.MappingEntity;
+using ExcelOperations.Operations.ExcelToFileModelOperations;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,8 @@ builder.Services.AddDbContext<EntityDbContext>
 builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//builder.Services.AddScoped(typeof(IGetDataFromExcel<>), typeof(ExcelFileToModelOps<>)); add generic DI
 
 var app = builder.Build();
 

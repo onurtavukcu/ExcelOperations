@@ -1,6 +1,6 @@
 ﻿using ExcelOperations.DocEntity;
 
-namespace ExcelOperations.Entities.DocEntityDTO
+namespace ExcelOperations.Entities.DocEntityDTO.POCDTO
 {
     public class MultiProjectDTO
     {
@@ -27,9 +27,9 @@ namespace ExcelOperations.Entities.DocEntityDTO
         public string? Auftragnehmer_Integration_on_site { get; set; }
         public string? Generalunternehmer { get; set; }
         public string? Subunternehmer { get; set; }
-       
+
         [ColumnName("Link APT_82_Ist")]
-        public string? Link_APT_82_Ist { get; set; }       
+        public string? Link_APT_82_Ist { get; set; }
         public string? Ist_Stx62w { get; set; }
         public string? Ist_Stx62g { get; set; }
         public string? Ist_Stx51b { get; set; }

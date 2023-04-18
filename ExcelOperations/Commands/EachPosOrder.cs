@@ -14,8 +14,6 @@ namespace ExcelOperations.Commands
             _EntityDbContext = entityDbContext;
         }
 
-        // convert DTO type
-
         public async Task<IEnumerable<ZTE_PO>> DeltatelOrders()
         {
             //return await _EntityDbContext.Deltatel_POs.();

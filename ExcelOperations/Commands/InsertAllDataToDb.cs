@@ -14,6 +14,7 @@ namespace ExcelOperations.Commands
     public class InsertAllDataToDb
     {
         private readonly EntityDbContext _EntityDbContext;
+        
         public InsertAllDataToDb(EntityDbContext entityDbContext)
         {
             _EntityDbContext = entityDbContext;

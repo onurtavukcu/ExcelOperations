@@ -2,10 +2,7 @@ using ExcelOperations.Context;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
-using Microsoft.EntityFrameworkCore.Internal;
 using ExcelOperations.Commands;
-using System.Data.Entity;
-using NuGet.Protocol;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Aktuell;
 using ExcelOperations.DocEntity.Entity.PO;
@@ -15,8 +12,7 @@ using ExcelOperations.DocEntity.Aktuell;
 using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.PO;
 using AutoMapper;
-using ExcelOperations.Entities.DocEntityDTO;
-using Microsoft.AspNetCore.Cors;
+using ExcelOperations.Entities.DocEntityDTO.POCDTO;
 
 namespace ExcelOperations.Controllers
 {
@@ -35,14 +31,6 @@ namespace ExcelOperations.Controllers
             _EntityDbContext = DbContext;
 
             _mapper = mapper;
-
-            //var existanceDb = checkDbTableExistance.CheckTable();
-
-            //if (existanceDb < 1)
-            //{
-            //    Console.WriteLine("Missing DB or Table! Please Wait for Creating DB and Inserting All Data");
-            //    //checkDbTableExistance.CreateDatabaseAndInsertAllData();
-            //}
         }
 
         [HttpGet]
@@ -87,7 +75,6 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("XWDMAktuellAsync")]
-
         public async Task<IActionResult> XWDMAktuellInsertAsync(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
@@ -108,7 +95,6 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("ZugangsdatenAktuellAsync")]
-
         public async Task<IActionResult> ZugangsdatenAktuellInsertAsync(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
@@ -129,7 +115,6 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("DeltatelPOAsync")]
-
         public async Task<IActionResult> DeltatelPOInsertAsync(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
@@ -149,10 +134,8 @@ namespace ExcelOperations.Controllers
             return Ok();
         }
 
-
         [HttpGet]
         [Route("ZTEPO_Async")]
-
         public async Task<IActionResult> ZTEPOInsertAsync(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
@@ -174,7 +157,6 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("CiscoPO_Async")]
-
         public async Task<IActionResult> CiscoPOInsertAsync(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
@@ -294,8 +276,6 @@ namespace ExcelOperations.Controllers
             return Ok();
         }
 
-
-
         [HttpGet]
         [Route("InsertAllDataToDb")]
         public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
@@ -317,15 +297,12 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("GetSomeDataV2")]
-        //[EnableCors("MyPolicy")]
         public IActionResult GetSomeDataFromDBV2()
         {
-            var timer = new Stopwatch();    
+            var timer = new Stopwatch();
             timer.Start();
 
             var result = _EntityDbContext.LagerCentrals;
-
-            //var lager = _EntityDbContext.LagerCentrals;
 
             //var pos = _EntityDbContext.ZTE_POs;
 
@@ -343,22 +320,14 @@ namespace ExcelOperations.Controllers
 
         [HttpGet]
         [Route("TestDTOs")]
-        //[EnableCors("MyPolicy")]
         public ActionResult<IEnumerable<MultiProjectDTO>> DTOTestGetMultiProject()
         {
-            var timer = new Stopwatch();
-            timer.Start();
-
             var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
 
-            timer.Stop();
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
 
-            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
-
-            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+            // return Ok(result); return All MultiProject colums
         }
-
-
 
 
         [HttpGet]
@@ -367,10 +336,8 @@ namespace ExcelOperations.Controllers
         {
             var info = (MultiProjectDTO)_mapper.Map(_EntityDbContext.MultiProjects, typeof(MultiProjectDTO), typeof(MultiProject));
 
-            return Ok(info);
-
+            return Ok(info); //why bro _
         }
-
 
 
         [HttpGet]
@@ -383,9 +350,9 @@ namespace ExcelOperations.Controllers
 
             var result = _EntityDbContext.Deltatel_POs.Where(i => i.PR_NO == "3611248906");
 
-            //var posresult = new EachPosOrder(_EntityDbContext);
+            var posresult = new EachPosOrder(_EntityDbContext);
 
-            //var result = posresult.DeltatelOrders();
+            var result1 = posresult.DeltatelOrders();
 
             timer.Stop();
 

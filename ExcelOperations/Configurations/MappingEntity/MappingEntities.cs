@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ExcelOperations.DocEntity.Entity.POC;
-using ExcelOperations.Entities.DocEntityDTO;
+using ExcelOperations.Entities.DocEntityDTO.POCDTO;
 
 namespace ExcelOperations.Configurations.MappingEntity
 {
