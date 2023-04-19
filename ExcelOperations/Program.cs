@@ -17,8 +17,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EntityDbContext>
     (options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
-        b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+        options.UseLazyLoadingProxies(true)
+        .UseNpgsql(builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
+        b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
+        );
 
 builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());
 

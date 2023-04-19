@@ -15,9 +15,9 @@ using ExcelOperations.Entities.DocEntityDTO.ZugangDTO;
 
 namespace ExcelOperations.Profiles
 {
-    public class ExcelOpsPrrofiles : Profile
+    public class ExcelOpsProfiles : Profile
     {
-        public ExcelOpsPrrofiles()
+        public ExcelOpsProfiles()
         {
             //Soruce -> target
             CreateMap<RouterAktuell, RouterAktuellDTO>();

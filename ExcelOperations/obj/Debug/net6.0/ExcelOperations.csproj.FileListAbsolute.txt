@@ -588,3 +588,5 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOpera
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ref\ExcelOperations.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
