@@ -1,6 +1,4 @@
-﻿using ExcelOperations.DocEntity;
-
-namespace ExcelOperations.DocEntity.Entity.POC
+﻿namespace ExcelOperations.DocEntity.Entity.POC
 {
     public class MultiProject
     {

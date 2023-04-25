@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-namespace ExcelOperations.DocEntity.Entity.POC
+﻿namespace ExcelOperations.DocEntity.Entity.POC
 {
     public class RouterSwapAktuell
     {
