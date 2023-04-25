@@ -8,6 +8,7 @@ namespace ExcelOperations.Configurations.Aktuell
     {
         public void Configure(EntityTypeBuilder<XWDMAktuellOrderList> builder)
         {
+            builder.HasNoKey();
         }
     }
 }

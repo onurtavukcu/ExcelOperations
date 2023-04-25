@@ -35,8 +35,6 @@ namespace ExcelOperations.Commands
 
             await _EntityDbContext.BulkInsertAsync(result1, cancellationToken);
 
-            var resultCount1 = result1.Count();
-
 
             var excelReader2 = new ExcelFileToModelOps<Deltatel_PO>();
 
@@ -44,16 +42,12 @@ namespace ExcelOperations.Commands
 
             await _EntityDbContext.BulkInsertAsync(result2, cancellationToken);
 
-            var resultCount2 = result2.Count();
-
 
             var excelReader3 = new ExcelFileToModelOps<ZugangsdatenAktuell>();
 
             var result3 = await excelReader3.GetDataFromExcelAsync(0, cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result3, cancellationToken);
-
-            var resultCount = result.Count();
 
 
             var excelReader4 = new ExcelFileToModelOps<XWDMAktuell>();
@@ -75,7 +69,6 @@ namespace ExcelOperations.Commands
             var result6 = await excelReader6.GetDataFromExcelAsync(0, cancellationToken);
 
             await _EntityDbContext.BulkInsertAsync(result6, cancellationToken);
-
 
 
             var excelReader7 = new ExcelFileToModelOps<MultiProject>();
@@ -101,16 +94,16 @@ namespace ExcelOperations.Commands
 
             var excelReader10 = new ExcelFileToModelOps<RouterAktuellOrderList>();
 
-            var result10 = await excelReader9.GetDataFromExcelAsync(1, cancellationToken);
+            var result10 = await excelReader10.GetDataFromExcelAsync(1, cancellationToken);
 
-            await _EntityDbContext.BulkInsertAsync(result9, cancellationToken);
+            await _EntityDbContext.BulkInsertAsync(result10, cancellationToken);
 
 
-            var excelReader111 = new ExcelFileToModelOps<XWDMAktuellOrderList>();
+            var excelReader11 = new ExcelFileToModelOps<XWDMAktuellOrderList>();
 
-            var result111 = await excelReader9.GetDataFromExcelAsync(1, cancellationToken);
+            var result11 = await excelReader11.GetDataFromExcelAsync(1, cancellationToken);
 
-            await _EntityDbContext.BulkInsertAsync(result9, cancellationToken);
+            await _EntityDbContext.BulkInsertAsync(result11, cancellationToken);
 
             return;
         }

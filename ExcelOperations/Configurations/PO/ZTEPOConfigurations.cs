@@ -8,6 +8,7 @@ namespace ExcelOperations.Configurations
     {
         public void Configure(EntityTypeBuilder<ZTE_PO> builder)
         {
+            builder.HasNoKey();
         }
     }
 }

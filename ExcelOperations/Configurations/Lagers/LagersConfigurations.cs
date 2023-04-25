@@ -8,6 +8,7 @@ namespace ExcelOperations.Configurations.Lagers
     {
         public void Configure(EntityTypeBuilder<LagerCentral> builder)
         {
+            builder.HasNoKey();
         }
     }
 }

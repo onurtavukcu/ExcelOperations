@@ -9,6 +9,7 @@ namespace ExcelOperations.Configurations
     {
         public void Configure(EntityTypeBuilder<RouterAktuell> builder)
         {
+            builder.HasNoKey();
         }
     }
 }

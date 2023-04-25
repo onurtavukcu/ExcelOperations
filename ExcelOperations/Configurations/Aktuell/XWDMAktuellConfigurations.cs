@@ -8,6 +8,7 @@ namespace ExcelOperations.Configurations
     {
         public void Configure(EntityTypeBuilder<XWDMAktuell> builder)
         {
+            builder.HasNoKey();
         }
     }
 }

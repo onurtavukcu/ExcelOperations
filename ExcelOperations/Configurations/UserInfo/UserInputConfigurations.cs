@@ -7,6 +7,7 @@ namespace ExcelOperations.Configurations.UserInfo
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<UserInput> builder)
         {
+            builder.HasNoKey();
         }
     }
 }
