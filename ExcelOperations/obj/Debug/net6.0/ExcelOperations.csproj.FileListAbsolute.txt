@@ -590,3 +590,5 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\AutoMapper
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Castle.Core.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll

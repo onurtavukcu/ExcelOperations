@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230425074034_mig1")]
+    [Migration("20230502104650_mig1")]
     partial class mig1
     {
         /// <inheritdoc />

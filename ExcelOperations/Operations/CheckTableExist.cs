@@ -70,3 +70,29 @@
 //    //}
 
 //}
+
+//https://learn.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-7.0
+
+
+//using ExcelOperations.Context;
+//using Microsoft.EntityFrameworkCore.Internal;
+
+//CreateDbIfNotExists(app);
+
+//void CreateDbIfNotExists(WebApplication host)
+//{
+//    using (var scope = host.Services.CreateScope())
+//    {
+//        var services = scope.ServiceProvider;
+//        try
+//        {
+//            var context = services.GetRequiredService<EntityDbContext>();
+//            DbSetInitializer.Initialize(context);
+//        }
+//        catch (Exception ex)
+//        {
+//            var logger = services.GetRequiredService<ILogger<Program>>();
+//            logger.LogError(ex, "An error occurred creating the DB.");
+//        }
+//    }
+//}
