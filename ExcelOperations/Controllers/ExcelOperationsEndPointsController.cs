@@ -4,7 +4,9 @@ using System.Diagnostics;
 using ExcelOperations.Commands;
 using AutoMapper;
 using ExcelOperations.Entities.DocEntityDTO.POCDTO;
-using ExcelOperations.Repositories;
+using Microsoft.EntityFrameworkCore;
+using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
+using ExcelOperations.DocEntity.Entity.Zugang;
 
 namespace ExcelOperations.Controllers
 {
@@ -84,28 +86,29 @@ namespace ExcelOperations.Controllers
         //}
 
 
-        //[HttpGet]
-        //[Route("RelatedQuery")]
-        //public async Task<IActionResult> RelatedQuery(CancellationToken cancellationToken)
-        //{
-        //    var timer = new Stopwatch();
+        [HttpGet]
+        [Route("RelatedQuery")]
+        public async Task<IActionResult> RelatedQuery(CancellationToken cancellationToken)
+        {
+            var timer = new Stopwatch();
 
-        //    timer.Start();
+            timer.Start();
 
-        //    var results = _EntityDbContext.LagerCentrals
-        //        .Include(t1 => t1.)
-        //        .Include(t2 => t2.)
-        //        .Where(t1 => t1.ProjectId == "123")
-        //        .ToList();
+            var result = _EntityDbContext.RouterAktuell
+                .Include(t1 => t1.Projekt_ID)
+                .Include(t2 => t2.SAT)
+                .ToList()
+                .Select(res => new RouterAktuellDTO
+                {
+                    Projekt_ID = res.Projekt_ID
+                });
 
+            timer.Stop();
 
+            Console.Write("DeltatelPO Elapsed Time : " + timer.ElapsedMilliseconds);
 
-        //    timer.Stop();
-
-        //    Console.Write("DeltatelPO Elapsed Time : " + timer.ElapsedMilliseconds);
-
-        //    return Ok(result);
-        //}
+            return Ok(result);
+        }
 
 
 
