@@ -30,6 +30,5 @@ namespace ExcelOperations.Entities.DocEntityDTO.POCDTO
         [ColumnName("Objekt-ID")]
         public string? Objekt_ID { get; set; } //object
         public string? Alt { get; set; }
-        [ColumnName("NE-Typ")]
     }
 }
