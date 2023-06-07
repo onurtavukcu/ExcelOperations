@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.POC
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.POC
 {
-    public class MultiProject
+    public class MultiProject : IEntityBase
     {
         public string? Order { get; set; }
         [ColumnName("Zuständige Region")]

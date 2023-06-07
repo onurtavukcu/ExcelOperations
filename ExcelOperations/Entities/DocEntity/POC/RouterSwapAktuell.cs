@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.POC
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.POC
 {
-    public class RouterSwapAktuell
+    public class RouterSwapAktuell: IEntityBase
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }

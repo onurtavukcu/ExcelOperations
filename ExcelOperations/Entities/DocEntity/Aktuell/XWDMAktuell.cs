@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.Aktuell
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.Aktuell
 {
-    public class XWDMAktuell
+    public class XWDMAktuell : IEntityBase
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }

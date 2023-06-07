@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.Lager
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.Lager
 {
-    public class LagerCentral
+    public class LagerCentral : IEntityBase
     {
         public string? DepoID { get; set; }
         public string? Sender { get; set; }

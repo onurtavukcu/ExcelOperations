@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.PO
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.PO
 {
-    public class ZTE_PO
+    public class ZTE_PO : IEntityBase
     {
         public string? ZTE_ID { get; set; }
         public string? PO { get; set; }

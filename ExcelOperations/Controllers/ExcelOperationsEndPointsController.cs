@@ -49,19 +49,7 @@ namespace ExcelOperations.Controllers
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV3()
         {
-            var timer = new Stopwatch();
-            timer.Start();
-
-            var lagerRepo = new MultiProjectRepositories(_EntityDbContext);
-
-            var result = lagerRepo.GetMultiProject();
-
-            var testdto = _mapper.Map<IEnumerable<MultiProjectDTO>>(result);
-
-            timer.Stop();
-            Console.Write("With DTO Time : " + timer.Elapsed.TotalSeconds);
-
-            return Ok(testdto);
+            return Ok();
         }
 
         //[HttpGet]

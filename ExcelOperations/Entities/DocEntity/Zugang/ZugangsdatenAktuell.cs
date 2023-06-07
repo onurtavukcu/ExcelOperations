@@ -1,6 +1,8 @@
-﻿namespace ExcelOperations.DocEntity.Entity.Zugang
+﻿using ExcelOperations.Entities;
+
+namespace ExcelOperations.DocEntity.Entity.Zugang
 {
-    public class ZugangsdatenAktuell
+    public class ZugangsdatenAktuell : IEntityBase
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }
