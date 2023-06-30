@@ -1,4 +1,5 @@
-﻿using ExcelOperations.Context;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using ExcelOperations.Context;
 using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.Aktuell;
 using ExcelOperations.DocEntity.Entity.Aktuell;
@@ -7,7 +8,9 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
+using ExcelOperations.Entities;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
+using System.Reflection;
 
 namespace ExcelOperations.Commands
 {
@@ -20,8 +23,55 @@ namespace ExcelOperations.Commands
             _EntityDbContext = entityDbContext;
         }
 
+        public class Entities
+        {
+            public static RouterAktuell routerAktuell { get; set; }
+            public static RouterAktuellOrderList routerAktuellOrdersList { get; set; }
+            public static XWDMAktuell XWDMAktuell { get; set; }
+            public static XWDMAktuellOrderList XWDMaktuellOrderList { get; set; }
+        }
+
         public async Task InsertDataAsync(CancellationToken cancellationToken)
         {
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+
+            //Type[] types = assembly.GetTypes();
+
+            //Type[] interfaceImplementingTypes = types.Where(t => typeof(IEntityBase).IsAssignableFrom(t)).ToArray();
+
+            //foreach (Type type in interfaceImplementingTypes)
+            //{
+            //    var excelReaders = new ExcelFileToModelOps<type>();
+
+            //    var results = await excelReaders.GetDataFromExcelAsync(0, cancellationToken);
+
+            //    await _EntityDbContext.BulkInsertAsync(results, cancellationToken);
+            //}
+
+            //var instance = new Entities();
+            //Type type = typeof(Entities);
+
+            //Dictionary<string, object> properties = new Dictionary<string, object>();
+            //foreach (PropertyInfo prop in type.GetProperties())
+            //    properties.Add(prop.Name, prop.GetValue(instance));
+
+
+            //var typeList  = new List<Type>();
+            //foreach (PropertyInfo props in type.GetProperties())
+            //{
+            //    typeList.Add((Type)props.GetValue(instance));
+            //}
+            //var sdass = typeList;
+            //foreach (var types in typeList)
+            //{
+            //    var excelReader = new ExcelFileToModelOps<types>();
+
+            //    var result = await excelReader.GetDataFromExcelAsync(0, cancellationToken);
+
+            //    await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+            //}
+
+
             var excelReader = new ExcelFileToModelOps<RouterAktuell>();
 
             var result = await excelReader.GetDataFromExcelAsync(0, cancellationToken);
@@ -107,6 +157,5 @@ namespace ExcelOperations.Commands
 
             return;
         }
-
     }
 }

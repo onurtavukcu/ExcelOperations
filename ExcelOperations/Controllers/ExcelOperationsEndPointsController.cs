@@ -7,6 +7,14 @@ using ExcelOperations.Entities.DocEntityDTO.POCDTO;
 using Microsoft.EntityFrameworkCore;
 using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
 using ExcelOperations.DocEntity.Entity.Zugang;
+using ExcelOperations.Entities;
+using System.Reflection;
+using ExcelOperations.DocEntity.PO;
+using ExcelOperations.Entities.DocEntityDTO.PODTO;
+using Microsoft.AspNetCore.Cors;
+using ExcelOperations.DocEntity;
+using ExcelOperations.DocEntity.UserInfo;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExcelOperations.Controllers
 {
@@ -26,7 +34,7 @@ namespace ExcelOperations.Controllers
 
             _mapper = mapper;
         }
-
+        //[Authorize]
         [HttpGet]
         [Route("InsertAllDataToDb")]
         public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
@@ -45,12 +53,67 @@ namespace ExcelOperations.Controllers
             return Ok();
         }
 
+        [EnableCors("AllowOrigin")]
         [HttpGet]
         [Route("GetSomeDataV2")]
+        public IActionResult GetSomeDataFromDBV2()
+        {
+            var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
+
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
+        }
+
+        [HttpGet]
+        [Route("GetSomeDataV3")]
         public IActionResult GetSomeDataFromDBV3()
         {
-            return Ok();
+            var result = _EntityDbContext.Deltatel_POs.Where(p => p.PR_NO == "3611248906");
+
+            return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(result)); // return only MultiProjectDTODTO's column
         }
+
+
+        [HttpGet]
+        [Route("GetSomeDataV4")]
+        public IActionResult GetSomeDataFromDBV4()
+        {
+            var result = _EntityDbContext.RouterAktuell.Where(p => p.Ort == "Hamburg");
+
+            return Ok(_mapper.Map<IEnumerable<RouterAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
+        }
+
+
+        [HttpGet]
+        [Route("GetSomeDataV5")]
+        public IActionResult GetSomeDataFromDBV5()
+        {
+            var result = _EntityDbContext.XWDMAktuells.Where(p => p.Projektart == "Aufbau");
+
+            return Ok(_mapper.Map<IEnumerable<XWDMAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
+        }
+
+        [HttpPost]
+        [Route("Authenticate")]
+        public IActionResult AuthenticateUser([FromBody] UserInput userInput)
+        {
+            var result = _EntityDbContext.UserInputs  //now only one user check
+                .Any(
+                p => p.UserName == userInput.UserName &&
+                p.Password == userInput.Password
+                );
+
+            if (result)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return Unauthorized();
+            }
+
+        }
+
+
 
         //[HttpGet]
         //[Route("JoinTables")]
@@ -71,6 +134,31 @@ namespace ExcelOperations.Controllers
         //    Console.Write("DeltatelPO Elapsed Time : " + timer.ElapsedMilliseconds);
 
         //    return Ok(result);
+        //}
+
+        //[HttpGet]
+        //[Route("JoinTables")]
+        //public async void JoinTables(CancellationToken cancellationToken)
+        //{
+        //    Type interfaceType = typeof(IEntityBase);
+
+        //    // Get all loaded assemblies in the current application domain
+        //    Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+        //    foreach (Assembly assembly1 in assemblies)
+        //    {
+        //        // Get all types defined in the assembly
+        //        Type[] types1 = assembly1.GetTypes();
+
+        //        foreach (Type type in types1)
+        //        {
+        //            // Check if the type implements the interface
+        //            if (interfaceType.IsAssignableFrom(type))
+        //            {
+        //                Console.WriteLine($"{type.Name} implements the interface.");
+        //            }
+        //        }
+        //    }
         //}
 
 

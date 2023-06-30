@@ -17,6 +17,18 @@ builder.Services.AddDbContext<EntityDbContext>
         b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
         );
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .Build();
+    });
+});
+
+
 //builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -35,6 +47,8 @@ Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 
