@@ -33,6 +33,16 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddCors(
+    cors => cors.AddPolicy("myCors", pb =>
+    {
+        pb.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod().Build();
+    })
+    );
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,14 +53,26 @@ if (app.Environment.IsDevelopment())
 }
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-    
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseCors();
+app.UseCors("myCors");
 
 app.MapControllers();
 
 app.Run();
- 
+
+app.Use(async (ctx, next) =>
+{
+    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:3000/";
+    if (HttpMethods.IsOptions(ctx.Request.Method))
+    {
+        ctx.Response.Headers["Access-Control-Allow-Headers"] = "*";
+        await ctx.Response.CompleteAsync();
+        return;
+    }
+
+    await next();
+}).Build();  //endpoint gelmiyor.

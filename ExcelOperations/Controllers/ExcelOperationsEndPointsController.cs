@@ -52,8 +52,7 @@ namespace ExcelOperations.Controllers
 
             return Ok();
         }
-
-        [EnableCors("AllowOrigin")]
+       
         [HttpGet]
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV2()
@@ -94,7 +93,7 @@ namespace ExcelOperations.Controllers
 
         [HttpPost]
         [Route("Authenticate")]
-        public IActionResult AuthenticateUser([FromBody] UserInput userInput)
+        public IActionResult AuthenticateUser(UserInput userInput)
         {
             var result = _EntityDbContext.UserInputs  //now only one user check
                 .Any(
@@ -104,7 +103,7 @@ namespace ExcelOperations.Controllers
 
             if (result)
             {
-                return Ok(result);
+                return Ok();
             }
             else
             {
