@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.Metadata;
-
-namespace ExcelOperations.Authenticate
+﻿namespace ExcelOperations.Authenticate
 {
     public class AdminAuthenticate : IAuthenticate
     {

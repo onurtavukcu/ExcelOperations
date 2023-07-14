@@ -1,7 +1,4 @@
-﻿using ExcelOperations.Entities;
-using System.ComponentModel.DataAnnotations;
-
-namespace ExcelOperations.DocEntity.UserInfo
+﻿namespace ExcelOperations.DocEntity.UserInfo
 {
     public class UserInput
     {

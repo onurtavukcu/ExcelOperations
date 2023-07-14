@@ -6,15 +6,8 @@ using AutoMapper;
 using ExcelOperations.Entities.DocEntityDTO.POCDTO;
 using Microsoft.EntityFrameworkCore;
 using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
-using ExcelOperations.DocEntity.Entity.Zugang;
-using ExcelOperations.Entities;
-using System.Reflection;
-using ExcelOperations.DocEntity.PO;
 using ExcelOperations.Entities.DocEntityDTO.PODTO;
-using Microsoft.AspNetCore.Cors;
-using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.UserInfo;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ExcelOperations.Controllers
 {
@@ -25,9 +18,7 @@ namespace ExcelOperations.Controllers
         private readonly EntityDbContext _EntityDbContext;
 
         private readonly IMapper _mapper;
-
-        //public CheckDbTableExistance checkDbTableExistance => new CheckDbTableExistance(_EntityDbContext);
-
+        
         public ExcelOperationsEndPointsController(EntityDbContext DbContext, IMapper mapper)
         {
             _EntityDbContext = DbContext;
@@ -43,7 +34,7 @@ namespace ExcelOperations.Controllers
 
             timer.Start();
 
-            var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
+            var fetchAllData = new InsertAllDataToDbCommand(_EntityDbContext);
 
             await fetchAllData.InsertDataAsync(cancellationToken);
 

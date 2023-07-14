@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace ExcelOperations.Entities.DocEntity
+﻿namespace ExcelOperations.Entities.DocEntity
 {
     public abstract class EntityBase : IEntityBase
     {

@@ -1,5 +1,4 @@
-﻿using ExcelOperations.Entities;
-using ExcelOperations.Entities.DocEntity;
+﻿using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.Entity.PO
 {

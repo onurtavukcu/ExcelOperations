@@ -1,28 +1,15 @@
-﻿using Castle.Components.DictionaryAdapter.Xml;
-using ExcelOperations.Context;
-using ExcelOperations.DocEntity;
-using ExcelOperations.DocEntity.Aktuell;
-using ExcelOperations.DocEntity.Entity.Aktuell;
-using ExcelOperations.DocEntity.Entity.Lager;
-using ExcelOperations.DocEntity.Entity.PO;
-using ExcelOperations.DocEntity.Entity.POC;
-using ExcelOperations.DocEntity.Entity.Zugang;
-using ExcelOperations.DocEntity.PO;
+﻿using ExcelOperations.Context;
 using ExcelOperations.Entities;
 using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
-using Microsoft.DotNet.Scaffolding.Shared.Project;
-using System.Collections;
 using System.Reflection;
 
 namespace ExcelOperations.Commands
 {
-    public class InsertAllDataToDb
+    public class InsertAllDataToDbCommand
     {
         private readonly EntityDbContext _EntityDbContext;
-        private readonly IAllEntities _allEntities;
-
-        public InsertAllDataToDb(EntityDbContext entityDbContext)
+        public InsertAllDataToDbCommand(EntityDbContext entityDbContext)
         {
             _EntityDbContext = entityDbContext;
         }

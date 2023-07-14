@@ -1,6 +1,4 @@
-﻿using ExcelOperations.DocEntity;
-
-namespace ExcelOperations.Entities.DocEntityDTO.POCDTO
+﻿namespace ExcelOperations.Entities.DocEntityDTO.POCDTO
 {
     public class MultiProjectDTO
     {

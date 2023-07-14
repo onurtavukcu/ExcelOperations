@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace ExcelOperations.Authenticate
+﻿namespace ExcelOperations.Authenticate
 {
     public interface IAuthenticate
     {
