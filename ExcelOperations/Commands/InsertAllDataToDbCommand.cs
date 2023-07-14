@@ -9,7 +9,10 @@ using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
 using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
+using Microsoft.DotNet.Scaffolding.Shared.Project;
+using System.Collections;
 using System.Reflection;
 
 namespace ExcelOperations.Commands
@@ -17,56 +20,67 @@ namespace ExcelOperations.Commands
     public class InsertAllDataToDb
     {
         private readonly EntityDbContext _EntityDbContext;
-        
+        private readonly IAllEntities _allEntities;
+
         public InsertAllDataToDb(EntityDbContext entityDbContext)
         {
             _EntityDbContext = entityDbContext;
         }
 
-        public class Entities
-        {
-            public static RouterAktuell routerAktuell { get; set; }
-            public static RouterAktuellOrderList routerAktuellOrdersList { get; set; }
-            public static XWDMAktuell XWDMAktuell { get; set; }
-            public static XWDMAktuellOrderList XWDMaktuellOrderList { get; set; }
-        }
-
         public async Task InsertDataAsync(CancellationToken cancellationToken)
         {
-            //Assembly assembly = Assembly.GetExecutingAssembly();
+            Assembly assembly = Assembly.GetExecutingAssembly();
 
-            //Type[] types = assembly.GetTypes();
+            Type[] types = assembly.GetTypes();
 
-            //Type[] interfaceImplementingTypes = types.Where(t => typeof(IEntityBase).IsAssignableFrom(t)).ToArray();
+            Type[] interfaceImplementingTypes = types
+                .Where(t => typeof(IEntityBase).IsAssignableFrom(t) && !t.IsAbstract && !t.IsInterface)
+                .ToArray();
 
-            //foreach (var modelType in interfaceImplementingTypes)
-            //{
-            //    var excelReaderType = typeof(ExcelFileToModelOps<>).MakeGenericType(modelType);
-            //    dynamic excelReader = Activator.CreateInstance(excelReaderType);
+            var genericExcelReaderType = typeof(ExcelFileToModelOps<>);
 
-            //    var getDataMethod = excelReaderType.GetMethod("GetDataFromExcelAsync");
-            //    var result = await (Task<object>)getDataMethod.Invoke(excelReader, new object[] { 0, cancellationToken });
+            foreach (Type item in interfaceImplementingTypes)
+            {
+                var excelReaderType = genericExcelReaderType.MakeGenericType(item);
+                var excelReaderInstance = Activator.CreateInstance(excelReaderType);
 
-            //    var bulkInsertMethod = _EntityDbContext.GetType().GetMethod("BulkInsertAsync").MakeGenericMethod(modelType);
-            //    await (Task)bulkInsertMethod.Invoke(_EntityDbContext, new object[] { result, cancellationToken });
-            //}
+                if (excelReaderInstance is null)
+                    continue;
+
+                var methodInfo = excelReaderType.GetMethod("GetDataFromExcelAsync");
+
+                if (methodInfo is null)
+                    continue;
+
+                var invocationTask = methodInfo.Invoke
+                (
+                    excelReaderInstance,
+                    new object[]
+                    {
+                        EntityBase.GetTableNumber(item),
+                        cancellationToken
+                    }
+                ) as Task;
+
+                if(invocationTask is null )
+                    continue;
+
+                await invocationTask;
+
+                var taskType = methodInfo.ReturnType;
+
+                var resultProperty = taskType.GetProperty("Result");
+
+                if(resultProperty is null)
+                    continue;
+
+                var invocationResult = resultProperty.GetValue(invocationTask) as IEnumerable<object>;
+
+                await _EntityDbContext.BulkInsertAsync(invocationResult, cancellationToken);
+            }
 
 
-                var modelTypes = Assembly.GetExecutingAssembly().GetTypes()
-                    .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "IEntityBase");
 
-                foreach (var modelType in modelTypes)
-                {
-                    var excelReaderType = typeof(ExcelFileToModelOps<>).MakeGenericType(modelType);
-                    dynamic excelReader = Activator.CreateInstance(excelReaderType);
-
-                    var getDataMethod = excelReaderType.GetMethod("GetDataFromExcelAsync");
-                    var result = await (Task<object>)getDataMethod.Invoke(excelReader, new object[] { 0, cancellationToken });
-
-                    var bulkInsertMethod = _EntityDbContext.GetType().GetMethod("BulkInsertAsync").MakeGenericMethod(modelType);
-                    await (Task)bulkInsertMethod.Invoke(_EntityDbContext, new object[] { result, cancellationToken });
-                }
-            
 
 
 

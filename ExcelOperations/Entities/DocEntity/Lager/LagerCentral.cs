@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.Entity.Lager
 {
-    public class LagerCentral : IEntityBase
+    public class LagerCentral : EntityBase
     {
         public string? DepoID { get; set; }
         public string? Sender { get; set; }

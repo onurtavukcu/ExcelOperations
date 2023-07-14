@@ -5,7 +5,7 @@
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class asdasd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -1314,12 +1314,11 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserInput",
+                name: "UserInputs",
                 columns: table => new
                 {
                     UserName = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false),
-                    emailAddres = table.Column<string>(type: "text", nullable: false)
+                    Password = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1603,7 +1602,7 @@ namespace ExcelOperations.Migrations
                 name: "RouterSwapAktuells");
 
             migrationBuilder.DropTable(
-                name: "UserInput");
+                name: "UserInputs");
 
             migrationBuilder.DropTable(
                 name: "XWDMAktuells");

@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.Entity.PO
 {
-    public class Cisco_PO : IEntityBase//DWM
+    public class Cisco_PO : EntityBase
     {
         public string? CISCO_ID { get; set; }
 

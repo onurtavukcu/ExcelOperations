@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity
 {
-    public class RouterAktuell: IEntityBase
+    public class RouterAktuell: EntityBase
     {   
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }

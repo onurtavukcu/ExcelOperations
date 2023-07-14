@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.Entity.PO
 {
-    public class ZTE_PO : IEntityBase
+    public class ZTE_PO : EntityBase
     {
         public string? ZTE_ID { get; set; }
         public string? PO { get; set; }

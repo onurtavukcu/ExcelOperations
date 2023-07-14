@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.Aktuell
 {
-    public class RouterAktuellOrderList : IEntityBase
+    public class RouterAktuellOrderList : EntityBase, IListAccess
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }

@@ -40,6 +40,7 @@ namespace ExcelOperations.Controllers
         public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
         {
             var timer = new Stopwatch();
+
             timer.Start();
 
             var fetchAllData = new InsertAllDataToDb(_EntityDbContext);
@@ -100,6 +101,9 @@ namespace ExcelOperations.Controllers
                 p => p.UserName == userInput.UserName &&
                 p.Password == userInput.Password
                 );
+
+            ArgumentNullException.ThrowIfNull(result);
+
 
             if (result)
             {

@@ -2,6 +2,7 @@ using ExcelOperations.Context;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,32 @@ if (app.Environment.IsDevelopment())
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
+//app.Use(async (ctx, next) =>
+//{
+//    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:3000/";
+//    if (HttpMethods.IsGet(ctx.Request.Method) || HttpMethods.IsPost(ctx.Request.Method))
+//    {
+//        ctx.Response.Headers["Access-Control-Allow-Headers"] = "*";
+//        await ctx.Response.CompleteAsync();
+//        return;
+//    }
+
+//    await next();
+//}).Build();  //endpoint gelmiyor.
+
+//app.Use(async (ctx, next) =>
+//{
+//    var start = DateTime.UtcNow;
+//    await next.Invoke(ctx); //pass the context
+//    app.Logger.LogInformation($"Duration:{(DateTime.UtcNow - start).TotalMilliseconds}");
+//});
+
+//app.Use((HttpContext ctx, Func<Task> next) =>
+//{
+//    app.Logger.LogInformation("Terminate");
+//    return Task.CompletedTask;
+//});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -64,15 +91,3 @@ app.MapControllers();
 
 app.Run();
 
-app.Use(async (ctx, next) =>
-{
-    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:3000/";
-    if (HttpMethods.IsOptions(ctx.Request.Method))
-    {
-        ctx.Response.Headers["Access-Control-Allow-Headers"] = "*";
-        await ctx.Response.CompleteAsync();
-        return;
-    }
-
-    await next();
-}).Build();  //endpoint gelmiyor.

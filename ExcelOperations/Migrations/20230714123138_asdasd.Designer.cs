@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230502104650_mig1")]
-    partial class mig1
+    [Migration("20230714123138_asdasd")]
+    partial class asdasd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -4426,11 +4426,7 @@ namespace ExcelOperations.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("emailAddres")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.ToTable("UserInput");
+                    b.ToTable("UserInputs");
                 });
 #pragma warning restore 612, 618
         }

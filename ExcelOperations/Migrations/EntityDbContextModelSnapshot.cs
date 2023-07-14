@@ -4423,10 +4423,6 @@ namespace ExcelOperations.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("emailAddres")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.ToTable("UserInputs");
                 });
 #pragma warning restore 612, 618

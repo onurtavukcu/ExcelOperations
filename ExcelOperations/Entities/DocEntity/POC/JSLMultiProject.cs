@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity
 {
-    public class JSLMultiProject : IEntityBase
+    public class JSLMultiProject : EntityBase
     {
         public string? Order { get; set; }
         [ColumnName("Zuständige Region")]

@@ -1,8 +1,9 @@
 ﻿using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 
 namespace ExcelOperations.DocEntity.PO
 {
-    public class Deltatel_PO : IEntityBase
+    public class Deltatel_PO : EntityBase
     {
         public string? PO_ID { get; set; }
 
