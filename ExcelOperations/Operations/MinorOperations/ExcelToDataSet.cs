@@ -25,7 +25,19 @@ namespace ExcelOperations.Operations.MinorOperations
             DataRow row = dataSet.Tables[tablenumber].Rows[rowCount - 1];
 
             var columnCount = dataSet.Tables[tablenumber].Columns.Count;
+
+            var rowCounts = row.Table.Columns.Count;
+
+            //if (!CheckValuesCore.CheckSameColumnName(row))
+            //{
+            //    for (int r = 0; r < rowCounts ; r++)
+            //    {
+            //        row[r]
+            //    }
+            //}
             
+
+
             for (int i = 0; i < columnCount; i++)
             {
                 dataSet.Tables[tablenumber].Columns[i].ColumnName = row[i].ToString();  //same Column Name give exception
