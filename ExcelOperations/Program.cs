@@ -2,6 +2,7 @@ using ExcelOperations.Context;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using ExcelOperations.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,19 +18,16 @@ builder.Services.AddDbContext<EntityDbContext>
         b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
         );
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .Build();
-    });
-});
-
-
-//builder.Services.AddScoped<DbContext>(provider => provider.GetService<EntityDbContext>());
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(builder =>
+//    {
+//        builder.AllowAnyOrigin()
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//               .Build();
+//    });
+//});
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -42,6 +40,7 @@ builder.Services.AddCors(
     })
     );
 
+//builder.Services.AddTransient<ExceptionHandleMiddleware>();
 
 var app = builder.Build();
 
@@ -53,6 +52,19 @@ if (app.Environment.IsDevelopment())
 }
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.UseCors("myCors");
+
+//app.UseMiddleware<ExceptionHandleMiddleware>();
+
+app.MapControllers();
+
+app.Run();
+
 
 //app.Use(async (ctx, next) =>
 //{
@@ -79,14 +91,3 @@ Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 //    app.Logger.LogInformation("Terminate");
 //    return Task.CompletedTask;
 //});
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.UseCors("myCors");
-
-app.MapControllers();
-
-app.Run();
-

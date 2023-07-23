@@ -5,7 +5,7 @@
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class asdasd : Migration
+    public partial class asdasaq : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

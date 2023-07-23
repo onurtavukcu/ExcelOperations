@@ -15,13 +15,9 @@
         public const string ZugangsdatenAktuell = $@"{RootPath}Zugang\Zugangsdaten_aktuell.xlsx,ZugangsdatenAktuell";
         public const string RouterAktuelOrderList = $@"{RootPath}Aktuell\Router_aktuell.xlsx,RouterAktuellOrderList";
         public const string XWDMAktuellOrderList = $@"{RootPath}Aktuell\xWDM_aktuell.xlsx,XWDMAktuellOrderList";
+        public const string TestExcel = $@"{RootPath}\TestExcel.xlsx,TestExceFile";
 
-        public List<string> locationList = new List<string>
-            {
-                "RouterAktuell","XWDMAktuell","LagerCentral","Cisco_PO","Deltatel_PO","ZTE_PO","JSLMultiProject","MultiProject","RouterSwapAktuell","ZugangsdatenAktuell","RouterAktuelOrderList", "XWDMAktuellOrderList"
-            };
-
-        public new List<(string ,int )> locationList1 = new List<(string, int)>
+        public new List<(string, int)> locationList1 = new List<(string, int)>
         {
             ( RouterAktuell, 5),
             ( XWDMAktuell, 5),
@@ -34,22 +30,23 @@
             ( RouterSwapAktuell, 5),
             ( ZugangsdatenAktuell, 5),
             ( RouterAktuelOrderList, 5),
-            ( XWDMAktuellOrderList, 5)
+            ( XWDMAktuellOrderList, 5),
+            ( TestExcel, 1)
         };
 
-        public (string,int) MatchLocation(string loc)
+        public (string, int) MatchLocation(string loc)
         {
             foreach (var item in locationList1)
             {
-                var splitted= item.Item1.Split(",");
+                var splitted = item.Item1.Split(",");
                 var fileName = splitted.Last();
-                
+
                 if (loc == fileName)
                 {
                     return (splitted.First(), item.Item2);
                 }
             }
-            return ("Fail",2);
+            return ("Fail", 2);
         }
     }
 }

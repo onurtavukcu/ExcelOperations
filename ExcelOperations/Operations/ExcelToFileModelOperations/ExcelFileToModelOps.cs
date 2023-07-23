@@ -27,8 +27,6 @@ namespace ExcelOperations.Operations.ExcelToFileModelOperations
 
             foreach (DataRow row in datasets.Result.Tables[tableNumber].Rows)
             {
-                //var modelInstance = new Cisco_PO();
-
                 T instance = new();
 
                 foreach (var property in properties)

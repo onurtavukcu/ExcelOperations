@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
 using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using ExcelOperations.DocEntity.UserInfo;
+using System.Threading;
 
 namespace ExcelOperations.Controllers
 {
@@ -82,6 +83,18 @@ namespace ExcelOperations.Controllers
 
             return Ok(_mapper.Map<IEnumerable<XWDMAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
         }
+
+        [HttpGet]
+        [Route("TextExcelData")]
+        public async Task<IActionResult> TestExcel(CancellationToken cancellationToken)
+        {
+            var fetchAllData = new InsertAllDataToDbCommand(_EntityDbContext);
+
+            await fetchAllData.InsertDataAsync(cancellationToken);
+
+            return Ok();
+        }
+
 
         [HttpPost]
         [Route("Authenticate")]
