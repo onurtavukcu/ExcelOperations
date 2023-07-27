@@ -2,7 +2,6 @@ using ExcelOperations.Context;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using ExcelOperations.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,5 +1,4 @@
 ﻿using ExcelDataReader;
-using ExcelOperations.Middlewares;
 using System.Data;
 
 namespace ExcelOperations.Operations.MinorOperations

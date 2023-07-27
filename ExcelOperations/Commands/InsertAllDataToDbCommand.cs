@@ -1,6 +1,4 @@
 ﻿using ExcelOperations.Context;
-using ExcelOperations.DocEntity;
-using ExcelOperations.DocEntity.Aktuell;
 using ExcelOperations.Entities;
 using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
@@ -73,6 +71,8 @@ namespace ExcelOperations.Commands
             //var result = await excelReader.GetDataFromExcelAsync(1, cancellationToken);
 
             //await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
+
+
         }
     }
 }
