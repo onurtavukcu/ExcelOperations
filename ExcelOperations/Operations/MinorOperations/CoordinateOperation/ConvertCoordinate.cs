@@ -1,6 +1,6 @@
 ﻿using ExcelOperations.Operations.MinorOperations.CoordinateOperation.NewFolder.Models;
 
-namespace ExcelOperations.Operations.MinorOperations.CoordinateOperation.NewFolder
+namespace ExcelOperations.Operations.MinorOperations.CoordinateOperation
 {
     public static class ConvertCoordinate
     {
@@ -11,7 +11,7 @@ namespace ExcelOperations.Operations.MinorOperations.CoordinateOperation.NewFold
 
             var northResult = StringToGpsCoordinate(north);
 
-            var eastLaLong = eastResult.degree + eastResult.minute / 60.0f  + eastResult.second / 3600.0f;
+            var eastLaLong = eastResult.degree + eastResult.minute / 60.0f + eastResult.second / 3600.0f;
             var northLaLong = northResult.degree + northResult.minute / 60.0f + northResult.second / 3600.0f;
 
             var LatLangInstance = new LatLonCoordinate();
@@ -22,15 +22,15 @@ namespace ExcelOperations.Operations.MinorOperations.CoordinateOperation.NewFold
             return LatLangInstance;
         }
 
-        public static Coordinate StringToGpsCoordinate(string LanLongString)        
+        public static Coordinate StringToGpsCoordinate(string LanLongString)
         {
             var result = new Coordinate();
             string[] parts = LanLongString.Split('°', '\'', '\'');
 
-            result.degree= int.Parse(parts[0]);
+            result.degree = int.Parse(parts[0]);
             result.minute = int.Parse(parts[1]);
             result.second = float.Parse(parts[2]) / 100000f;
-                      
+
             return result;
         }
     }
