@@ -1,14 +1,9 @@
-using ExcelOperations.Context;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ExcelOperations.Repository.UnitOfWork;
 using ExcelOperations.Commands;
 using AutoMapper;
-using ExcelOperations.Entities.DocEntityDTO.POCDTO;
-using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
-using ExcelOperations.Entities.DocEntityDTO.PODTO;
-using ExcelOperations.DocEntity.UserInfo;
-using Newtonsoft.Json;
-using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
+using ExcelOperations.Context;
 
 namespace ExcelOperations.Controllers
 {
@@ -16,127 +11,158 @@ namespace ExcelOperations.Controllers
     [Route("[controller]")]
     public class ExcelOperationsEndPointsController : ControllerBase
     {
-        private readonly EntityDbContext _EntityDbContext;
+        private readonly IUnitOfWork _unitOfWork;
 
         private readonly IMapper _mapper;
 
-        public ExcelOperationsEndPointsController(EntityDbContext DbContext, IMapper mapper)
+        public ExcelOperationsEndPointsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _EntityDbContext = DbContext;
-
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        //[Authorize]
-        [HttpGet]
-        [Route("InsertAllDataToDb")]
-        public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
-        {
-            var timer = new Stopwatch();
-
-            timer.Start();
-
-            var fetchAllData = new InsertAllDataToDbCommand(_EntityDbContext);
-
-            await fetchAllData.InsertDataAsync(cancellationToken);
-
-            timer.Stop();
-
-            Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
-
-            return Ok();
-        }
 
         [HttpGet]
-        [Route("GetSomeDataV2")]
-        public IActionResult GetSomeDataFromDBV2()
+        public ActionResult Get()
         {
-            var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
-
-            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
-        }
-
-        [HttpGet]
-        [Route("GetSomeDataV3")]
-        public IActionResult GetSomeDataFromDBV3()
-        {
-            var result = _EntityDbContext.Deltatel_POs.Where(p => p.PR_NO == "3611248906");
-
-            return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(result)); // return only MultiProjectDTODTO's column
-        }
-
-
-        [HttpGet]
-        [Route("GetSomeDataV4")]
-        public IActionResult GetSomeDataFromDBV4()
-        {
-            var result = _EntityDbContext.RouterAktuell.Where(p => p.Ort == "Hamburg");
-
-            return Ok(_mapper.Map<IEnumerable<RouterAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
-        }
-
-
-        [HttpGet]
-        [Route("GetSomeDataV5")]
-        public IActionResult GetSomeDataFromDBV5()
-        {
-            var result = _EntityDbContext.XWDMAktuells.Where(p => p.Projektart == "Aufbau");
-
-            return Ok(_mapper.Map<IEnumerable<XWDMAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
-        }
-
-        [HttpPost]
-        [Route("Authenticate")]
-        public IActionResult AuthenticateUser(UserInput userInput)
-        {
-            var result = _EntityDbContext.UserInputs  //now only one user check
-                .Any(
-                p => p.UserName == userInput.UserName &&
-                p.Password == userInput.Password
-                );
-
-            ArgumentNullException.ThrowIfNull(result);
-
-
-            if (result)
-            {
-                return Ok();
-            }
-            else
-            {
-                return Unauthorized();
-            }
-
-        }
-
-        [HttpGet]
-        [Route("GetRelatedCoordinate")]
-        public IActionResult GetRelatedCoordinate()
-        {
-            List<(float, float)> coordinates = new List<(float,float)>();
+            var routerAktuell = _unitOfWork.LagerCentralRepository.GetAll();
             
-            var query = _EntityDbContext.ZugangsdatenAktuells
-                .Where(t => t.COOP_Contract == "T: Verkauft-C")
-                .Select(x => new { x.Ostl_Lange_WGS84, x.Nordl_Breite_WGS84 });
-
-            foreach (var item in query)
-            {
-                var item1 = item.Ostl_Lange_WGS84;
-
-                var item2 = item.Nordl_Breite_WGS84;
-
-                if (item1 == null && item2 ==null)
-                {
-                    return BadRequest();
-                }
-
-                var result = ConvertCoordinate.ConvertOperation(item2, item1);
-
-                coordinates.Add((result.Latitude, result.Longitude));
-            }
-            string json = JsonConvert.SerializeObject(coordinates.Take(50), Formatting.Indented);
-
-           return Ok(json);
+            return Ok(routerAktuell);
         }
+
+
+        //[HttpGet]
+        //[Route("InsertAllDataToDb")]
+        //public async Task<IActionResult> GetSomeDataFromDB(CancellationToken cancellationToken)
+        //{
+        //    var test = (EntityDbContext)_unitOfWork();
+
+
+        //    return Ok();
+        //}
+
+        //[HttpGet]
+        //[Route("GetSomeDataV2")]
+        //public IActionResult GetSomeDataFromDBV2()
+        //{
+        //    var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
+
+        //    return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
+        //}
+
+        //[HttpGet]
+        //[Route("GetSomeDataV3")]
+        //public IActionResult GetSomeDataFromDBV3()
+        //{
+        //    var result = _EntityDbContext.Deltatel_POs.Where(p => p.PR_NO == "3611248906");
+
+        //    return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(result)); // return only MultiProjectDTODTO's column
+        //}
+
+
+        //[HttpGet]
+        //[Route("GetSomeDataV4")]
+        //public IActionResult GetSomeDataFromDBV4()
+        //{
+        //    var result = _EntityDbContext.RouterAktuell.Where(p => p.Ort == "Hamburg");
+
+        //    return Ok(_mapper.Map<IEnumerable<RouterAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
+        //}
+
+
+        //[HttpGet]
+        //[Route("GetSomeDataV5")]
+        //public ActionResult GetSomeDataFromDBV5()
+        //{
+        //    var timer1 = new Stopwatch();
+
+        //    timer1.Start();
+
+        //    var result = _EntityDbContext.LagerCentrals;
+
+        //    timer1.Stop();
+
+        //    Console.Write("Lager Elapsed Time : " + timer1.Elapsed.TotalSeconds);
+
+        //    return Ok(result);
+
+
+        //    //[HttpGet]
+        //    //public ActionResult Get()
+        //    //{
+        //    //    var timer = new Stopwatch();
+
+        //    //    timer.Start();
+        //    //    var routerAktuell = _unitOfWork.LagerCentralRepository.GetAll();
+        //    //    timer.Stop();
+
+        //    //    Console.Write("Lager Elapsed Time : " + timer.Elapsed.TotalSeconds);
+        //    //    return Ok(routerAktuell);
+        //    //}
+
+        //    //return Ok(_mapper.Map<IEnumerable<XWDMAktuellDTO>>(result)); // return only MultiProjectDTODTO's column
+        //}
+
+        //[HttpGet]
+        //[Route("GetRelatedCoordinate")]
+        //public IActionResult GetRelatedCoordinate()
+        //{
+        //    List<(float, float)> coordinates = new List<(float, float)>();
+
+        //    var query = _EntityDbContext.ZugangsdatenAktuells
+        //        .Where(t => t.COOP_Contract == "T: Verkauft-C")
+        //        .Select(x => new { x.Ostl_Lange_WGS84, x.Nordl_Breite_WGS84 });
+
+        //    foreach (var item in query)
+        //    {
+        //        var item1 = item.Ostl_Lange_WGS84;
+
+        //        var item2 = item.Nordl_Breite_WGS84;
+
+        //        if (item1 == null && item2 == null)
+        //        {
+        //            return BadRequest();
+        //        }
+
+        //        var result = ConvertCoordinate.ConvertOperation(item2, item1);
+
+        //        coordinates.Add((result.Latitude, result.Longitude));
+        //    }
+        //    string json = JsonConvert.SerializeObject(coordinates.Take(50), Formatting.Indented);
+
+        //    return Ok(json);
+        //}
+
+
+
+
+
+
+
+
+
+        //[HttpPost]
+        //[Route("Authenticate")]
+        //public IActionResult AuthenticateUser(UserInput userInput)
+        //{
+        //    var result = _EntityDbContext.UserInputs  //now only one user check
+        //        .Any(
+        //        p => p.UserName == userInput.UserName &&
+        //        p.Password == userInput.Password
+        //        );
+
+        //    ArgumentNullException.ThrowIfNull(result);
+
+
+        //    if (result)
+        //    {
+        //        return Ok();
+        //    }
+        //    else
+        //    {
+        //        return Unauthorized();
+        //    }
+
+        //}
     }
 
 

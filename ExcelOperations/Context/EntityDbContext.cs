@@ -6,7 +6,7 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
-using ExcelOperations.DocEntity.UserInfo;
+using ExcelOperations.Entities.DocEntity.UserInfo;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Context
@@ -31,7 +31,7 @@ namespace ExcelOperations.Context
         public virtual DbSet<XWDMAktuell>? XWDMAktuells { get; set; }
         public virtual DbSet<XWDMAktuellOrderList>? XWDMAktuelOrderLists { get; set; }
         public virtual DbSet<RouterAktuellOrderList>? RouterAktuellOrderLists { get; set; }
-        public virtual DbSet<UserInput>? UserInputs { get; set; }
+        public virtual DbSet<User>? UserInputs { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
         {

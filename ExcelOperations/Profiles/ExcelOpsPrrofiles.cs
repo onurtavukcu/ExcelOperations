@@ -7,6 +7,7 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
+using ExcelOperations.Entities.DocEntity.UserInfo;
 using ExcelOperations.Entities.DocEntityDTO.AktuellDTO;
 using ExcelOperations.Entities.DocEntityDTO.LagerDTO;
 using ExcelOperations.Entities.DocEntityDTO.POCDTO;
@@ -43,6 +44,8 @@ namespace ExcelOperations.Profiles
             CreateMap<RouterSwapAktuell,RouterSwapAktuellDTO>();
 
             CreateMap<ZugangsdatenAktuell, ZugangsdatenAktuellDTO>();
+
+            CreateMap<User, UserDTO>();
         }
     }
 }

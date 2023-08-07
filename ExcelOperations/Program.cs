@@ -2,6 +2,10 @@ using ExcelOperations.Context;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using ExcelOperations.Repository.UnitOfWork;
+using ExcelOperations.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +21,7 @@ builder.Services.AddDbContext<EntityDbContext>
         b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
         );
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(builder =>
-//    {
-//        builder.AllowAnyOrigin()
-//               .AllowAnyMethod()
-//               .AllowAnyHeader()
-//               .Build();
-//    });
-//});
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -39,6 +34,20 @@ builder.Services.AddCors(
     })
     );
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+            .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+        };
+    }
+    );
+builder.Services.AddTransient<ElapsedTimerMiddleware>();
 //builder.Services.AddTransient<ExceptionHandleMiddleware>();
 
 var app = builder.Build();
@@ -50,6 +59,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 app.UseHttpsRedirection();
@@ -57,10 +68,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseCors("myCors");
-
-//app.UseMiddleware<ExceptionHandleMiddleware>();
-
 app.MapControllers();
+
+app.UseMiddleware<ElapsedTimerMiddleware>();
+//app.UseMiddleware<ExceptionHandleMiddleware>();
 
 app.Run();
 

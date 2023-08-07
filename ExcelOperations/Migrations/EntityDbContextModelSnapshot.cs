@@ -4413,15 +4413,16 @@ namespace ExcelOperations.Migrations
                     b.ToTable("RouterAktuell");
                 });
 
-            modelBuilder.Entity("ExcelOperations.DocEntity.UserInfo.UserInput", b =>
+            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.User", b =>
                 {
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<string>("Username")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserName")
+                    b.Property<byte[]>("passwordHash")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("bytea");
+
+                    b.HasKey("Username");
 
                     b.ToTable("UserInputs");
                 });

@@ -2,6 +2,7 @@
 using ExcelOperations.Entities;
 using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
+using ExcelOperations.Repository.UnitOfWork;
 using System.Reflection;
 
 namespace ExcelOperations.Commands
@@ -9,11 +10,11 @@ namespace ExcelOperations.Commands
     public class InsertAllDataToDbCommand
     {
         private readonly EntityDbContext _EntityDbContext;
+
         public InsertAllDataToDbCommand(EntityDbContext entityDbContext)
         {
             _EntityDbContext = entityDbContext;
         }
-
         public async Task InsertDataAsync(CancellationToken cancellationToken)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -62,7 +63,7 @@ namespace ExcelOperations.Commands
                     continue;
 
                 var invocationResult = resultProperty.GetValue(invocationTask) as IEnumerable<object>;
-
+                
                 await _EntityDbContext.BulkInsertAsync(invocationResult, cancellationToken);
             }
 
