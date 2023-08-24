@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using ExcelOperations.Repository.UnitOfWork;
-using ExcelOperations.Commands;
 using AutoMapper;
-using ExcelOperations.Context;
 
 namespace ExcelOperations.Controllers
 {

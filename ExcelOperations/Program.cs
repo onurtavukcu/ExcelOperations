@@ -5,7 +5,10 @@ using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ExcelOperations.Repository.UnitOfWork;
-using ExcelOperations.Middlewares;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using ExcelOperations.Authenticate.AuthenticateOperations.Repos;
+using ExcelOperations.ApiConfiguration.MvcFilter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,59 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExcelOperations", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Here is enter the Bearer key!",
+        Type = SecuritySchemeType.ApiKey,
+        In = ParameterLocation.Header,
+        Name = HeaderNames.Authorization,
+        Scheme = "Bearer"
+    });
+
+    c.OperationFilter<SwaggerAuthenticateHeaderFilter>();
+});
+
+builder.Services.AddAuthentication(
+    options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(
+    o =>
+    {
+        var key = Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JWT:Key").Value);
+        o.SaveToken = true;
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration.GetSection("JWT:Issuer").Value,
+            ValidAudience = builder.Configuration.GetSection("JWT:Audience").Value,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience =false,
+            ValidateLifetime = true
+        };
+
+        o.Events = new JwtBearerEvents()
+        {
+            //OnMessageReceived = messageReceivedContext =>
+            //{
+            //    var authToken = messageReceivedContext.Token;
+
+            //    Console.WriteLine(authToken);
+
+            //    messageReceivedContext.Success();
+                
+            //    return Task.CompletedTask;
+            //}
+        };
+    });
+
+builder.Services.AddTransient<IJWTManagerRepository, JWTManagerRepository>(); 
 
 builder.Services.AddDbContext<EntityDbContext>
     (options =>
@@ -34,70 +89,29 @@ builder.Services.AddCors(
     })
     );
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-        };
-    }
-    );
-builder.Services.AddTransient<ElapsedTimerMiddleware>();
+
+builder.Services.AddAuthorization();
+//builder.Services.AddTransient<ElapsedTimerMiddleware>();
 //builder.Services.AddTransient<ExceptionHandleMiddleware>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-
-
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseCors("myCors");
 app.MapControllers();
 
-app.UseMiddleware<ElapsedTimerMiddleware>();
+//app.UseMiddleware<ElapsedTimerMiddleware>();
 //app.UseMiddleware<ExceptionHandleMiddleware>();
 
 app.Run();
-
-
-//app.Use(async (ctx, next) =>
-//{
-//    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:3000/";
-//    if (HttpMethods.IsGet(ctx.Request.Method) || HttpMethods.IsPost(ctx.Request.Method))
-//    {
-//        ctx.Response.Headers["Access-Control-Allow-Headers"] = "*";
-//        await ctx.Response.CompleteAsync();
-//        return;
-//    }
-
-//    await next();
-//}).Build();  //endpoint gelmiyor.
-
-//app.Use(async (ctx, next) =>
-//{
-//    var start = DateTime.UtcNow;
-//    await next.Invoke(ctx); //pass the context
-//    app.Logger.LogInformation($"Duration:{(DateTime.UtcNow - start).TotalMilliseconds}");
-//});
-
-//app.Use((HttpContext ctx, Func<Task> next) =>
-//{
-//    app.Logger.LogInformation("Terminate");
-//    return Task.CompletedTask;
-//});

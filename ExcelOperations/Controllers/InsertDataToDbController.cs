@@ -3,29 +3,35 @@ using ExcelOperations.Context;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ExcelOperations.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class InsertDataToDbController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public InsertDataToDbController(IUnitOfWork uow)
+
+        public InsertDataToDbController(IUnitOfWork uow, EntityDbContext dbContext)
         {
             _uow = uow;
         }
 
         [HttpGet]
         [Route("InsertAllDataToDb")]
-        public ActionResult Get(CancellationToken cancellationToken)
+        public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
-            var insertInstance = new InsertAllDataToDbCommand(_uow.DbContext);
+            //var insertInstance = new InsertAllDataToDbCommand(_uow);
 
-            var result = insertInstance.InsertDataAsync(cancellationToken);
+            //var result = insertInstance.InsertDataAsync(cancellationToken,);
 
-            return Ok(result);
+            //return await Task.FromResult<IActionResult>(Ok(result));
+
+            var insertInstance = new InsertAllDataToDbCommand(_uow);
+
+            await insertInstance.InsertDataAsync(cancellationToken);
+
+            return await Task.FromResult<IActionResult>(Ok());
         }
     }
 }

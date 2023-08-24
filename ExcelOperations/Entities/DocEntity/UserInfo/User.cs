@@ -6,6 +6,6 @@ namespace ExcelOperations.Entities.DocEntity.UserInfo
     {
         [Key]
         public string Username { get; set; }
-        public byte[] passwordHash { get; set; }        
+        public string PasswordHash { get; set; }        
     }
 }

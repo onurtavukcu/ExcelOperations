@@ -1,4 +1,5 @@
 ﻿using ExcelOperations.Context;
+using System.Linq.Expressions;
 
 namespace ExcelOperations.Repository.Implementor
 {
@@ -29,6 +30,11 @@ namespace ExcelOperations.Repository.Implementor
             return _dbContext.Set<T>().ToList();
         }
 
+        public IEnumerable<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            return _dbContext.Set<T>().Where(filter);
+        }
+
         public T GetById(int id)
         {
             return _dbContext.Set<T>().Find(id);
@@ -42,6 +48,15 @@ namespace ExcelOperations.Repository.Implementor
         public void RemoveRange(IEnumerable<T> entities)
         {
            _dbContext.Set<T>().RemoveRange(entities);
+        }
+
+        public Task BulkSaveAsync(IEnumerable<object> entity, CancellationToken cancellationToken)
+        {
+            return _dbContext.BulkInsertAsync(entity,cancellationToken);
+        } 
+        public int SaveEntity(T entity)
+        {
+            return _dbContext.SaveChanges();
         }
     }
 }

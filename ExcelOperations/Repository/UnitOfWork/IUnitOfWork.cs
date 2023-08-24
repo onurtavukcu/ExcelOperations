@@ -12,11 +12,10 @@ using ExcelOperations.Repository.ModelRepository.XWDMAktuellOrderListRepository;
 using ExcelOperations.Repository.ModelRepository.XWDMAktuellRepository;
 using ExcelOperations.Repository.ModelRepository.ZTEPORepository;
 using ExcelOperations.Repository.ModelRepository.ZuganssdatenAktuellRepository;
-using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Repository.UnitOfWork
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         EntityDbContext DbContext { get; }
         ICiscoPoRepository CiscoPoRepository { get; }

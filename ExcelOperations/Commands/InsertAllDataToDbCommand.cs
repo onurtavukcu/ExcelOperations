@@ -1,5 +1,4 @@
-﻿using ExcelOperations.Context;
-using ExcelOperations.Entities;
+﻿using ExcelOperations.Entities;
 using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
 using ExcelOperations.Repository.UnitOfWork;
@@ -9,11 +8,13 @@ namespace ExcelOperations.Commands
 {
     public class InsertAllDataToDbCommand
     {
-        private readonly EntityDbContext _EntityDbContext;
+        //private readonly EntityDbContext _EntityDbContext;
 
-        public InsertAllDataToDbCommand(EntityDbContext entityDbContext)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public InsertAllDataToDbCommand(IUnitOfWork unitOfWork)
         {
-            _EntityDbContext = entityDbContext;
+            _unitOfWork = unitOfWork;
         }
         public async Task InsertDataAsync(CancellationToken cancellationToken)
         {
@@ -63,8 +64,8 @@ namespace ExcelOperations.Commands
                     continue;
 
                 var invocationResult = resultProperty.GetValue(invocationTask) as IEnumerable<object>;
-                
-                await _EntityDbContext.BulkInsertAsync(invocationResult, cancellationToken);
+
+                await _unitOfWork.DbContext.BulkInsertAsync(invocationResult, cancellationToken);
             }
 
             //var excelReader = new ExcelFileToModelOps<RouterAktuellOrderList>();

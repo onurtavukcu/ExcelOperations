@@ -24,18 +24,36 @@ namespace ExcelOperations.Authenticate.AuthenticateOperations
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(_configuration.GetSection("AppSettings:Token").Value));
+
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
-            var token = new JwtSecurityToken
-                (
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: creds
-                );
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity
+            (
+                claims
+            ),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds,
+                //Audience = Audience,
+                //Issuer = Issuer,
+                //IssuedAt = issueDateTime,
+                //NotBefore = issueDateTime
+            };
 
-            return jwt;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
+
+            //var token = new JwtSecurityToken
+            //    (
+            //    claims: claims,
+            //    expires: DateTime.Now.AddDays(1),
+            //    signingCredentials: creds
+            //    );
+                     
+            return tokenHandler.WriteToken(token);
         }
     }
 }

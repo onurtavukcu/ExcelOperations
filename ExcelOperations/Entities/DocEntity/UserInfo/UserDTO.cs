@@ -2,7 +2,7 @@
 {
     public class UserDTO
     {
-        public string Username { get; set; }
-        public byte[] Password { get; set; }
+        public string? Username { get; set; }
+        public string? Password { get; set; }
     }
 }
