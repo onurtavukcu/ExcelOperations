@@ -66,11 +66,6 @@ namespace ExcelOperations.Repository.UnitOfWork
 
         public IZuganssdatenAktuellRepository ZuganssdatenAktuellRepository { get; private set; }
 
-        //public void Dispose()
-        //{
-        //    _dbContext.Dispose();
-        //}
-
         public int Save()
         {
             return _dbContext.SaveChanges();

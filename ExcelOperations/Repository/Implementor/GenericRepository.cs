@@ -20,7 +20,7 @@ namespace ExcelOperations.Repository.Implementor
             _dbContext.Set<T>().AddRange(entities);
         }
 
-        public IEnumerable<T> Find(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _dbContext.Set<T>().Where(predicate);
         }
@@ -42,7 +42,7 @@ namespace ExcelOperations.Repository.Implementor
 
         public void Remove(T entity)
         {
-            _dbContext.Set<T>().Remove(entity);
+            _dbContext.Set< T>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)

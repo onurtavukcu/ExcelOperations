@@ -12,7 +12,7 @@ namespace ExcelOperations.Authenticate.AuthenticateOperations
             var valueBytes = Encoding.UTF8.GetBytes(value);
             var hashValue = hmac.ComputeHash(valueBytes);
 
-            return Encoding.UTF8.GetString(hashValue);
+            return Convert.ToBase64String(hashValue);
         }
 
         public static bool VerifyPasswordHash(string password, string passwordHash)

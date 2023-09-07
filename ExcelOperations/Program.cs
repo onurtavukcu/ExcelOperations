@@ -68,6 +68,9 @@ builder.Services.AddAuthentication(
         };
     });
 
+//builder.Services.AddDefaultIdentity<IdentityUser>(... )
+//    .AddRoles<IdentityRole>();
+
 builder.Services.AddTransient<IJWTManagerRepository, JWTManagerRepository>(); 
 
 builder.Services.AddDbContext<EntityDbContext>
@@ -88,11 +91,16 @@ builder.Services.AddCors(
         .AllowAnyMethod().Build();
     })
     );
+builder.Services.AddLogging();
 
+builder.Services.AddAuthorization(
+    opt =>
+    {
+        opt.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+    }
+    );
 
-builder.Services.AddAuthorization();
-//builder.Services.AddTransient<ElapsedTimerMiddleware>();
-//builder.Services.AddTransient<ExceptionHandleMiddleware>();
+//builder.Services.AddTransient<EnsureDatabaseMiddleware>();
 
 var app = builder.Build();
 
@@ -110,8 +118,5 @@ app.UseAuthorization();
 
 app.UseCors("myCors");
 app.MapControllers();
-
-//app.UseMiddleware<ElapsedTimerMiddleware>();
-//app.UseMiddleware<ExceptionHandleMiddleware>();
 
 app.Run();

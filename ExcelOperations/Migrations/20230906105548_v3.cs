@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class newMig : Migration
+    public partial class v3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -1314,15 +1317,16 @@ namespace ExcelOperations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserInputs",
+                name: "UserTypes",
                 columns: table => new
                 {
-                    Username = table.Column<string>(type: "text", nullable: false),
-                    passwordHash = table.Column<byte[]>(type: "bytea", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    role = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserInputs", x => x.Username);
+                    table.PrimaryKey("PK_UserTypes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1573,6 +1577,39 @@ namespace ExcelOperations.Migrations
                 constraints: table =>
                 {
                 });
+
+            migrationBuilder.CreateTable(
+                name: "UserInputs",
+                columns: table => new
+                {
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    UserTypeId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserInputs", x => x.Username);
+                    table.ForeignKey(
+                        name: "FK_UserInputs_UserTypes_UserTypeId",
+                        column: x => x.UserTypeId,
+                        principalTable: "UserTypes",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserTypes",
+                columns: new[] { "id", "role" },
+                values: new object[,]
+                {
+                    { 1, "Admin" },
+                    { 2, "RegularUser" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserInputs_UserTypeId",
+                table: "UserInputs",
+                column: "UserTypeId");
         }
 
         /// <inheritdoc />
@@ -1616,6 +1653,9 @@ namespace ExcelOperations.Migrations
 
             migrationBuilder.DropTable(
                 name: "ZugangsdatenAktuells");
+
+            migrationBuilder.DropTable(
+                name: "UserTypes");
         }
     }
 }

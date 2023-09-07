@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>952ab024-fefd-4e83-b97e-0afdf8be946c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +36,7 @@
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
-    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="7.22.4" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="7.22.6" />
   </ItemGroup>
 
   <ItemGroup>

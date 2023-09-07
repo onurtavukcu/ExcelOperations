@@ -4422,9 +4422,54 @@ namespace ExcelOperations.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("UserTypeId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Username");
 
+                    b.HasIndex("UserTypeId");
+
                     b.ToTable("UserInputs");
+                });
+
+            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.UserType", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("role")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("UserTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            role = "Admin"
+                        },
+                        new
+                        {
+                            id = 2,
+                            role = "RegularUser"
+                        });
+                });
+
+            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.User", b =>
+                {
+                    b.HasOne("ExcelOperations.Entities.DocEntity.UserInfo.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserType");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,51 +17,51 @@ namespace ExcelOperations.Controllers
 
         private readonly IConfiguration _configuration;
 
-
-        //private readonly IJWTManagerRepository _JWTManagerRepository;
-        //public AuthenticateController(IJWTManagerRepository jWTManagerRepository, IUnitOfWork unitOfWork)
-        //{
-        //    _JWTManagerRepository = jWTManagerRepository;
-        //    _unitOfWork = unitOfWork;
-        //}
-
-        //[AllowAnonymous]
-        //[HttpPost]
-        //[Route("authenticate")]
-        //public IActionResult Authenticate(User user) 
-        //{
-        //    var token = _JWTManagerRepository.Authenticate(user);
-
-        //    if (token == null)
-        //    {
-        //        return Unauthorized();
-        //    }
-
-        //    return Ok(token);
-        //}
-
-
-        //[HttpGet]
-        //[Route("AllUsers")]
-        //public IActionResult Get() 
-        //{
-        //    var result = _unitOfWork.UserRepository.GetAll();
-        //    return Ok(result);
-        //}
-
-
-
         public AuthenticateController(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _configuration = configuration;
-
         }
 
         [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> Register(UserDTO request, CancellationToken cancellationToken)
+        [Route("RegisterAdmin")]
+        public async Task<IActionResult> RegisterAdmin(UserDTO request, CancellationToken cancellationToken)
+        {
+            User user = new User();
+
+            var userNameQuery = _unitOfWork.UserRepository.GetAll().SingleOrDefault(usr => usr.Username == request.Username);
+
+            if (userNameQuery is not null)
+            {
+                return BadRequest("User Already Exist");
+            }
+
+            if (request.Username is null || request.Password is null)
+            {
+                return BadRequest("Enter Valid Username or Password!");
+            }
+            var hashResult = PasswordHashingOperations.CreateHash(request.Password); //fix returned string
+
+            user.Username = request.Username;
+            user.PasswordHash = hashResult;
+            user.UserTypeId = 1;
+
+            _unitOfWork.UserRepository.Add(user);
+
+            var result = _unitOfWork.UserRepository.SaveEntity(user);
+
+            if (!(result == 1))
+            {
+                return BadRequest("User Can No Be Save!");
+            }
+
+            return await Task.FromResult<IActionResult>(Ok(result));
+        }
+
+        [HttpPost]
+        [Route("RegisterRegularUser")]
+        public async Task<IActionResult> RegisterRegularUser(UserDTO request, CancellationToken cancellationToken)
         {
             User user = new User();
 
@@ -80,6 +80,7 @@ namespace ExcelOperations.Controllers
 
             user.Username = request.Username;
             user.PasswordHash = hashResult;
+            user.UserTypeId = 2;
 
             _unitOfWork.UserRepository.Add(user);
 
@@ -128,8 +129,27 @@ namespace ExcelOperations.Controllers
         public ActionResult<string> GetClaims()
         {
             var userName = User?.Identity?.Name;
+
             return Ok(userName);
         }
+
+        //[HttpGet]
+        //[Authorize(Policy = "Admin")]
+        //public ActionResult<string> GetClaims()
+        //{
+        //    var userName = User?.Identity?.Name;
+
+        //    return Ok(userName);
+        //}
+
+        //[HttpGet]
+        //[Authorize(Policy = "AdminOnly")]
+        //public ActionResult<string> GetClaimer()
+        //{
+        //    var userName = User?.Identity?.Name;
+
+        //    return Ok(userName);
+        //}
     }
 }
  

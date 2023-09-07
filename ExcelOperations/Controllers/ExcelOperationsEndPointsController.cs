@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ExcelOperations.Repository.UnitOfWork;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExcelOperations.Controllers
 {
@@ -19,6 +20,7 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Get()
         {
             var routerAktuell = _unitOfWork.LagerCentralRepository.GetAll();

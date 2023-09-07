@@ -30,7 +30,7 @@
           "System.Linq.Async": "6.0.1",
           "System.Text.Encoding.CodePages": "7.0.0",
           "System.Threading.Tasks": "4.3.0",
-          "Z.EntityFramework.Extensions.EFCore": "7.22.4"
+          "Z.EntityFramework.Extensions.EFCore": "7.22.6"
         },
         "runtime": {
           "ExcelOperations.dll": {}
@@ -3137,7 +3137,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "Z.EntityFramework.Extensions.EFCore/7.22.4": {
+      "Z.EntityFramework.Extensions.EFCore/7.22.6": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
@@ -3147,8 +3147,8 @@
         },
         "runtime": {
           "lib/net6.0/Z.EntityFramework.Extensions.EFCore.dll": {
-            "assemblyVersion": "7.22.4.0",
-            "fileVersion": "7.22.4.0"
+            "assemblyVersion": "7.22.6.0",
+            "fileVersion": "7.22.6.0"
           }
         }
       }
@@ -5001,12 +5001,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "Z.EntityFramework.Extensions.EFCore/7.22.4": {
+    "Z.EntityFramework.Extensions.EFCore/7.22.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WbRFcCWKPRPUo5Xosl4uxW7YHH4EUEF7OamOFlhN1VlP07B4baTXnjdXsqGhB1iSAgdbsREtFii7yRRIeS7Wkw==",
-      "path": "z.entityframework.extensions.efcore/7.22.4",
-      "hashPath": "z.entityframework.extensions.efcore.7.22.4.nupkg.sha512"
+      "sha512": "sha512-fGqZvo0kHY3A0UTkYQxW9jq19S2x34cKdue2jzP+MQGjAieurVnlALgtKZxwGqaFoWPLphsJbKZ/Nqyobxw13w==",
+      "path": "z.entityframework.extensions.efcore/7.22.6",
+      "hashPath": "z.entityframework.extensions.efcore.7.22.6.nupkg.sha512"
     }
   }
 }

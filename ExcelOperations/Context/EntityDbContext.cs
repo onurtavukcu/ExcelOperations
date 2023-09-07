@@ -16,9 +16,8 @@ namespace ExcelOperations.Context
         public EntityDbContext(DbContextOptions<EntityDbContext> options)
             : base(options)
         {
-
         }
-        
+
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
@@ -32,13 +31,39 @@ namespace ExcelOperations.Context
         public virtual DbSet<XWDMAktuellOrderList>? XWDMAktuelOrderLists { get; set; }
         public virtual DbSet<RouterAktuellOrderList>? RouterAktuellOrderLists { get; set; }
         public virtual DbSet<User>? UserInputs { get; set; }
-        
+        public virtual DbSet<UserType>? UserTypes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
         {
-            base.OnModelCreating(modelBuilder);             
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityDbContext).Assembly);
-          
+
+            // UserType bilgisi DB ilk create olduktan sonra var olmadığı için,
+            // Register user hata alıyor. En başta, userType bilgisinin DB'ye kayıt olmasını yada kontrolünü sağlar.
+            modelBuilder.Entity<UserType>().HasData( 
+                new UserType
+                {
+                    id = 1,
+                    role = UserTypeEnums.Admin
+                },
+                new UserType
+                {
+                    id = 2,
+                    role = UserTypeEnums.RegularUser
+                });;
+
+
+
+
+
+
+            //modelBuilder.Entity<User>()
+            //    .HasOne(u => u.UserType)
+            //    .WithMany()
+            //    .HasForeignKey(u => u.UserType);
+
+
             //modelBuilder.Entity<RouterSwapAktuell>(i =>
             //{
             //    //builder.Property(entity => entity.Id).ValueGeneratedOnAdd();
