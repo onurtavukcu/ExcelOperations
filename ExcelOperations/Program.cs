@@ -9,6 +9,7 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using ExcelOperations.Authenticate.AuthenticateOperations.Repos;
 using ExcelOperations.ApiConfiguration.MvcFilter;
+using ExcelOperations.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -100,8 +101,6 @@ builder.Services.AddAuthorization(
     }
     );
 
-//builder.Services.AddTransient<EnsureDatabaseMiddleware>();
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -118,5 +117,7 @@ app.UseAuthorization();
 
 app.UseCors("myCors");
 app.MapControllers();
+app.UseMiddleware<WorkedMiddleware>();
+//app.UseWorkedM();
 
 app.Run();

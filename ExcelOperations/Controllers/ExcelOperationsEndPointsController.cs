@@ -26,6 +26,7 @@ namespace ExcelOperations.Controllers
             var routerAktuell = _unitOfWork.LagerCentralRepository.GetAll();
             
             return Ok(routerAktuell);
+
         }
 
 
