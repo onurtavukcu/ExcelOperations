@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExcelOperations.Entities.DocEntity.UserInfo
+namespace ExcelOperations.Entities.UserInfo
 {
     public class UserType
     {

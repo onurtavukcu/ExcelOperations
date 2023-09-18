@@ -1,4 +1,4 @@
-﻿using ExcelOperations.Entities.DocEntity.UserInfo;
+﻿using ExcelOperations.Entities.UserInfo;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -6,11 +6,11 @@ using System.Text;
 
 namespace ExcelOperations.Authenticate.AuthenticateOperations
 {
-    public class CreateTokenOperations
+    public class TokenOperations
     {
         private readonly IConfiguration _configuration;
         private readonly string _JWTKey;
-        public CreateTokenOperations(IConfiguration configuration)
+        public TokenOperations(IConfiguration configuration)
         {
             _configuration = configuration;
             _JWTKey = _configuration.GetSection("JWT:Key").Value!;
@@ -46,10 +46,10 @@ namespace ExcelOperations.Authenticate.AuthenticateOperations
             return tokenHandler.WriteToken(token);
         }
 
-        public LoginUserDto ValidateJwtToken(string token)
+        public bool ValidateJwtToken(string token)
         {
             if (token == null)
-                return null;
+                return false;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_JWTKey);
@@ -61,24 +61,23 @@ namespace ExcelOperations.Authenticate.AuthenticateOperations
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 //var _userName = int.Parse(jwtToken.Claims.First(x => x.Type == "Username").Value);
-                var _userRole = int.Parse(jwtToken.Claims.First(x => x.Type == "UserTypeId").Value);
-
+                //var _userRole = int.Parse(jwtToken.Claims.First(x => x.Type == "UserTypeId").Value);
+                return true;
                 
-                return
-                    new LoginUserDto
-                    {                
-                        userRole = _userRole
-                    };
+                //return  
+                //    new LoginUserDto
+                //    {                
+                //        userRole = _userRole
+                //    };
             }
             catch
             {
                 // return null if validation fails
-                return null;
+                return false;
             }
         }
 

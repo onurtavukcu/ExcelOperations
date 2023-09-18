@@ -7,9 +7,12 @@ using Microsoft.IdentityModel.Tokens;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-using ExcelOperations.Authenticate.AuthenticateOperations.Repos;
 using ExcelOperations.ApiConfiguration.MvcFilter;
 using ExcelOperations.Middlewares;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Swashbuckle.AspNetCore.Filters;
+using ExcelOperations.Entities.UserInfo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,11 +40,21 @@ builder.Services.AddAuthentication(
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
     })
     .AddJwtBearer(
     o =>
     {
-        var key = Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JWT:Key").Value);
+        var jsonKey = builder.Configuration.GetSection("JWT:Key").Value;
+
+        if (jsonKey == null)
+        {
+            throw new ArgumentNullException($"{nameof(jsonKey)}JWT Key Is Null");
+        }
+
+        var key = Encoding.UTF8.GetBytes(jsonKey);
+
+     
         o.SaveToken = true;
         o.TokenValidationParameters = new TokenValidationParameters
         {
@@ -50,7 +63,7 @@ builder.Services.AddAuthentication(
             ValidAudience = builder.Configuration.GetSection("JWT:Audience").Value,
             IssuerSigningKey = new SymmetricSecurityKey(key),
             ValidateIssuer = false,
-            ValidateAudience =false,
+            ValidateAudience = false,
             ValidateLifetime = true
         };
 
@@ -68,11 +81,6 @@ builder.Services.AddAuthentication(
             //}
         };
     });
-
-//builder.Services.AddDefaultIdentity<IdentityUser>(... )
-//    .AddRoles<IdentityRole>();
-
-builder.Services.AddTransient<IJWTManagerRepository, JWTManagerRepository>(); 
 
 builder.Services.AddDbContext<EntityDbContext>
     (options =>
@@ -97,7 +105,8 @@ builder.Services.AddLogging();
 builder.Services.AddAuthorization(
     opt =>
     {
-        opt.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+        opt.AddPolicy(UserTypeEnums.Admin.ToString(), policy => policy.RequireClaim("Role", "1"));
+        opt.AddPolicy(UserTypeEnums.RegularUser.ToString(), policy => policy.RequireClaim("Role", "2"));
     }
     );
 

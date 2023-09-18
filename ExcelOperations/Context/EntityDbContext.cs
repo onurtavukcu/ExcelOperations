@@ -6,7 +6,7 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
-using ExcelOperations.Entities.DocEntity.UserInfo;
+using ExcelOperations.Entities.UserInfo;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Context

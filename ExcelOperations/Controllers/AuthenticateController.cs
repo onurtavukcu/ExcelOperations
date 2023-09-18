@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ExcelOperations.Authenticate.AuthenticateOperations;
-using ExcelOperations.Entities.DocEntity.UserInfo;
+using ExcelOperations.Entities.UserInfo;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +26,7 @@ namespace ExcelOperations.Controllers
 
         [HttpPost]
         [Route("RegisterAdmin")]
-        public async Task<IActionResult> RegisterAdmin(UserDTO request, CancellationToken cancellationToken)
+        public async Task<IActionResult> RegisterAdmin(UserDTO request, CancellationToken cancellationToken)  // Bu endpoint test için. Admin Kullanıcısı statik olarak elle tanımlanmalı.
         {
             User user = new User();
 
@@ -34,7 +34,7 @@ namespace ExcelOperations.Controllers
 
             if (userNameQuery is not null)
             {
-                return BadRequest("User Already Exist");
+                return  BadRequest("User Already Exist");
             }
 
             if (request.Username is null || request.Password is null)
@@ -117,7 +117,7 @@ namespace ExcelOperations.Controllers
                 return BadRequest("Wrong Password!");
             }
 
-            var tokenInstance = new CreateTokenOperations(_configuration);
+            var tokenInstance = new TokenOperations(_configuration);
 
             string token = tokenInstance.CreateToken(userNameQuery);
 
@@ -125,31 +125,24 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public ActionResult<string> GetClaims()
+        [Route("testAuthAdmin")]
+        [Authorize(Roles = "1")]
+        public ActionResult<string> TestAuthAdmin()
         {
             var userName = User?.Identity?.Name;
 
             return Ok(userName);
         }
 
-        //[HttpGet]
-        //[Authorize(Policy = "Admin")]
-        //public ActionResult<string> GetClaims()
-        //{
-        //    var userName = User?.Identity?.Name;
+        [HttpGet]
+        [Route("testAuthRergular")]
+        [Authorize(Roles = "2")]
+        public ActionResult<string> TestAuthRegular()
+        {
+            var userName = User?.Identity?.Name;
 
-        //    return Ok(userName);
-        //}
-
-        //[HttpGet]
-        //[Authorize(Policy = "AdminOnly")]
-        //public ActionResult<string> GetClaimer()
-        //{
-        //    var userName = User?.Identity?.Name;
-
-        //    return Ok(userName);
-        //}
+            return Ok(userName);
+        }
     }
 }
  

@@ -1,4 +1,4 @@
-﻿namespace ExcelOperations.Entities.DocEntity.UserInfo
+﻿namespace ExcelOperations.Entities.UserInfo
 {
     public enum UserTypeEnums
     {
