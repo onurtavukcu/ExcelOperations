@@ -282,13 +282,6 @@ C:\Users\adm\source\repos\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Syste
 C:\Users\adm\source\repos\ExcelOperations\ExcelOperations\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\adm\source\repos\ExcelOperations\ExcelOperations\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\adm\source\repos\ExcelOperations\ExcelOperations\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.AssemblyReference.cache
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.AssemblyInfoInputs.cache
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.AssemblyInfo.cs
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.CoreCompileInputs.cache
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\appsettings.json
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\ExcelOperations.exe
@@ -378,9 +371,12 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\NuGet.Pack
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Scrutor.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\SQLitePCLRaw.core.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -584,6 +580,13 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\runtimes\w
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.AssemblyReference.cache
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.AssemblyInfoInputs.cache
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.AssemblyInfo.cs
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.CoreCompileInputs.cache
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.ExcelOperations.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.build.ExcelOperations.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ExcelOperations.props
@@ -598,6 +601,3 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\refint\Exc
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.pdb
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.genruntimeconfig.cache
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ref\ExcelOperations.dll
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Scrutor.dll
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

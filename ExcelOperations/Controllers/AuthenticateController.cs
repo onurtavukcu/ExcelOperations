@@ -47,7 +47,7 @@ namespace ExcelOperations.Controllers
             user.PasswordHash = hashResult;
             user.UserTypeId = 1;
 
-            _unitOfWork.UserRepository.Add(user);
+            _unitOfWork.UserRepository.AddAsync(user);
 
             var result = _unitOfWork.UserRepository.SaveEntity(user);
 
@@ -82,7 +82,7 @@ namespace ExcelOperations.Controllers
             user.PasswordHash = hashResult;
             user.UserTypeId = 2;
 
-            _unitOfWork.UserRepository.Add(user);
+            _unitOfWork.UserRepository.AddAsync(user);
 
             var result = _unitOfWork.UserRepository.SaveEntity(user);
 

@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using ExcelOperations.Repository.UnitOfWork;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using ExcelOperations.Entities.DocEntityDTO.POCDTO;
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Controllers
 {
@@ -40,14 +43,22 @@ namespace ExcelOperations.Controllers
         //    return Ok();
         //}
 
-        //[HttpGet]
-        //[Route("GetSomeDataV2")]
-        //public IActionResult GetSomeDataFromDBV2()
-        //{
-        //    var result = _EntityDbContext.MultiProjects.Where(p => p.NE_Nr == "203792153");
+        [HttpGet]
+        [Route("GetSomeDataV2")]
+        public IActionResult GetSomeDataFromDBV2(CancellationToken cancellationToken)
+        {
+            var timer1 = new Stopwatch();
+            timer1.Start();
 
-        //    return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
-        //}
+            var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
+
+            timer1.Stop();
+            Console.WriteLine(timer1.Elapsed.TotalMilliseconds);
+
+           return Ok(_mapper.Map<ActionResult<MultiProjectDTO>>(result)); // return only MultiProjectDTODTO's column
+
+           // return Ok(result);
+        }
 
         //[HttpGet]
         //[Route("GetSomeDataV3")]
