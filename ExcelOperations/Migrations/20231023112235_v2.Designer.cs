@@ -2,6 +2,7 @@
 using ExcelOperations.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    partial class EntityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231023112235_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4437,14 +4440,8 @@ namespace ExcelOperations.Migrations
                     b.HasData(
                         new
                         {
-                            Username = "regular",
-                            PasswordHash = "azeq8DRLVq2MmJ97I0WdTLDjoOo0cbe+CiZLl7H3Q0Zl6QoTGFmDYLORZvpEih6XzzGd1KD0C7cmeOoTw0r/hQ==",
-                            UserTypeId = 1
-                        },
-                        new
-                        {
                             Username = "admin",
-                            PasswordHash = "yCCu9ZtdYNbBQvFTCMnrozHVaSQgSToVJbJZw9TUx+nEwDKKtmLlQzXNK4BvOJ1sawfBIueJil60Q8+wV1YXcQ==",
+                            PasswordHash = "VcS9JLT3Hw1Lk8pY8PaE7BG5uxEu2eWcjXY3DxtG7VaJh73ANKDfOhZp5nXMWOC6I5QJvgPMpHKxxiEbMZY6oA==",
                             UserTypeId = 1
                         });
                 });

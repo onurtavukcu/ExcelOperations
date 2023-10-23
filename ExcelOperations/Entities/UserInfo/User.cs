@@ -8,7 +8,7 @@ namespace ExcelOperations.Entities.UserInfo
         [Key]
         public string Username { get; set; }
         public string PasswordHash { get; set; }
-        public UserType UserType { get; set; }
+        public virtual UserType UserType { get; set; }
         [ForeignKey(nameof(UserType))]
         public int UserTypeId { get; set; }
 

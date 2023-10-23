@@ -26,11 +26,10 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult Get()
         {
             var routerAktuell = _unitOfWork.LagerCentralRepository.GetAll();
-            
+
             return Ok(routerAktuell);
 
         }
@@ -44,22 +43,34 @@ namespace ExcelOperations.Controllers
 
         //    return Ok();
         //}
-
+       
         [HttpGet]
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV2(CancellationToken cancellationToken)
         {
-            var timer1 = new Stopwatch();
-            timer1.Start();
-
             var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
 
-            timer1.Stop();
-            Console.WriteLine(timer1.Elapsed.TotalMilliseconds);
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+        }
 
-           return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+        [HttpGet]
+        [Authorize(Roles = "1")]
+        [Route("GetSomeDataAdmin")]
+        public IActionResult GetDataAdmin(CancellationToken cancellationToken)
+        {
+            var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
 
-           // return Ok(result);
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "2")]
+        [Route("GetSomeDataRegular")]
+        public IActionResult GetDataRegular(CancellationToken cancellationToken)
+        {
+            var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
+
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
         }
 
         [HttpGet]
@@ -69,6 +80,22 @@ namespace ExcelOperations.Controllers
             var result = _unitOfWork.DeltatelPORepository.GetByFilter(p => p.PR_NO == "3611248906");
 
             return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(result));
+        }
+
+        [HttpGet]
+        [Route("GetSomeDataV4Pageging")]
+        public IActionResult GetAllData(int page = 1, int pageSize = 10)
+        {
+            var totalCount = _unitOfWork.DeltatelPORepository.GetAll().Count();
+
+            var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+
+            var dataPerPages = _unitOfWork.DeltatelPORepository
+                .GetAll()
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
+            return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(dataPerPages));
         }
 
         [HttpGet]
@@ -99,38 +126,6 @@ namespace ExcelOperations.Controllers
 
             return Ok(json);
         }
-
-
-
-
-
-
-
-
-
-        //[HttpPost]
-        //[Route("Authenticate")]
-        //public IActionResult AuthenticateUser(UserInput userInput)
-        //{
-        //    var result = _EntityDbContext.UserInputs  //now only one user check
-        //        .Any(
-        //        p => p.UserName == userInput.UserName &&
-        //        p.Password == userInput.Password
-        //        );
-
-        //    ArgumentNullException.ThrowIfNull(result);
-
-
-        //    if (result)
-        //    {
-        //        return Ok();
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized();
-        //    }
-
-        //}
     }
 
 

@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20230906105548_v3")]
-    partial class v3
+    [Migration("20231023112042_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,9 @@ namespace ExcelOperations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -4416,7 +4419,7 @@ namespace ExcelOperations.Migrations
                     b.ToTable("RouterAktuell");
                 });
 
-            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.User", b =>
+            modelBuilder.Entity("ExcelOperations.Entities.UserInfo.User", b =>
                 {
                     b.Property<string>("Username")
                         .HasColumnType("text");
@@ -4433,9 +4436,17 @@ namespace ExcelOperations.Migrations
                     b.HasIndex("UserTypeId");
 
                     b.ToTable("UserInputs");
+
+                    b.HasData(
+                        new
+                        {
+                            Username = "admin",
+                            PasswordHash = "Bw5TYuqmsI+lDSIeoRn0Jc25kwhpmkXA4aIMRt/+iSxxN0hasvQg3xM5aCptoaPTrEJrZLV2i4Iu3/9TlJmQ4w==",
+                            UserTypeId = 1
+                        });
                 });
 
-            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.UserType", b =>
+            modelBuilder.Entity("ExcelOperations.Entities.UserInfo.UserType", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -4443,9 +4454,8 @@ namespace ExcelOperations.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("role")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("role")
+                        .HasColumnType("integer");
 
                     b.HasKey("id");
 
@@ -4455,18 +4465,18 @@ namespace ExcelOperations.Migrations
                         new
                         {
                             id = 1,
-                            role = "Admin"
+                            role = 0
                         },
                         new
                         {
                             id = 2,
-                            role = "RegularUser"
+                            role = 1
                         });
                 });
 
-            modelBuilder.Entity("ExcelOperations.Entities.DocEntity.UserInfo.User", b =>
+            modelBuilder.Entity("ExcelOperations.Entities.UserInfo.User", b =>
                 {
-                    b.HasOne("ExcelOperations.Entities.DocEntity.UserInfo.UserType", "UserType")
+                    b.HasOne("ExcelOperations.Entities.UserInfo.UserType", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)

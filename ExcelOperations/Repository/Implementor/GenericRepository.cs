@@ -36,9 +36,10 @@ namespace ExcelOperations.Repository.Implementor
             return _dbContext.Set<T>().AsNoTracking();
         }
 
-        public IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter)
+        public virtual IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter)
         {
-            return _dbContext.Set<T>().Where(filter).AsNoTracking();
+            //return _dbContext.Set<T>().Where(filter).AsNoTracking();
+            return _dbContext.Set<T>().Where(filter);
         }
 
         public void Remove(T entity)
@@ -59,5 +60,10 @@ namespace ExcelOperations.Repository.Implementor
         {
             return _dbContext.SaveChanges();
         }
+
+        //public IQueryable<T> MySelect(Expression<Func<T, object>> dtoObject)
+        //{
+        //    return _dbContext.Set<T>().Select()   //DTO dönmek için!
+        //}
     }
 }

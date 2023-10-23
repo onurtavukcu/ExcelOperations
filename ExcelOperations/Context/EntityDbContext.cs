@@ -1,4 +1,5 @@
-﻿using ExcelOperations.DocEntity;
+﻿using ExcelOperations.Authenticate.AuthenticateOperations;
+using ExcelOperations.DocEntity;
 using ExcelOperations.DocEntity.Aktuell;
 using ExcelOperations.DocEntity.Entity.Aktuell;
 using ExcelOperations.DocEntity.Entity.Lager;
@@ -41,7 +42,7 @@ namespace ExcelOperations.Context
 
             // UserType bilgisi DB ilk create olduktan sonra var olmadığı için,
             // Register user hata alıyor. En başta, userType bilgisinin DB'ye kayıt olmasını yada kontrolünü sağlar.
-            modelBuilder.Entity<UserType>().HasData( 
+            modelBuilder.Entity<UserType>().HasData(
                 new UserType
                 {
                     id = 1,
@@ -51,9 +52,25 @@ namespace ExcelOperations.Context
                 {
                     id = 2,
                     role = UserTypeEnums.RegularUser
-                });;
+                }); ;
 
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Username = "regular",
+                    UserTypeId = 1,
+                    PasswordHash = PasswordHashingOperations.CreateHash("regular")
+                }
+                );
 
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Username = "admin",
+                    UserTypeId = 1,
+                    PasswordHash = PasswordHashingOperations.CreateHash("admin")
+                }
+                );
 
 
 
@@ -72,10 +89,11 @@ namespace ExcelOperations.Context
             //}
             //);
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseLazyLoadingProxies();
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+            base.OnConfiguring(optionsBuilder);
+        }
 
     }
 }

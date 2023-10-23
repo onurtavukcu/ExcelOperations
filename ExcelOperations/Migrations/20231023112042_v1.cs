@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class v3 : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -1322,7 +1322,7 @@ namespace ExcelOperations.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    role = table.Column<string>(type: "text", nullable: false)
+                    role = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1602,9 +1602,14 @@ namespace ExcelOperations.Migrations
                 columns: new[] { "id", "role" },
                 values: new object[,]
                 {
-                    { 1, "Admin" },
-                    { 2, "RegularUser" }
+                    { 1, 0 },
+                    { 2, 1 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "UserInputs",
+                columns: new[] { "Username", "PasswordHash", "UserTypeId" },
+                values: new object[] { "admin", "Bw5TYuqmsI+lDSIeoRn0Jc25kwhpmkXA4aIMRt/+iSxxN0hasvQg3xM5aCptoaPTrEJrZLV2i4Iu3/9TlJmQ4w==", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserInputs_UserTypeId",
