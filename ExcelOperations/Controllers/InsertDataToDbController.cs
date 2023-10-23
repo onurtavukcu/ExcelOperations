@@ -21,12 +21,6 @@ namespace ExcelOperations.Controllers
         [Route("InsertAllDataToDb")]
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
-            //var insertInstance = new InsertAllDataToDbCommand(_uow);
-
-            //var result = insertInstance.InsertDataAsync(cancellationToken,);
-
-            //return await Task.FromResult<IActionResult>(Ok(result));
-
             var insertInstance = new InsertAllDataToDbCommand(_uow);
 
             await insertInstance.InsertDataAsync(cancellationToken);

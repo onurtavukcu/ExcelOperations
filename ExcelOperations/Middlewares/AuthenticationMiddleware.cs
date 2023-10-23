@@ -26,15 +26,6 @@ namespace ExcelOperations.Middlewares
                     return;
                 }
             }
-
-            // TODO: Validate and decode the token here
-            // Implement your JWT validation logic, validate the token, and extract user information
-
-            // Example: 
-            // var userId = YourJwtValidationMethod(token);
-            // context.Items["UserId"] = userId;
-
-            // Call the next delegate/middleware in the pipeline
             _next(context);
         }
     }

@@ -34,14 +34,12 @@ namespace ExcelOperations.Context
         public virtual DbSet<User>? UserInputs { get; set; }
         public virtual DbSet<UserType>? UserTypes { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)  //db ayağa kalkarken çalışır oto olarak ekliyor
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityDbContext).Assembly);
 
-            // UserType bilgisi DB ilk create olduktan sonra var olmadığı için,
-            // Register user hata alıyor. En başta, userType bilgisinin DB'ye kayıt olmasını yada kontrolünü sağlar.
             modelBuilder.Entity<UserType>().HasData(
                 new UserType
                 {
@@ -71,23 +69,6 @@ namespace ExcelOperations.Context
                     PasswordHash = PasswordHashingOperations.CreateHash("admin")
                 }
                 );
-
-
-
-
-            //modelBuilder.Entity<User>()
-            //    .HasOne(u => u.UserType)
-            //    .WithMany()
-            //    .HasForeignKey(u => u.UserType);
-
-
-            //modelBuilder.Entity<RouterSwapAktuell>(i =>
-            //{
-            //    //builder.Property(entity => entity.Id).ValueGeneratedOnAdd();
-            //    //builder.Property(entity => entity.Address).HasColumnName("Zustandige_Region");
-            //    i.Property<int>("id").ValueGeneratedOnAdd();
-            //}
-            //);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

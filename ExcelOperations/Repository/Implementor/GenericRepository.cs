@@ -60,10 +60,5 @@ namespace ExcelOperations.Repository.Implementor
         {
             return _dbContext.SaveChanges();
         }
-
-        //public IQueryable<T> MySelect(Expression<Func<T, object>> dtoObject)
-        //{
-        //    return _dbContext.Set<T>().Select()   //DTO dönmek için!
-        //}
     }
 }

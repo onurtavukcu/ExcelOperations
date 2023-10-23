@@ -15,8 +15,6 @@ namespace ExcelOperations.Middlewares
         }
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            
-
             await Task.FromResult(EnsureAndMigrateDatabase());
         }
 
