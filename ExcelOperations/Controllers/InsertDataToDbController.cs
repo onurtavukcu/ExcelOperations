@@ -10,18 +10,18 @@ namespace ExcelOperations.Controllers
     [Route("[controller]")]
     public class InsertDataToDbController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public InsertDataToDbController(IUnitOfWork uow, EntityDbContext dbContext)
+        public InsertDataToDbController(IUnitOfWork unitOfWork, EntityDbContext dbContext)
         {
-            _uow = uow;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         [Route("InsertAllDataToDb")]
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
-            var insertInstance = new InsertAllDataToDbCommand(_uow);
+            var insertInstance = new InsertAllDataToDbCommand(_unitOfWork);
 
             await insertInstance.InsertDataAsync(cancellationToken);
 

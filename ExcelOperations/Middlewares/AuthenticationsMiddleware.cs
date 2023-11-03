@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Routing.Patterns;
 
 namespace ExcelOperations.Middlewares
 {
-    public class AuthenticationMiddleware
+    public class AuthenticationsMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public AuthenticationMiddleware(RequestDelegate next)
+        public AuthenticationsMiddleware(RequestDelegate next)
         {
             _next = next;
         }
@@ -15,6 +15,9 @@ namespace ExcelOperations.Middlewares
         public async Task Invoke(HttpContext context)
         {
             var route = context.Request.Path.Value;
+
+            var authorization = context.Request.RouteValues;
+
             if (route != "/Authenticate")
             {
                 var token = context.Request.Headers["Authorization"].FirstOrDefault();
@@ -26,7 +29,7 @@ namespace ExcelOperations.Middlewares
                     return;
                 }
             }
-            _next(context);
+            await _next(context);
         }
     }
 }

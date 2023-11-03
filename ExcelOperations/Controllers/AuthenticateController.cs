@@ -13,14 +13,11 @@ namespace ExcelOperations.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        private readonly IMapper _mapper;
-
         private readonly IConfiguration _configuration;
 
-        public AuthenticateController(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
+        public AuthenticateController(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
             _configuration = configuration;
         }
 

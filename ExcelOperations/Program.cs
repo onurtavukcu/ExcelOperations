@@ -127,6 +127,7 @@ app.UseAuthorization();
 app.UseCors("myCors");
 app.MapControllers();
 app.UseMiddleware<WorkedMiddleware>();
+app.UseMiddleware<AuthenticationsMiddleware>();  //its worked
 //app.UseWorkedM();
 
 app.Run();

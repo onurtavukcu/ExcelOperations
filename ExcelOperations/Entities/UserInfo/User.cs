@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExcelOperations.Entities.UserInfo
@@ -11,13 +12,5 @@ namespace ExcelOperations.Entities.UserInfo
         public virtual UserType UserType { get; set; }
         [ForeignKey(nameof(UserType))]
         public int UserTypeId { get; set; }
-
-
-        //public User(string username, string passwordHash, UserType userType)
-        //{
-        //    UserType = userType;
-        //    Username = username;    
-        //    PasswordHash = passwordHash;
-        //}
     }
 }

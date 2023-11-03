@@ -19,6 +19,7 @@ namespace ExcelOperations.Context
         {
         }
 
+        #region DbSets
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
@@ -33,6 +34,7 @@ namespace ExcelOperations.Context
         public virtual DbSet<RouterAktuellOrderList>? RouterAktuellOrderLists { get; set; }
         public virtual DbSet<User>? UserInputs { get; set; }
         public virtual DbSet<UserType>? UserTypes { get; set; }
+        #endregion DbSets
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -70,11 +72,11 @@ namespace ExcelOperations.Context
                 }
                 );
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseLazyLoadingProxies();
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseLazyLoadingProxies();
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
     }
 }

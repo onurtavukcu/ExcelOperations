@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using Newtonsoft.Json;
 using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
+using ExcelOperations.DocEntity.Entity.Zugang;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Data;
 
 namespace ExcelOperations.Controllers
 {
@@ -35,6 +38,7 @@ namespace ExcelOperations.Controllers
         }
        
         [HttpGet]
+        [Authorize(Roles = "1")]
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV2(CancellationToken cancellationToken)
         {
@@ -107,5 +111,38 @@ namespace ExcelOperations.Controllers
 
             return Ok(json);
         }
+
+        //[HttpGet]
+        //[Route("testConcreateTable")]
+        //public IActionResult ConcreateRAble() 
+        //{
+        //    var result = from t1 in _unitOfWork.DbContext.MultiProjects
+        //                 join t2 in _unitOfWork.DbContext.RouterAktuell on t1.Objekt_ID equals t2.Projekt_ID
+        //                 join t3 in _unitOfWork.DbContext.Cisco_POs on t1.Objekt_ID equals t3.Objekt_ID
+        //                 join t4 in _unitOfWork.DbContext.Deltatel_POs on t1.Objekt_ID equals t4.Site_Code
+        //                 join t5 in _unitOfWork.DbContext.LagerCentrals on t1.Objekt_ID equals t5.PID
+        //                 join t6 in _unitOfWork.DbContext.RouterAktuellOrderLists on t1.Objekt_ID equals t6.Projekt_ID
+        //                 join t7 in _unitOfWork.DbContext.RouterSwapAktuells on t1.Objekt_ID equals t7.Projekt_ID
+        //                 join t8 in _unitOfWork.DbContext.XWDMAktuelOrderLists on t1.Objekt_ID equals t8.Projekt_ID
+        //                 join t9 in _unitOfWork.DbContext.XWDMAktuells on t1.Objekt_ID equals t9.Projekt_ID
+
+        //                 select new
+        //                 {
+        //                     ProjectId =t1.Objekt_ID,
+        //                     X = t1.Order, t1.Plan_Stx48,t1.Plan_Stx50,    // An exception has been raised that is likely due to a transient failure.
+        //                     A = t1.Objekt_Herkunft,
+        //                     B = t2.Projektstand,
+        //                     C= t3.PO_Elemnt,
+        //                     D= t4.Site_Code,
+        //                     E= t5.PID,
+        //                     F= t6.Projekt_ID,
+        //                     G= t7.Projekt_ID,
+        //                     H=t8.Projekt_ID,
+        //                     I = t9.Projekt_ID
+        //                 };
+
+
+        //    return Ok(result);
+        //}
     }
 }

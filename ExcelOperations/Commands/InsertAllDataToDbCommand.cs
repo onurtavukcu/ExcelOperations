@@ -73,8 +73,6 @@ namespace ExcelOperations.Commands
             //var result = await excelReader.GetDataFromExcelAsync(1, cancellationToken);
 
             //await _EntityDbContext.BulkInsertAsync(result, cancellationToken);
-
-
         }
     }
 }
