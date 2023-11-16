@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     [DbContext(typeof(EntityDbContext))]
-    [Migration("20231023112042_v1")]
-    partial class v1
+    [Migration("20231113134249_test55")]
+    partial class test55
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,15 +20,18 @@ namespace ExcelOperations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Aktuell.RouterAktuellOrderList", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("ARTIKELBEZEICHNUNG")
                         .HasColumnType("text");
 
@@ -86,11 +89,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("RouterAktuellOrderLists");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.Aktuell.XWDMAktuell", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Alt")
                         .HasColumnType("text");
 
@@ -457,11 +468,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("XWDMAktuells");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.Aktuell.XWDMAktuellOrderList", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("ARTIKELBEZEICHNUNG")
                         .HasColumnType("text");
 
@@ -519,11 +538,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("XWDMAktuelOrderLists");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.Lager.LagerCentral", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Action")
                         .HasColumnType("text");
 
@@ -587,11 +614,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("when")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("LagerCentrals");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.PO.Cisco_PO", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Action")
                         .HasColumnType("text");
 
@@ -664,11 +699,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Team")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("Cisco_POs");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.PO.ZTE_PO", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Acc1")
                         .HasColumnType("text");
 
@@ -804,11 +847,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("note1")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("ZTE_POs");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.POC.MultiProject", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Alt")
                         .HasColumnType("text");
 
@@ -1889,11 +1940,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Östl_Länge_WGS84")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("MultiProjects");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.POC.RouterSwapAktuell", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Aktuell")
                         .HasColumnType("text");
 
@@ -2524,11 +2583,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("geplantes_Ende")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("RouterSwapAktuells");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.Entity.Zugang.ZugangsdatenAktuell", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Besonderheiten")
                         .HasColumnType("text");
 
@@ -2610,11 +2677,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("ZugangsdatenAktuells");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.JSLMultiProject", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Alt")
                         .HasColumnType("text");
 
@@ -3857,11 +3932,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Östl_Länge_WGS84")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("JSLMultiProjects");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.PO.Deltatel_PO", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Acc_to_DTL1")
                         .HasColumnType("text");
 
@@ -3961,11 +4044,19 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("invoice2")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("Deltatel_POs");
                 });
 
             modelBuilder.Entity("ExcelOperations.DocEntity.RouterAktuell", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
                     b.Property<string>("Alt")
                         .HasColumnType("text");
 
@@ -4416,6 +4507,8 @@ namespace ExcelOperations.Migrations
                     b.Property<string>("Zustandige_Region")
                         .HasColumnType("text");
 
+                    b.HasKey("id");
+
                     b.ToTable("RouterAktuell");
                 });
 
@@ -4440,8 +4533,14 @@ namespace ExcelOperations.Migrations
                     b.HasData(
                         new
                         {
+                            Username = "regular",
+                            PasswordHash = "C7GUINN91oWXmxasDWFSUu9JI8WRSAuJkpKwZfnBaoBfMfPkuH8LJgDHt/k1/uzrHDRDtnPO9AKahWXuHiHr2g==",
+                            UserTypeId = 1
+                        },
+                        new
+                        {
                             Username = "admin",
-                            PasswordHash = "Bw5TYuqmsI+lDSIeoRn0Jc25kwhpmkXA4aIMRt/+iSxxN0hasvQg3xM5aCptoaPTrEJrZLV2i4Iu3/9TlJmQ4w==",
+                            PasswordHash = "1fWnc/rP9gPMYjZSQBQOachV6Rvey6l/Cw4i1f+fyzUgm9Lu61KVkwFJpb16+4wvXXUmNhaJyYZyueZ13XcfIw==",
                             UserTypeId = 1
                         });
                 });

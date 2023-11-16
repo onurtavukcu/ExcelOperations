@@ -8,7 +8,6 @@ namespace ExcelOperations.Configurations.PO
     {
         public void Configure(EntityTypeBuilder<Cisco_PO> builder)
         {
-            builder.HasNoKey();
         }
     }
 }

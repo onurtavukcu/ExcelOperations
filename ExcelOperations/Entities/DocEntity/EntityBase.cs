@@ -2,6 +2,8 @@
 {
     public abstract class EntityBase : IEntityBase
     {
+        public int id { get; set; }
+
         public static int GetTableNumber(Type type)
         {
             return type

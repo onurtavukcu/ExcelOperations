@@ -8,7 +8,6 @@ namespace ExcelOperations.Configurations.POC
     {
         public void Configure(EntityTypeBuilder<JSLMultiProject> builder)
         {
-            builder.HasNoKey();
         }
     }
 }

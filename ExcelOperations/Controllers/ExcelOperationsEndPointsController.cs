@@ -3,13 +3,9 @@ using ExcelOperations.Repository.UnitOfWork;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using ExcelOperations.Entities.DocEntityDTO.POCDTO;
-using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
 using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using Newtonsoft.Json;
 using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
-using ExcelOperations.DocEntity.Entity.Zugang;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Data;
 
 namespace ExcelOperations.Controllers
@@ -38,13 +34,12 @@ namespace ExcelOperations.Controllers
         }
        
         [HttpGet]
-        [Authorize(Roles = "1")]
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV2(CancellationToken cancellationToken)
         {
             var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
 
-            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
+            return Ok(_mapper.Map<IEnumerable<RouterSwapAktuellDTO>>(result));
         }
 
         [HttpGet]
@@ -82,6 +77,19 @@ namespace ExcelOperations.Controllers
 
             return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(dataPerPages));
         }
+
+        [HttpGet]
+        [Route("GetAllProjectNumbers")]
+        public IActionResult GetPRojectId()
+        {
+            var projectList = new List<int>();
+
+            var lager = _unitOfWork.LagerCentralRepository.GetByFilter(t => t.PID != null).SelectMany(k=>k.PID);
+
+
+            return Ok();
+        }
+
 
         [HttpGet]
         [Route("GetRelatedCoordinate")]

@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExcelOperations.Migrations
 {
     /// <inheritdoc />
-    public partial class v1 : Migration
+    public partial class test55 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,6 +17,8 @@ namespace ExcelOperations.Migrations
                 name: "Cisco_POs",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CISCO_ID = table.Column<string>(type: "text", nullable: true),
                     PO_No = table.Column<string>(type: "text", nullable: true),
                     PO_Date = table.Column<string>(type: "text", nullable: true),
@@ -44,12 +46,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Cisco_POs", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Deltatel_POs",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PO_ID = table.Column<string>(type: "text", nullable: true),
                     Change_History = table.Column<string>(type: "text", nullable: true),
                     Rep_Office = table.Column<string>(type: "text", nullable: true),
@@ -86,12 +91,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Deltatel_POs", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "JSLMultiProjects",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Order = table.Column<string>(type: "text", nullable: true),
                     Zuständige_Region = table.Column<string>(type: "text", nullable: true),
                     MP_Bezeichnung = table.Column<string>(type: "text", nullable: true),
@@ -509,12 +517,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_JSLMultiProjects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "LagerCentrals",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     DepoID = table.Column<string>(type: "text", nullable: true),
                     Sender = table.Column<string>(type: "text", nullable: true),
                     Lager1 = table.Column<string>(type: "text", nullable: true),
@@ -539,12 +550,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_LagerCentrals", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "MultiProjects",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Order = table.Column<string>(type: "text", nullable: true),
                     Zuständige_Region = table.Column<string>(type: "text", nullable: true),
                     MP_Bezeichnung = table.Column<string>(type: "text", nullable: true),
@@ -908,12 +922,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_MultiProjects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "RouterAktuell",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_EPlus = table.Column<string>(type: "text", nullable: true),
@@ -1067,12 +1084,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_RouterAktuell", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "RouterAktuellOrderLists",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_TEF = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_EPlus = table.Column<string>(type: "text", nullable: true),
@@ -1095,12 +1115,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_RouterAktuellOrderLists", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "RouterSwapAktuells",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr = table.Column<string>(type: "text", nullable: true),
                     Dim_Squads_MAC = table.Column<string>(type: "text", nullable: true),
@@ -1314,6 +1337,7 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_RouterSwapAktuells", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1333,6 +1357,8 @@ namespace ExcelOperations.Migrations
                 name: "XWDMAktuells",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_EPlus = table.Column<string>(type: "text", nullable: true),
@@ -1458,12 +1484,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_XWDMAktuells", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "XWDMAktuelOrderLists",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_TEF = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_EPlus = table.Column<string>(type: "text", nullable: true),
@@ -1486,12 +1515,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_XWDMAktuelOrderLists", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ZTE_POs",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ZTE_ID = table.Column<string>(type: "text", nullable: true),
                     PO = table.Column<string>(type: "text", nullable: true),
                     Order_Position = table.Column<string>(type: "text", nullable: true),
@@ -1540,12 +1572,15 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_ZTE_POs", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ZugangsdatenAktuells",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Zustandige_Region = table.Column<string>(type: "text", nullable: true),
                     SO_Nr = table.Column<string>(type: "text", nullable: true),
                     SO_Nr_EPlus = table.Column<string>(type: "text", nullable: true),
@@ -1576,6 +1611,7 @@ namespace ExcelOperations.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_ZugangsdatenAktuells", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1609,7 +1645,11 @@ namespace ExcelOperations.Migrations
             migrationBuilder.InsertData(
                 table: "UserInputs",
                 columns: new[] { "Username", "PasswordHash", "UserTypeId" },
-                values: new object[] { "admin", "Bw5TYuqmsI+lDSIeoRn0Jc25kwhpmkXA4aIMRt/+iSxxN0hasvQg3xM5aCptoaPTrEJrZLV2i4Iu3/9TlJmQ4w==", 1 });
+                values: new object[,]
+                {
+                    { "admin", "1fWnc/rP9gPMYjZSQBQOachV6Rvey6l/Cw4i1f+fyzUgm9Lu61KVkwFJpb16+4wvXXUmNhaJyYZyueZ13XcfIw==", 1 },
+                    { "regular", "C7GUINN91oWXmxasDWFSUu9JI8WRSAuJkpKwZfnBaoBfMfPkuH8LJgDHt/k1/uzrHDRDtnPO9AKahWXuHiHr2g==", 1 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserInputs_UserTypeId",

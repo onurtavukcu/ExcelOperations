@@ -8,7 +8,6 @@ namespace ExcelOperations.Configurations
     {
         public void Configure(EntityTypeBuilder<Deltatel_PO> builder)
         {
-            builder.HasNoKey();
         }
     }
 }

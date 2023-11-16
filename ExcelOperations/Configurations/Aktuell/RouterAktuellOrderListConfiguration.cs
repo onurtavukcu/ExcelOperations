@@ -8,7 +8,9 @@ namespace ExcelOperations.Configurations.Aktuell
     {
         public void Configure(EntityTypeBuilder<RouterAktuellOrderList> builder)
         {
-            builder.HasNoKey();
+            //    builder.HasKey(key => key.id);
+
+            //    builder.Property(gen => gen.id).ValueGeneratedOnAdd();
         }
     }
 }

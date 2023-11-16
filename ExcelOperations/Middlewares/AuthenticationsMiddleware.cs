@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing.Patterns;
-
-namespace ExcelOperations.Middlewares
+﻿namespace ExcelOperations.Middlewares
 {
     public class AuthenticationsMiddleware
     {

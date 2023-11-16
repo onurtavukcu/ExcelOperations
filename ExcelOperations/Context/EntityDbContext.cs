@@ -7,7 +7,10 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
+using ExcelOperations.Entities;
+using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Entities.UserInfo;
+using ExcelOperations.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Context
@@ -20,6 +23,8 @@ namespace ExcelOperations.Context
         }
 
         #region DbSets
+        //public virtual DbSet<ProjectIdMapping> ProjectIdMappings { get; set; }
+        //public virtual DbSet<SONRMapping> SONRMappings { get; set; }
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
@@ -71,7 +76,7 @@ namespace ExcelOperations.Context
                     PasswordHash = PasswordHashingOperations.CreateHash("admin")
                 }
                 );
-        }
+        }        
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseLazyLoadingProxies();

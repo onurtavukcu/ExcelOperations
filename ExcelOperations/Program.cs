@@ -9,9 +9,6 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using ExcelOperations.ApiConfiguration.MvcFilter;
 using ExcelOperations.Middlewares;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Swashbuckle.AspNetCore.Filters;
 using ExcelOperations.Entities.UserInfo;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,7 +51,7 @@ builder.Services.AddAuthentication(
 
         var key = Encoding.UTF8.GetBytes(jsonKey);
 
-     
+
         o.SaveToken = true;
         o.TokenValidationParameters = new TokenValidationParameters
         {
@@ -76,7 +73,7 @@ builder.Services.AddAuthentication(
             //    Console.WriteLine(authToken);
 
             //    messageReceivedContext.Success();
-                
+
             //    return Task.CompletedTask;
             //}
         };
@@ -100,7 +97,14 @@ builder.Services.AddCors(
         .AllowAnyMethod().Build();
     })
     );
-builder.Services.AddLogging();
+builder.Services.AddLogging(
+    log =>
+    {
+        log.ClearProviders();
+        log.AddDebug();
+        log.AddConsole();
+    }
+    );
 
 builder.Services.AddAuthorization(
     opt =>
@@ -127,7 +131,8 @@ app.UseAuthorization();
 app.UseCors("myCors");
 app.MapControllers();
 app.UseMiddleware<WorkedMiddleware>();
-app.UseMiddleware<AuthenticationsMiddleware>();  //its worked
+//app.UseMiddleware<ExceptionMiddleware>(); it not work, work on it!
+//app.UseMiddleware<AuthenticationsMiddleware>();  //its worked but check all endpoint which has token?
 //app.UseWorkedM();
 
 app.Run();
