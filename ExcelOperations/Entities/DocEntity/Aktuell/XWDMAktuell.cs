@@ -6,7 +6,7 @@ namespace ExcelOperations.DocEntity.Entity.Aktuell
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }
-        public string? SO_Nr { get; set; }
+        public int? SO_Nr { get; set; }
         public string? SO_Nr_EPlus { get; set; }
 
         [ColumnName("CtK-Status")]
@@ -27,7 +27,7 @@ namespace ExcelOperations.DocEntity.Entity.Aktuell
         public string? Projektbemerkung { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? Projekt_ID { get; set; } // project
+        public int? Projekt_ID { get; set; } // project
         public string? Bezeichnung { get; set; }
 
         [ColumnName("Verantw Organisationseinheit")]

@@ -1,4 +1,5 @@
 ﻿using ExcelOperations.Entities.DocEntity;
+using ExcelOperations.Mappings;
 
 namespace ExcelOperations.DocEntity.Entity.PO
 {
@@ -32,7 +33,7 @@ namespace ExcelOperations.DocEntity.Entity.PO
         public string? NE_Nr { get; set; }
 
         [ColumnName("Objekt-ID")]
-        public string? Objekt_ID { get; set; }  //project Id
+        public int? Objekt_ID { get; set; }  //project Id
         public string? NE { get; set; }
         public string? Projekt { get; set; }
         public string? Address { get; set; }
@@ -46,6 +47,8 @@ namespace ExcelOperations.DocEntity.Entity.PO
         public string? Action_Detail { get; set; }
         public string? Column1 { get; set; }
         public string? Column2 { get; set; }
+        public ProjectIdMapping ProjectIdMapping { get; set; }
+        public int ProjectMappingId { get; set; }
 
     }
 }

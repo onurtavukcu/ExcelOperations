@@ -15,19 +15,15 @@ namespace ExcelOperations.Mappings
         public int? LagerCentralId { get; set; }
         public int? ZTEPOID { get; set; }
         public int? RouterAktuellId { get; set; }
-        public int? RouterAktuellOrderListId { get; set; }
         public int? XWDMAktuelId { get; set; }
-        public int? XWDMAktuelsOrderListId { get; set; }
         public int? RouterSwapAktuellId { get; set; }
-        public int? ZugansdateId { get; set; }
+        public int? ZugansdatenId { get; set; }
 
         public virtual LagerCentral? LagerCentral { get; set; }
         public virtual ZTE_PO? ZTE_PO { get; set; }
         public virtual RouterAktuell? RouterAktuell { get; set; }
-        public virtual RouterAktuellOrderList? RouterAktuellOrderList { get; set; }
         public virtual XWDMAktuell? XWDMAktuell { get; set; }
-        public virtual XWDMAktuellOrderList? XWDMAktuellOrderList { get; set; }
         public virtual RouterSwapAktuell? RouterSwapAktuell { get; set; }
-        public virtual ZugangsdatenAktuell? zugangsdatenAktuell { get; set; }
+        public virtual ZugangsdatenAktuell? ZugangsdatenAktuell { get; set; }
     }
 }

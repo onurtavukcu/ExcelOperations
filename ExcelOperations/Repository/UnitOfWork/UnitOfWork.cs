@@ -4,9 +4,11 @@ using ExcelOperations.Repository.ModelRepository.DeltatelPORepository;
 using ExcelOperations.Repository.ModelRepository.JSLMultiPorjectRepository;
 using ExcelOperations.Repository.ModelRepository.LagerCentralRepository;
 using ExcelOperations.Repository.ModelRepository.MultiProjectRepository;
+using ExcelOperations.Repository.ModelRepository.ProjectIdMappingRepository;
 using ExcelOperations.Repository.ModelRepository.RouterAktuellOrderListRepository;
 using ExcelOperations.Repository.ModelRepository.RouterAktuellRepository;
 using ExcelOperations.Repository.ModelRepository.RouterSwapAktuellRepository;
+using ExcelOperations.Repository.ModelRepository.SONRMappingRepository;
 using ExcelOperations.Repository.ModelRepository.UserRepository;
 using ExcelOperations.Repository.ModelRepository.XWDMAktuellOrderListRepository;
 using ExcelOperations.Repository.ModelRepository.XWDMAktuellRepository;
@@ -34,37 +36,25 @@ namespace ExcelOperations.Repository.UnitOfWork
             XWDMAktuellRepository = new XWDMAktuellRepository(dbContext);
             ZTEPORepository = new ZTEPORepository(dbContext);
             ZuganssdatenAktuellRepository = new ZuganssdatenAktuellRepository(dbContext);
-
-
-        }
+            projectMappingRepository = new ProjectMappingRepository(dbContext);
+            SONRMappingRepository = new SONRMappingRepository(dbContext);        }
 
         public EntityDbContext DbContext => _dbContext;
-
         public ICiscoPoRepository CiscoPoRepository { get; set; }
-
         public IDeltatelPORepository DeltatelPORepository { get; set; }
-
         public IJSLMultiPorjectRepository JSLMultiPorjectRepository { get; set; }
-
         public ILagerCentralRepository LagerCentralRepository { get; set; }
-
         public IMultiProjectRepository MultiProjectRepository { get; set; }
-
         public IRouterAktuellOrderListRepository RouterAktuellOrderListRepository { get; set; }
-
         public IRouterAktuellRepository RouterAktuellRepository { get; set; }
-
         public IRouterSwapAktuellRepository RouterSwapAktuellRepository { get; set; }
-
         public IUserRepository UserRepository { get; set; }
-
         public IXWDMAktuellOrderListRepository XWDMAktuellOrderListRepository { get; set; }
-
         public IXWDMAktuellRepository XWDMAktuellRepository { get; set; }
-
         public IZTEPORepository ZTEPORepository { get; private set; }
-
         public IZuganssdatenAktuellRepository ZuganssdatenAktuellRepository { get; private set; }
+        public IProjectMappingRepository projectMappingRepository { get; }
+        public ISONRMappingRepository SONRMappingRepository { get; set; }   
 
         public int Save()
         {

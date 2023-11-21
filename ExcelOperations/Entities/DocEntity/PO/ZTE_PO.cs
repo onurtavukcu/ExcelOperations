@@ -33,7 +33,7 @@ namespace ExcelOperations.DocEntity.Entity.PO
         public string? NE_Nr { get; set; }
 
         [ColumnName("Projekt-ID")]
-        public string? Projekt_ID { get; set; } // project id
+        public int? Projekt_ID { get; set; } // project id
 
         [ColumnName("MP ID")]
         public string? MP_ID { get; set; }

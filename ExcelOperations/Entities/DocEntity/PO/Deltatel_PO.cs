@@ -16,7 +16,7 @@ namespace ExcelOperations.DocEntity.PO
         public string? Project_Code { get; set; }
 
         [ColumnName("Site Code")]
-        public string? Site_Code { get; set; }  //project ıd
+        public int? Site_Code { get; set; }  //project ıd
 
         [ColumnName("Site Name")]
         public string? Site_Name{ get; set; }

@@ -7,6 +7,9 @@ using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using Newtonsoft.Json;
 using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
 using System.Data;
+using ExcelOperations.DocEntity.Entity.PO;
+using ExcelOperations.Mappings;
+using ExcelOperations.Context;
 
 namespace ExcelOperations.Controllers
 {
@@ -32,7 +35,7 @@ namespace ExcelOperations.Controllers
             return Ok(routerAktuell);
 
         }
-       
+
         [HttpGet]
         [Route("GetSomeDataV2")]
         public IActionResult GetSomeDataFromDBV2(CancellationToken cancellationToken)
@@ -79,13 +82,59 @@ namespace ExcelOperations.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllProjectNumbers")]
+        [Route("testmappings")]
         public IActionResult GetPRojectId()
         {
-            var projectList = new List<int>();
+            var mappingResult = new ProjectIdMapping()
+            {
+                CiscoPOId = 1,
+                DeltaTelPOId = null,
+                JSLMultiProjectId = null,
+                LagerCentralId = null,
+                MultiProjectId = null,
+                ProjectId = 123,
+                RouterAktuellId = null,
+                RouterAktuellOrderListId = null,
+                RouterSwapAktuellId = null,
+                XWDMAktuelId = null,
+                XWDMAktuelOrderListId = null,
+                ZTEPOId = null,
+            };
 
-            var lager = _unitOfWork.LagerCentralRepository.GetByFilter(t => t.PID != null).SelectMany(k=>k.PID);
+            var newCisco = new Cisco_PO()
+            {
+                Action = "dasd",
+                Action_Detail = "asdasd",
+                Action_Plan = "asdasd",
+                Address = "asdasd",
+                Artikel = "asdasd",
+                Auftr_best = "asdasd",
+                BZR = "asdasd",
+                CISCO_ID = "ID",
+                Column1 = "asdasd",
+                Column2 = "asdasd",
+                Gebäudeart = "asdasd",
+                id = 1,
+                Mat_Code = "asdasd",
+                MP_Bezeichnung = "asdasd",
+                NE = "asdasd",
+                NE_Nr = "asdasd",
+                Objekt_ID = 123,
+                Para = "asdasd",
+                PO_Date = "asdasd",
+                PO_Elemnt = "asdasd",
+                PO_No = "asdasd",
+                Projekt = "asdasd",
+                Rech_NO = "asdasd",
+                Sto = "asdasd",
+                Team = "asdasd",   
+                ProjectMappingId = 123
+            };
 
+
+            _unitOfWork.CiscoPoRepository.SaveEntity(newCisco);
+
+            _unitOfWork.projectMappingRepository.SaveEntity(mappingResult);
 
             return Ok();
         }

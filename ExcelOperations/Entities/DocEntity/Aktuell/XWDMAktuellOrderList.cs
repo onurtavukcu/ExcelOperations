@@ -17,7 +17,7 @@ namespace ExcelOperations.DocEntity.Entity.Aktuell
         public string? NE_Bemerkung { get; set; }
         public string? Projektart { get; set; }
         [ColumnName("Projekt-ID")]
-        public string? Projekt_ID { get; set; }
+        public int? Projekt_ID { get; set; }
         [ColumnName("SC-Kategorie")]
         public string? SC_Kategorie { get; set; }
         [ColumnName("SC-Nummer")]

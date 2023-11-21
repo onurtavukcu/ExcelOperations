@@ -17,7 +17,7 @@
         public const string XWDMAktuellOrderList = $@"{RootPath}Aktuell\xWDM_aktuell.xlsx,XWDMAktuellOrderList";
         public const string TestExcel = $@"{RootPath}\TestExcel.xlsx,TestExceFile";
 
-        public new List<(string, int)> locationList1 = new List<(string, int)>
+        public List<(string, int)> locationList1 = new List<(string, int)>
         {
             ( RouterAktuell, 5),
             ( XWDMAktuell, 5),

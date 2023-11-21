@@ -6,7 +6,7 @@ namespace ExcelOperations.DocEntity.Entity.Zugang
     {
         [ColumnName("Zuständige Region")]
         public string? Zustandige_Region { get; set; }
-        public string? SO_Nr { get; set; }  //saha numarası 
+        public int? SO_Nr { get; set; }  //saha numarası 
         public string? SO_Nr_EPlus { get; set; }
 
         [ColumnName("COOP-Contract")]

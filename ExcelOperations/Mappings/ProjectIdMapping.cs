@@ -5,24 +5,25 @@ using ExcelOperations.DocEntity.Entity.Lager;
 using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.PO;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExcelOperations.Mappings
 {
     public class ProjectIdMapping
     {
-        public int ProjectId { get; set; }
-        public int? RouterAktuellId { get; set; }
-        public int? RouterAktuellOrderListId { get; set; }
-        public int? XWDMAktuelId { get; set; }
-        public int? XWDMAktuelOrderListId { get; set; }
-        public int? LagerCentralId { get; set; }
-        public int? CiscoPOId { get; set; }
-        public int? DeltaTelPOId { get; set; }
-        public int? ZTEPOId { get; set; }
-        public int? JSLMultiProjectId { get; set; }
-        public int? MultiProjectId { get; set; }
-        public int? RouterSwapAktuellId { get; set; }
+        public virtual int ProjectId { get; set; }
+        public virtual int? RouterAktuellId { get; set; }
+        public virtual int? RouterAktuellOrderListId { get; set; }
+        public virtual int? XWDMAktuelId { get; set; }
+        public virtual int? XWDMAktuelOrderListId { get; set; }
+        public virtual int? LagerCentralId { get; set; }
+        public virtual int? CiscoPOId { get; set; }
+        public virtual int? DeltaTelPOId { get; set; }
+        public virtual int? ZTEPOId { get; set; }
+        public virtual int? JSLMultiProjectId { get; set; }
+        public virtual int? MultiProjectId { get; set; }
+        public virtual int? RouterSwapAktuellId { get; set; }
 
         public virtual RouterAktuell? RouterAktuell { get; set; }
         public virtual RouterAktuellOrderList? RouterAktuellOrderList { get; set; }

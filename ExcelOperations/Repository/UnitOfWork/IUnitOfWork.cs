@@ -4,9 +4,11 @@ using ExcelOperations.Repository.ModelRepository.DeltatelPORepository;
 using ExcelOperations.Repository.ModelRepository.JSLMultiPorjectRepository;
 using ExcelOperations.Repository.ModelRepository.LagerCentralRepository;
 using ExcelOperations.Repository.ModelRepository.MultiProjectRepository;
+using ExcelOperations.Repository.ModelRepository.ProjectIdMappingRepository;
 using ExcelOperations.Repository.ModelRepository.RouterAktuellOrderListRepository;
 using ExcelOperations.Repository.ModelRepository.RouterAktuellRepository;
 using ExcelOperations.Repository.ModelRepository.RouterSwapAktuellRepository;
+using ExcelOperations.Repository.ModelRepository.SONRMappingRepository;
 using ExcelOperations.Repository.ModelRepository.UserRepository;
 using ExcelOperations.Repository.ModelRepository.XWDMAktuellOrderListRepository;
 using ExcelOperations.Repository.ModelRepository.XWDMAktuellRepository;
@@ -31,6 +33,8 @@ namespace ExcelOperations.Repository.UnitOfWork
         IXWDMAktuellRepository XWDMAktuellRepository { get; }
         IZTEPORepository ZTEPORepository { get; }
         IZuganssdatenAktuellRepository ZuganssdatenAktuellRepository { get; }
+        IProjectMappingRepository projectMappingRepository { get; }
+        ISONRMappingRepository SONRMappingRepository { get; }
         int Save();
     }
 }
