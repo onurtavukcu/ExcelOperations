@@ -52,13 +52,18 @@ namespace ExcelOperations.Repository.Implementor
            _dbContext.Set<T>().RemoveRange(entities);
         }
 
-        public Task BulkSaveAsync(IEnumerable<object> entity, CancellationToken cancellationToken)
+        public async Task<Task> MYBulkSaveAsync(IEnumerable<object> entity, CancellationToken cancellationToken)
         {
-            return _dbContext.BulkInsertAsync(entity,cancellationToken);
+            return await Task.FromResult(_dbContext.BulkInsertAsync(entity,cancellationToken));
         } 
         public int SaveEntity(T entity)
         {
             return _dbContext.SaveChanges();
+        }
+
+        public void BulkSave(T entity)
+        {
+            _dbContext.BulkSaveChanges();
         }
     }
 }

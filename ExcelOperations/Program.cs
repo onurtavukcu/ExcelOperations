@@ -28,7 +28,6 @@ builder.Services.AddSwaggerGen(c =>
         Name = HeaderNames.Authorization,
         Scheme = "Bearer"
     });
-
     c.OperationFilter<SwaggerAuthenticateHeaderFilter>();
 });
 
@@ -80,10 +79,16 @@ builder.Services.AddAuthentication(
     });
 
 builder.Services.AddDbContext<EntityDbContext>
-    (options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
-        b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName))
-        );
+    (
+        options => options
+        .UseNpgsql
+        (
+            builder.Configuration.GetConnectionString("ExcelOperationsDatabase"),
+            b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)
+        )
+        .UseLazyLoadingProxies()
+        .LogTo(Console.WriteLine)
+    );
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
@@ -115,7 +120,6 @@ builder.Services.AddAuthorization(
     );
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -130,7 +134,8 @@ app.UseAuthorization();
 
 app.UseCors("myCors");
 app.MapControllers();
-app.UseMiddleware<WorkedMiddleware>();
+//app.UseMiddleware<WorkedMiddleware>();
+
 //app.UseMiddleware<ExceptionMiddleware>(); it not work, work on it!
 //app.UseMiddleware<AuthenticationsMiddleware>();  //its worked but check all endpoint which has token?
 //app.UseWorkedM();

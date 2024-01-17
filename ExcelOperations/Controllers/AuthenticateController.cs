@@ -4,6 +4,7 @@ using ExcelOperations.Entities.UserInfo;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Controllers
 {
@@ -17,7 +18,12 @@ namespace ExcelOperations.Controllers
 
         public AuthenticateController(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
-            _unitOfWork = unitOfWork;
+            //if (unitOfWork.DbContext.Database.EnsureCreated())
+            //{
+            //    unitOfWork.DbContext.Database.Migrate();
+            //}
+
+                _unitOfWork = unitOfWork;
             _configuration = configuration;
         }
 

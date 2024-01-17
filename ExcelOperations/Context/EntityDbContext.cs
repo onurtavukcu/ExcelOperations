@@ -24,8 +24,8 @@ namespace ExcelOperations.Context
         }
 
         #region DbSets
-        public virtual DbSet<ProjectIdMapping> ProjectIdMappings { get; set; }
-        public virtual DbSet<SONRMapping> SONRMappings { get; set; }
+        //public virtual DbSet<ProjectIdMapping> ProjectIdMappings { get; set; }
+        //public virtual DbSet<SONRMapping> SONRMappings { get; set; }
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
@@ -77,6 +77,13 @@ namespace ExcelOperations.Context
                     PasswordHash = PasswordHashingOperations.CreateHash("admin")
                 }
                 );
+
+            //modelBuilder.Entity<RouterAktuell>(entity =>
+            //{
+            //    entity
+            //    .HasMany<XWDMAktuell>(ra => ra.XWDMAktuells)
+            //    .WithMany(xwdm => xwdm.RouterAktuells);
+            //});
 
             #region PrimaryKey
 
@@ -187,7 +194,7 @@ namespace ExcelOperations.Context
             //    .HasOne(p => p.Cisco_PO)
             //    .WithOne()
             //    .HasForeignKey<ProjectIdMapping>(t => t.CiscoPOId);
-            
+
             //modelBuilder.Entity<ProjectIdMapping>()
             //    .HasOne(p => p.Deltatel_PO)
             //    .WithOne()
@@ -247,6 +254,8 @@ namespace ExcelOperations.Context
             //    .WithOne()
             //    .HasForeignKey<SONRMapping>(t => t.ZugansdatenId);
             #endregion Mappings
+
+            modelBuilder.Entity<ZTE_PO>().HasQueryFilter(filter => filter.SO_Nr != null); //querylerde so_nr null olmayanları getiriyor.
         }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

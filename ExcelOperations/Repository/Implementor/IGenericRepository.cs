@@ -12,9 +12,8 @@ namespace ExcelOperations.Repository.Implementor
         void AddRangeAsync(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
-        Task BulkSaveAsync(IEnumerable<object> entity, CancellationToken cancellationToken);
+        Task<Task> MYBulkSaveAsync(IEnumerable<object> entity, CancellationToken cancellationToken);
         int SaveEntity(T entity);
-        //IQueryable<T> MySelect(Expression<Func<T, bool>> filter);
     }
 }
 // 1-  convert all ıenumarable to ıqueryable

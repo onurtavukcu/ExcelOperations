@@ -7,9 +7,7 @@ using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using Newtonsoft.Json;
 using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
 using System.Data;
-using ExcelOperations.DocEntity.Entity.PO;
-using ExcelOperations.Mappings;
-using ExcelOperations.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Controllers
 {
@@ -23,6 +21,11 @@ namespace ExcelOperations.Controllers
 
         public ExcelOperationsEndPointsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
+            //if (unitOfWork.DbContext.Database.EnsureCreated())
+            //{
+            //    unitOfWork.DbContext.Database.Migrate();                
+            //}
+
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
@@ -42,8 +45,28 @@ namespace ExcelOperations.Controllers
         {
             var result = _unitOfWork.MultiProjectRepository.GetByFilter(p => p.NE_Nr == "203792153");
 
-            return Ok(_mapper.Map<IEnumerable<RouterSwapAktuellDTO>>(result));
+            return Ok(_mapper.Map<IEnumerable<MultiProjectDTO>>(result));
         }
+
+
+        [HttpGet]
+        [Route("GetSomeDataWithDTO")] //Done
+        public IActionResult GetSomeDataWithDTO(CancellationToken cancellationToken)
+        {
+            var result = _unitOfWork.MultiProjectRepository
+                .GetByFilter(p => p.NE_Nr == "203792153")
+                .Select(t =>
+                        new MultiProjectDTO
+                        {
+                            Auftragnehmer_Integration_on_site = t.Auftragnehmer_Integration_on_site,
+                            Generalunternehmer = t.Generalunternehmer,
+                            MP_Bezeichnung = t.MP_Bezeichnung,
+                            Order = t.Order,
+                            Subunternehmer = t.Subunternehmer
+                        }).ToList();
+            return Ok(result);
+        }
+
 
         [HttpGet]
         [Authorize(Roles = "1")]
@@ -85,56 +108,56 @@ namespace ExcelOperations.Controllers
         [Route("testmappings")]
         public IActionResult GetPRojectId()
         {
-            var mappingResult = new ProjectIdMapping()
-            {
-                CiscoPOId = 1,
-                DeltaTelPOId = null,
-                JSLMultiProjectId = null,
-                LagerCentralId = null,
-                MultiProjectId = null,
-                ProjectId = 123,
-                RouterAktuellId = null,
-                RouterAktuellOrderListId = null,
-                RouterSwapAktuellId = null,
-                XWDMAktuelId = null,
-                XWDMAktuelOrderListId = null,
-                ZTEPOId = null,
-            };
+            //var mappingResult = new ProjectIdMapping()
+            //{
+            //    CiscoPOId = 1,
+            //    DeltaTelPOId = null,
+            //    JSLMultiProjectId = null,
+            //    LagerCentralId = null,
+            //    MultiProjectId = null,
+            //    ProjectId = 123,
+            //    RouterAktuellId = null,
+            //    RouterAktuellOrderListId = null,
+            //    RouterSwapAktuellId = null,
+            //    XWDMAktuelId = null,
+            //    XWDMAktuelOrderListId = null,
+            //    ZTEPOId = null,
+            //};
 
-            var newCisco = new Cisco_PO()
-            {
-                Action = "dasd",
-                Action_Detail = "asdasd",
-                Action_Plan = "asdasd",
-                Address = "asdasd",
-                Artikel = "asdasd",
-                Auftr_best = "asdasd",
-                BZR = "asdasd",
-                CISCO_ID = "ID",
-                Column1 = "asdasd",
-                Column2 = "asdasd",
-                Gebäudeart = "asdasd",
-                id = 1,
-                Mat_Code = "asdasd",
-                MP_Bezeichnung = "asdasd",
-                NE = "asdasd",
-                NE_Nr = "asdasd",
-                Objekt_ID = 123,
-                Para = "asdasd",
-                PO_Date = "asdasd",
-                PO_Elemnt = "asdasd",
-                PO_No = "asdasd",
-                Projekt = "asdasd",
-                Rech_NO = "asdasd",
-                Sto = "asdasd",
-                Team = "asdasd",   
-                ProjectMappingId = 123
-            };
+            //var newCisco = new Cisco_PO()
+            //{
+            //    Action = "dasd",
+            //    Action_Detail = "asdasd",
+            //    Action_Plan = "asdasd",
+            //    Address = "asdasd",
+            //    Artikel = "asdasd",
+            //    Auftr_best = "asdasd",
+            //    BZR = "asdasd",
+            //    CISCO_ID = "ID",
+            //    Column1 = "asdasd",
+            //    Column2 = "asdasd",
+            //    Gebäudeart = "asdasd",
+            //    id = 1,
+            //    Mat_Code = "asdasd",
+            //    MP_Bezeichnung = "asdasd",
+            //    NE = "asdasd",
+            //    NE_Nr = "asdasd",
+            //    Objekt_ID = 123,
+            //    Para = "asdasd",
+            //    PO_Date = "asdasd",
+            //    PO_Elemnt = "asdasd",
+            //    PO_No = "asdasd",
+            //    Projekt = "asdasd",
+            //    Rech_NO = "asdasd",
+            //    Sto = "asdasd",
+            //    Team = "asdasd",   
+            //    ProjectMappingId = 123
+            //};
 
 
-            _unitOfWork.CiscoPoRepository.SaveEntity(newCisco);
+            //_unitOfWork.CiscoPoRepository.AddAsync(newCisco);
 
-            _unitOfWork.projectMappingRepository.SaveEntity(mappingResult);
+            //_unitOfWork.projectMappingRepository.AddAsync(mappingResult);
 
             return Ok();
         }

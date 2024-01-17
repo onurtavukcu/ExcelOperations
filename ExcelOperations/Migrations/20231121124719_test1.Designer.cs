@@ -3,6 +3,7 @@ using System;
 using ExcelOperations.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,10 +11,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ExcelOperations.Migrations
 {
+    /*
     [DbContext(typeof(EntityDbContext))]
-    partial class EntityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231121124719_test1")]
+    partial class test1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4532,13 +4536,13 @@ namespace ExcelOperations.Migrations
                         new
                         {
                             Username = "regular",
-                            PasswordHash = "8KPBy5lUiwk87lJsHukn8OIk3f9DJFyWrttEaeoEcSb9DcsGhW4AEFZOtV9wvEasCeJnXn/jFclD3bS4retHsA==",
+                            PasswordHash = "spLaQu7i68bqJuE+wH0M7g/btTVAg0rH0nVdpPNHfEf2/FkBkeF8m+SQJDfubDaH6/eAiD3DL4GFfg+o2+cZTQ==",
                             UserTypeId = 1
                         },
                         new
                         {
                             Username = "admin",
-                            PasswordHash = "ty8f1zmYNYVhItGRLlSOKM3jXyLNkQJObyoT3AqaQwgEbx/scZdHkTOGMysTXI/gt2t/NH+gRuNHo2s6AV0TxQ==",
+                            PasswordHash = "RDaWu/CUN4Jy5iqasNvlRLCjTMeRyUrNsC6vVrw0uFdNltnNlhMHGCxtZ0FmiBkgsEy0xit3KhHJlxJIOybQcw==",
                             UserTypeId = 1
                         });
                 });
@@ -4706,21 +4710,6 @@ namespace ExcelOperations.Migrations
                     b.ToTable("SONRMapping");
                 });
 
-            modelBuilder.Entity("RouterAktuellXWDMAktuell", b =>
-                {
-                    b.Property<int>("RouterAktuellsid")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("XWDMAktuellsid")
-                        .HasColumnType("integer");
-
-                    b.HasKey("RouterAktuellsid", "XWDMAktuellsid");
-
-                    b.HasIndex("XWDMAktuellsid");
-
-                    b.ToTable("RouterAktuellXWDMAktuell");
-                });
-
             modelBuilder.Entity("ExcelOperations.Entities.UserInfo.User", b =>
                 {
                     b.HasOne("ExcelOperations.Entities.UserInfo.UserType", "UserType")
@@ -4839,22 +4828,8 @@ namespace ExcelOperations.Migrations
 
                     b.Navigation("ZugangsdatenAktuell");
                 });
-
-            modelBuilder.Entity("RouterAktuellXWDMAktuell", b =>
-                {
-                    b.HasOne("ExcelOperations.DocEntity.RouterAktuell", null)
-                        .WithMany()
-                        .HasForeignKey("RouterAktuellsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ExcelOperations.DocEntity.Entity.Aktuell.XWDMAktuell", null)
-                        .WithMany()
-                        .HasForeignKey("XWDMAktuellsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
 #pragma warning restore 612, 618
         }
     }
+    */
 }

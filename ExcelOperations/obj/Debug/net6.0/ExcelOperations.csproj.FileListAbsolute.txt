@@ -587,13 +587,14 @@ C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOpera
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.CoreCompileInputs.cache
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.sourcelink.json
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.ExcelOperations.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.build.ExcelOperations.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ExcelOperations.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ExcelOperations.props
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\scopedcss\bundle\ExcelOperations.styles.css
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.csproj.CopyComplete
 C:\Users\adm\Desktop\ExcelOperations\ExcelOperations\obj\Debug\net6.0\ExcelOperations.dll

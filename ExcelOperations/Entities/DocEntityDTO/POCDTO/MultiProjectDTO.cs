@@ -11,7 +11,7 @@
         //public string? Gebäudeart { get; set; }
         //public string? NE_Nr { get; set; }
         //[ColumnName("Objekt-ID")]
-        //public string? Objekt_ID { get; set; } //project
+        public int? Objekt_ID { get; set; } //project
         //[ColumnName("NE-Typ")]
         //public string? NE_Typ { get; set; }
         //public string? POC_Projekt { get; set; }

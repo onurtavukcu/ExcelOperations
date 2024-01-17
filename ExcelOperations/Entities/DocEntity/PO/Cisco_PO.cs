@@ -47,8 +47,5 @@ namespace ExcelOperations.DocEntity.Entity.PO
         public string? Action_Detail { get; set; }
         public string? Column1 { get; set; }
         public string? Column2 { get; set; }
-        public ProjectIdMapping ProjectIdMapping { get; set; }
-        public int ProjectMappingId { get; set; }
-
     }
 }
