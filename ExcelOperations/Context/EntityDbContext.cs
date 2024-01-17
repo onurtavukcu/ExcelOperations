@@ -87,15 +87,15 @@ namespace ExcelOperations.Context
 
             #region PrimaryKey
 
-            modelBuilder.Entity<ProjectIdMapping>(entity =>
-              {
-                  entity.HasKey(key => key.ProjectId);
-              });
+            //modelBuilder.Entity<ProjectIdMapping>(entity =>
+            //  {
+            //      entity.HasKey(key => key.ProjectId);
+            //  });
 
-            modelBuilder.Entity<SONRMapping>(entity =>
-            {
-                entity.HasKey(key => key.SoNRId);
-            });
+            //modelBuilder.Entity<SONRMapping>(entity =>
+            //{
+            //    entity.HasKey(key => key.SoNRId);
+            //});
 
             modelBuilder.Entity<RouterAktuell>(entity =>
             {
