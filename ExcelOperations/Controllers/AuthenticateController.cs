@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using ExcelOperations.Authenticate.AuthenticateOperations;
+﻿using ExcelOperations.Authenticate.AuthenticateOperations;
 using ExcelOperations.Entities.UserInfo;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Controllers
 {
@@ -18,12 +16,7 @@ namespace ExcelOperations.Controllers
 
         public AuthenticateController(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
-            //if (unitOfWork.DbContext.Database.EnsureCreated())
-            //{
-            //    unitOfWork.DbContext.Database.Migrate();
-            //}
-
-                _unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
             _configuration = configuration;
         }
 
@@ -37,7 +30,7 @@ namespace ExcelOperations.Controllers
 
             if (userNameQuery is not null)
             {
-                return  BadRequest("User Already Exist");
+                return BadRequest("User Already Exist");
             }
 
             if (request.Username is null || request.Password is null)
@@ -148,4 +141,3 @@ namespace ExcelOperations.Controllers
         }
     }
 }
- 

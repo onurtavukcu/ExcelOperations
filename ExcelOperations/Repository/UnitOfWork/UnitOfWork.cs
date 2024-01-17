@@ -36,8 +36,7 @@ namespace ExcelOperations.Repository.UnitOfWork
             XWDMAktuellRepository = new XWDMAktuellRepository(dbContext);
             ZTEPORepository = new ZTEPORepository(dbContext);
             ZuganssdatenAktuellRepository = new ZuganssdatenAktuellRepository(dbContext);
-            projectMappingRepository = new ProjectMappingRepository(dbContext);
-            SONRMappingRepository = new SONRMappingRepository(dbContext);        }
+        }
 
         public EntityDbContext DbContext => _dbContext;
         public ICiscoPoRepository CiscoPoRepository { get; set; }
@@ -53,8 +52,6 @@ namespace ExcelOperations.Repository.UnitOfWork
         public IXWDMAktuellRepository XWDMAktuellRepository { get; set; }
         public IZTEPORepository ZTEPORepository { get; private set; }
         public IZuganssdatenAktuellRepository ZuganssdatenAktuellRepository { get; private set; }
-        public IProjectMappingRepository projectMappingRepository { get; }
-        public ISONRMappingRepository SONRMappingRepository { get; set; }   
 
         public int Save()
         {

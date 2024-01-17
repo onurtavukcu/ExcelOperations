@@ -33,8 +33,6 @@ namespace ExcelOperations.Repository.UnitOfWork
         IXWDMAktuellRepository XWDMAktuellRepository { get; }
         IZTEPORepository ZTEPORepository { get; }
         IZuganssdatenAktuellRepository ZuganssdatenAktuellRepository { get; }
-        IProjectMappingRepository projectMappingRepository { get; }
-        ISONRMappingRepository SONRMappingRepository { get; }
         int Save();
     }
 }

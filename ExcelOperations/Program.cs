@@ -8,7 +8,6 @@ using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using ExcelOperations.ApiConfiguration.MvcFilter;
-using ExcelOperations.Middlewares;
 using ExcelOperations.Entities.UserInfo;
 
 var builder = WebApplication.CreateBuilder(args);

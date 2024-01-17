@@ -7,12 +7,8 @@ using ExcelOperations.DocEntity.Entity.PO;
 using ExcelOperations.DocEntity.Entity.POC;
 using ExcelOperations.DocEntity.Entity.Zugang;
 using ExcelOperations.DocEntity.PO;
-using ExcelOperations.Entities;
-using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Entities.UserInfo;
-using ExcelOperations.Mappings;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing;
 
 namespace ExcelOperations.Context
 {
@@ -24,8 +20,6 @@ namespace ExcelOperations.Context
         }
 
         #region DbSets
-        //public virtual DbSet<ProjectIdMapping> ProjectIdMappings { get; set; }
-        //public virtual DbSet<SONRMapping> SONRMappings { get; set; }
         public virtual DbSet<RouterAktuell>? RouterAktuell { get; set; }
         public virtual DbSet<RouterSwapAktuell>? RouterSwapAktuells { get; set; }
         public virtual DbSet<MultiProject>? MultiProjects { get; set; }
@@ -86,16 +80,6 @@ namespace ExcelOperations.Context
             //});
 
             #region PrimaryKey
-
-            //modelBuilder.Entity<ProjectIdMapping>(entity =>
-            //  {
-            //      entity.HasKey(key => key.ProjectId);
-            //  });
-
-            //modelBuilder.Entity<SONRMapping>(entity =>
-            //{
-            //    entity.HasKey(key => key.SoNRId);
-            //});
 
             modelBuilder.Entity<RouterAktuell>(entity =>
             {
@@ -159,101 +143,6 @@ namespace ExcelOperations.Context
 
             #endregion PrimaryKey
 
-            #region Mappings
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.RouterAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.RouterAktuellId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.RouterAktuellOrderList)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.RouterAktuellOrderListId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.XWDMAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.XWDMAktuelId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.XWDMAktuellOrderList)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.XWDMAktuelOrderListId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.LagerCentral)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.LagerCentralId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.Cisco_PO)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.CiscoPOId);
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.Deltatel_PO)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.DeltaTelPOId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.ZTE_PO)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.ZTEPOId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.JSLMultiProject)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.JSLMultiProjectId);
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.MultiProject)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.MultiProjectId);
-
-
-            //modelBuilder.Entity<ProjectIdMapping>()
-            //    .HasOne(p => p.RouterSwapAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<ProjectIdMapping>(t => t.RouterSwapAktuellId);
-
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.LagerCentral)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.LagerCentralId);
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.ZTE_PO)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.ZTEPOID);
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.RouterAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.RouterAktuellId);
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.XWDMAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.XWDMAktuelId);
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.RouterSwapAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.RouterSwapAktuellId);
-
-            //modelBuilder.Entity<SONRMapping>()
-            //    .HasOne(p => p.ZugangsdatenAktuell)
-            //    .WithOne()
-            //    .HasForeignKey<SONRMapping>(t => t.ZugansdatenId);
-            #endregion Mappings
 
             modelBuilder.Entity<ZTE_PO>().HasQueryFilter(filter => filter.SO_Nr != null); //querylerde so_nr null olmayanları getiriyor.
         }

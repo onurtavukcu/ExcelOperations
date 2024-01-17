@@ -7,7 +7,6 @@ using ExcelOperations.Entities.DocEntityDTO.PODTO;
 using Newtonsoft.Json;
 using ExcelOperations.Operations.MinorOperations.CoordinateOperation;
 using System.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace ExcelOperations.Controllers
 {
@@ -103,65 +102,6 @@ namespace ExcelOperations.Controllers
 
             return Ok(_mapper.Map<IEnumerable<Deltatel_PODTO>>(dataPerPages));
         }
-
-        [HttpGet]
-        [Route("testmappings")]
-        public IActionResult GetPRojectId()
-        {
-            //var mappingResult = new ProjectIdMapping()
-            //{
-            //    CiscoPOId = 1,
-            //    DeltaTelPOId = null,
-            //    JSLMultiProjectId = null,
-            //    LagerCentralId = null,
-            //    MultiProjectId = null,
-            //    ProjectId = 123,
-            //    RouterAktuellId = null,
-            //    RouterAktuellOrderListId = null,
-            //    RouterSwapAktuellId = null,
-            //    XWDMAktuelId = null,
-            //    XWDMAktuelOrderListId = null,
-            //    ZTEPOId = null,
-            //};
-
-            //var newCisco = new Cisco_PO()
-            //{
-            //    Action = "dasd",
-            //    Action_Detail = "asdasd",
-            //    Action_Plan = "asdasd",
-            //    Address = "asdasd",
-            //    Artikel = "asdasd",
-            //    Auftr_best = "asdasd",
-            //    BZR = "asdasd",
-            //    CISCO_ID = "ID",
-            //    Column1 = "asdasd",
-            //    Column2 = "asdasd",
-            //    Gebäudeart = "asdasd",
-            //    id = 1,
-            //    Mat_Code = "asdasd",
-            //    MP_Bezeichnung = "asdasd",
-            //    NE = "asdasd",
-            //    NE_Nr = "asdasd",
-            //    Objekt_ID = 123,
-            //    Para = "asdasd",
-            //    PO_Date = "asdasd",
-            //    PO_Elemnt = "asdasd",
-            //    PO_No = "asdasd",
-            //    Projekt = "asdasd",
-            //    Rech_NO = "asdasd",
-            //    Sto = "asdasd",
-            //    Team = "asdasd",   
-            //    ProjectMappingId = 123
-            //};
-
-
-            //_unitOfWork.CiscoPoRepository.AddAsync(newCisco);
-
-            //_unitOfWork.projectMappingRepository.AddAsync(mappingResult);
-
-            return Ok();
-        }
-
 
         [HttpGet]
         [Route("GetRelatedCoordinate")]
