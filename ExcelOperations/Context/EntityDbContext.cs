@@ -144,7 +144,13 @@ namespace ExcelOperations.Context
             #endregion PrimaryKey
 
 
-            modelBuilder.Entity<ZTE_PO>().HasQueryFilter(filter => filter.SO_Nr != null); //querylerde so_nr null olmayanları getiriyor.
+            modelBuilder.Entity<ZTE_PO>().HasQueryFilter(filter => filter.SO_Nr != null); //querylerde so_nr null olmayanları getiriyor. Diğer tabloların proje ve saha numaraları boş olanları da ekle
+
+
+
+
+
+
         }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

@@ -3,6 +3,7 @@ using ExcelOperations.Entities.UserInfo;
 using ExcelOperations.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ExcelOperations.Controllers
 {
@@ -47,7 +48,7 @@ namespace ExcelOperations.Controllers
 
             var result = _unitOfWork.UserRepository.SaveEntity(user);
 
-            if (!(result == 1))
+            if (result != 1)
             {
                 return BadRequest("User Can No Be Save!");
             }
@@ -68,7 +69,7 @@ namespace ExcelOperations.Controllers
                 return BadRequest("User Already Exist");
             }
 
-            if (request.Username is null || request.Password is null)
+            if (request.Username.IsNullOrEmpty() || request.Password.IsNullOrEmpty())
             {
                 return BadRequest("Enter Valid Username or Password!");
             }
@@ -82,7 +83,7 @@ namespace ExcelOperations.Controllers
 
             var result = _unitOfWork.UserRepository.SaveEntity(user);
 
-            if (!(result == 1))
+            if (result != 1)
             {
                 return BadRequest("User Can No Be Save!");
             }
@@ -98,7 +99,7 @@ namespace ExcelOperations.Controllers
                 .GetByFilter(usr => usr.Username == request.Username)
                 .SingleOrDefault();
 
-            if (request.Username is null || request.Password is null)
+            if (request.Username.IsNullOrEmpty() || request.Password.IsNullOrEmpty())
             {
                 return BadRequest("Enter Valid Username or Password!");
             }

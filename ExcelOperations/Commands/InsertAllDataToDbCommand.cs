@@ -2,6 +2,7 @@
 using ExcelOperations.Entities.DocEntity;
 using ExcelOperations.Operations.ExcelToFileModelOperations;
 using ExcelOperations.Repository.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace ExcelOperations.Commands
